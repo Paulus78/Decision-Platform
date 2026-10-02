@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CallScene, type Mood } from "@/components/explainer/art";
 import { ParkingScene } from "@/components/explainer/auto-art";
-import { Brain, DateScene } from "@/components/explainer/date-art";
+import { Brain } from "@/components/explainer/date-art";
+import { OfficeScene } from "@/components/explainer/office-art";
 
 // Der erste Bildschirm ist eine spielbare Entscheidung, ohne Ton.
 // Drei Situationen wechseln sich ab, bis jemand selbst klickt.
@@ -34,7 +35,7 @@ type Demo = {
 const DEMOS: Demo[] = [
   {
     slug: "gehaltsangebot",
-    tab: "Gehalt",
+    tab: "Jobangebot",
     who: "Frau Brandt, HR",
     question: "Bevor ich das Angebot fertig mache: Was hatten Sie sich gehaltlich vorgestellt?",
     top: 230,
@@ -66,35 +67,35 @@ const DEMOS: Demo[] = [
     ],
   },
   {
-    slug: "erstes-date",
-    tab: "Erstes Date",
-    who: "Lena",
-    question: "Ich bin Tierärztin. Heute hatte ich einen Papagei, der mich beleidigt hat.",
+    slug: "jahresgespraech",
+    tab: "Gehaltserhöhung",
+    who: "Herr Krüger, dein Chef",
+    question: "Phoenix lief ja ganz ordentlich. So. Gibt es von Ihrer Seite noch etwas?",
     top: 240,
     answers: [
       {
         id: "A",
-        text: "Krass. Also bei mir im Büro …",
-        reply: "Aha. Spannend.",
+        text: "Ich bräuchte mehr Geld. Meine Miete ist gestiegen.",
+        reply: "Das tut mir leid. Aber die Miete zahlt leider nicht die Firma.",
         you: "worried",
         other: "neutral",
-        brain: "Vier Minuten Excel. Sie zählt die Eiswürfel.",
+        brain: "Er hat recht. Das ist das Schlimmste daran.",
       },
       {
         id: "B",
-        text: "Was hat der Papagei gesagt?",
-        reply: "Er hat „Du schon wieder“ gesagt. Ich habe mich noch nie so ertappt gefühlt.",
+        text: "Ja: mein Gehalt. Phoenix war drei Wochen früher fertig. Wegen mir.",
+        reply: "Hm. Das stimmt allerdings.",
         you: "happy",
-        other: "happy",
-        brain: "Sie lacht. SIE LACHT. Weiter so!",
+        other: "surprised",
+        brain: "Er hat genickt. Das war ein Nicken!",
       },
       {
         id: "C",
-        text: "Ganz schön kalt geworden, oder?",
-        reply: "Ja. Herbst halt.",
+        text: "Nein, alles gut.",
+        reply: "Schön. Dann wären wir ja durch.",
         you: "worried",
-        other: "neutral",
-        brain: "Herbst halt. Wir sind erledigt.",
+        other: "happy",
+        brain: "Alles gut?! Nichts ist gut! Sag es. Jetzt!",
       },
     ],
   },
@@ -137,14 +138,14 @@ const DEMOS: Demo[] = [
 const ROTATE_SECONDS = 10;
 
 function Scene({ slug, you, other, talking }: { slug: string; you: Mood; other: Mood; talking: boolean }) {
-  if (slug === "erstes-date") {
+  if (slug === "jahresgespraech") {
     return (
-      <DateScene
-        place="bar"
-        lena
+      <OfficeScene
+        place="office"
+        stats={0}
         youMood={you}
-        lenaMood={other}
-        lenaTalking={talking}
+        kruegerMood={other}
+        kruegerTalking={talking}
         brain={false}
         brainTalking={false}
         bubble={null}

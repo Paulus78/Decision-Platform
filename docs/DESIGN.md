@@ -68,7 +68,7 @@ Eine Situation erscheint überall als `ScenePanel`: großes Szenenbild, darauf d
 ## 6. Bewegung
 
 - Ein inszenierter Moment: die Entscheidung im ersten Bildschirm (Antwort → Sprechblase → Reaktion → Kommentar vom Gehirn). Die Auflösung gibt es erst im Film.
-- Im ersten Bildschirm wechseln drei Situationen alle 10 Sekunden (Gehalt, Erstes Date, Autoverkauf). Der Wechsel stoppt, sobald jemand klickt, und pausiert, solange die Maus darüber ist.
+- Im ersten Bildschirm wechseln drei Situationen alle 10 Sekunden (Jobangebot, Gehaltserhöhung, Autoverkauf). Der Wechsel stoppt, sobald jemand klickt, und pausiert, solange die Maus darüber ist.
 - Sonst nur Antworten auf Handlungen: Sprechblase richtet sich beim Überfahren auf, Play-Knopf wächst, Kategorie-Name rückt ein Stück, Knöpfe geben nach, Vorschaubild wächst zur Bühne (`ViewTransition`).
 - Keine Einblendungen beim Scrollen, kein Anheben von Karten.
 - Dauern: 100–150 ms Rückmeldung, 200–300 ms Zustandswechsel, 400 ms Auftritt einer Sprechblase.
