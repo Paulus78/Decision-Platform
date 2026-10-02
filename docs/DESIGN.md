@@ -93,7 +93,7 @@ Alles mit Tastatur erreichbar, Fokus-Rahmen 3 px Orange. Klickflächen mindesten
 ## 10. Wo was liegt
 
 - Farben, Schatten, Schriften: `app/globals.css`. Kategorie-Farben: `stories/index.ts`.
-- Bildmarke: ein G auf orangem Feld (`Mark` in `components/site/Header.tsx`, dieselbe Form als `app/icon.svg`).
+- Bildmarke: orange Sprechblase mit schrägem Pause-Zeichen (`Mark` in `components/site/Header.tsx`, dieselbe Form als `app/icon.svg`). Wortmarke in zwei Stärken: „General" mittel, „probe" fett. Der Name „Generalprobe" ist dabei fest verdrahtet aufgeteilt; bei einer Umbenennung `Logo` anpassen.
 - Bildzeichen der Kategorien: selbst gezeichnet in `components/site/CategoryIcon.tsx`.
 - Bausteine in `components/site/`: `HeroDemo`, `CategoryRow` (Streifen auf der Startseite), `CategoryBand` (ausgeklappte Kategorie), `ScenePanel`, `CategoryTabs`, `Browse`, `Header`, `Footer`.
 - Screenshots zum Prüfen: `msedge --headless --window-size=1280,800 --virtual-time-budget=12000 --screenshot=datei.png http://localhost:3100/`. Achtung: Szenen mit Einfahr-Animation (erster Bildschirm) erscheinen dabei manchmal leer; im echten Browser gegenprüfen.

@@ -2,24 +2,30 @@ import Link from "next/link";
 import { SITE } from "@/lib/site";
 import RandomButton from "./RandomButton";
 
-// Bildmarke: ein G auf orangem Feld. Dieselbe Form liegt als app/icon.svg im Browser-Tab.
+// Bildmarke: eine Sprechblase mit schrägem Pause-Zeichen. Der Film hält an, du bist dran.
+// Die Schräge ist dieselbe wie beim Wisch-Übergang und im Startbild der Filme.
+// Dieselbe Form liegt als app/icon.svg im Browser-Tab.
 export function Mark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
-      <rect width="40" height="40" rx="11" fill="#f2a33a" />
-      <path d="M27.7 13.6 A10 10 0 1 0 30 20.4 H20.5" fill="none" stroke="#1e294b" strokeWidth="5.6" />
+      <path
+        d="M20 2c10.5 0 19 7.2 19 16.5S30.5 35 20 35c-1.8 0-3.6-.2-5.2-.6L6 39l1.8-8.2C3.6 27.800 1 23.400 1 18.500 1 9.200 9.500 2 20 2z"
+        fill="#f2a33a"
+      />
+      <path d="M15 11.500h5.200l-2.400 14h-5.200z" fill="#1e294b" />
+      <path d="M23.400 11.500h5.200l-2.400 14h-5.200z" fill="#1e294b" />
     </svg>
   );
 }
 
+// Wortmarke in zwei Stärken: „General“ leicht, „probe“ fett.
 export function Logo({ dark }: { dark?: boolean }) {
   return (
-    <Link href="/" className="flex items-center gap-3" aria-label={`${SITE.name}, Startseite`}>
-      <Mark className="h-9 w-9" />
-      <span
-        className={`font-display text-[23px] font-extrabold tracking-[-0.03em] ${dark ? "text-white" : "text-navy"}`}
-      >
-        {SITE.name}
+    <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE.name}, Startseite`}>
+      <Mark className="h-10 w-10" />
+      <span className={`font-display text-[24px] tracking-[-0.03em] ${dark ? "text-white" : "text-navy"}`}>
+        <span className="font-medium">General</span>
+        <span className="font-extrabold">probe</span>
       </span>
     </Link>
   );
