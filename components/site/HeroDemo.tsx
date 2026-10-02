@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { CallScene, type Mood } from "@/components/explainer/art";
 import { ParkingScene } from "@/components/explainer/auto-art";
@@ -37,13 +37,15 @@ const DEMOS: Demo[] = [
     slug: "gehaltsangebot",
     tab: "Jobangebot",
     who: "Frau Brandt, HR",
-    question: "Bevor ich das Angebot fertig mache: Was hatten Sie sich gehaltlich vorgestellt?",
+    question:
+      "Bevor ich das Angebot fertig mache: Was hatten Sie sich gehaltlich vorgestellt?",
     top: 230,
     answers: [
       {
         id: "A",
         text: "57.500 €.",
-        reply: "Oh. Okay. Das liegt über dem, was wir eingeplant hatten. Ich spreche mit dem Fachbereich.",
+        reply:
+          "Oh. Okay. Das liegt über dem, was wir eingeplant hatten. Ich spreche mit dem Fachbereich.",
         you: "happy",
         other: "surprised",
         brain: "Wir haben eine Zahl gesagt. Laut. Und wir leben noch.",
@@ -54,7 +56,8 @@ const DEMOS: Demo[] = [
         reply: "50.000, das nehme ich mal so mit.",
         you: "worried",
         other: "happy",
-        brain: "Sie hat nur „50.000“ gehört. Den Rest hätten wir uns sparen können.",
+        brain:
+          "Sie hat nur „50.000“ gehört. Den Rest hätten wir uns sparen können.",
       },
       {
         id: "C",
@@ -70,7 +73,8 @@ const DEMOS: Demo[] = [
     slug: "jahresgespraech",
     tab: "Gehaltserhöhung",
     who: "Herr Krüger, dein Chef",
-    question: "Phoenix lief ja ganz ordentlich. So. Gibt es von Ihrer Seite noch etwas?",
+    question:
+      "Phoenix lief ja ganz ordentlich. So. Gibt es von Ihrer Seite noch etwas?",
     top: 240,
     answers: [
       {
@@ -103,7 +107,8 @@ const DEMOS: Demo[] = [
     slug: "autoverkauf",
     tab: "Autoverkauf",
     who: "Alex, der Käufer",
-    question: "Fährt sich gut. Aber die Reifen sind bald fällig. Ich gebe dir 5.800.",
+    question:
+      "Fährt sich gut. Aber die Reifen sind bald fällig. Ich gebe dir 5.800.",
     top: 270,
     answers: [
       {
@@ -117,10 +122,12 @@ const DEMOS: Demo[] = [
       {
         id: "B",
         text: "Wie kommst du auf 5.800?",
-        reply: "Reifen, Ummelden, Versicherung. Das kostet alles. Sagen wir 6.000.",
+        reply:
+          "Reifen, Ummelden, Versicherung. Das kostet alles. Sagen wir 6.000.",
         you: "neutral",
         other: "neutral",
-        brain: "Er hat sich gerade selbst hochgehandelt. Wir haben nur gefragt.",
+        brain:
+          "Er hat sich gerade selbst hochgehandelt. Wir haben nur gefragt.",
       },
       {
         id: "C",
@@ -135,9 +142,21 @@ const DEMOS: Demo[] = [
 ];
 
 // Wie lange eine Situation stehen bleibt, bevor die nächste kommt.
-const ROTATE_SECONDS = 15;
+const ROTATE_SECONDS = 12;
+// Der Wechsel selbst: ein oranger Streifen wischt über das Bild, in der Mitte wird getauscht.
+const WIPE_MS = 700;
 
-function Scene({ slug, you, other, talking }: { slug: string; you: Mood; other: Mood; talking: boolean }) {
+function Scene({
+  slug,
+  you,
+  other,
+  talking,
+}: {
+  slug: string;
+  you: Mood;
+  other: Mood;
+  talking: boolean;
+}) {
   if (slug === "jahresgespraech") {
     return (
       <OfficeScene
@@ -166,7 +185,14 @@ function Scene({ slug, you, other, talking }: { slug: string; you: Mood; other: 
       />
     );
   }
-  return <CallScene youMood={you} brandtMood={other} brandtTalking={talking} bubble={null} />;
+  return (
+    <CallScene
+      youMood={you}
+      brandtMood={other}
+      brandtTalking={talking}
+      bubble={null}
+    />
+  );
 }
 
 // 0 Frage, 1 deine Antwort, 2 Reaktion, 3 Gehirn und Knopf
@@ -178,6 +204,17 @@ export default function HeroDemo() {
   const [step, setStep] = useState<Step>(0);
   // Sobald jemand selbst klickt, wechselt die Situation nicht mehr von allein.
   const [touched, setTouched] = useState(false);
+  // Zählt die Wechsel (startet den Wisch-Streifen neu) und merkt, ob gerade gewechselt wird.
+  const [wipe, setWipe] = useState(0);
+  const [leaving, setLeaving] = useState(false);
+  const swap = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(
+    () => () => {
+      if (swap.current) clearTimeout(swap.current);
+    },
+    [],
+  );
 
   const demo = DEMOS[index];
 
@@ -205,8 +242,14 @@ export default function HeroDemo() {
 
   function show(next: number, byUser: boolean) {
     if (byUser) setTouched(true);
-    setIndex(next);
-    reset();
+    if (next === index || leaving) return;
+    setLeaving(true);
+    setWipe((n) => n + 1);
+    swap.current = setTimeout(() => {
+      setIndex(next);
+      reset();
+      setLeaving(false);
+    }, WIPE_MS / 2);
   }
 
   const reacted = picked && step >= 2;
@@ -234,23 +277,40 @@ export default function HeroDemo() {
         <div className="absolute left-1/2 top-[9%] hidden w-[30%] min-w-[17rem] max-w-[26rem] -translate-x-1/2 md:block">
           <div
             key={`${demo.slug}-${picked?.id}-${step === 1}-${reacted}`}
+            style={step === 0 ? { animationDelay: "0.45s" } : undefined}
             className={`pop-in px-5 py-4 shadow-paper ${
               mine
                 ? "rounded-[20px] rounded-bl-[4px] bg-teal text-white"
                 : "rounded-[20px] rounded-br-[4px] bg-white text-navy"
             }`}
           >
-            <p className={`text-sm font-bold ${mine ? "text-white/80" : "text-tealdark"}`}>
+            <p
+              className={`text-sm font-bold ${mine ? "text-white/80" : "text-tealdark"}`}
+            >
               {mine ? "Du" : demo.who}
             </p>
-            <p className="font-display text-xl font-bold leading-snug">„{bubble}“</p>
+            <p className="font-display text-xl font-bold leading-snug">
+              „{bubble}“
+            </p>
           </div>
         </div>
+        {wipe > 0 && (
+          <div
+            key={wipe}
+            className="hero-wipe"
+            style={{ animationDuration: `${WIPE_MS}ms` }}
+            aria-hidden="true"
+          />
+        )}
       </div>
 
       <div className="mx-auto w-full max-w-[1120px] px-5 pb-14 pt-6">
         {/* Umschalter zwischen den drei Situationen. Der Balken zeigt, wann die nächste kommt. */}
-        <div className="mb-6 flex flex-wrap items-center gap-2" role="group" aria-label="Situation wählen">
+        <div
+          className="mb-6 flex flex-wrap items-center gap-2"
+          role="group"
+          aria-label="Situation wählen"
+        >
           {DEMOS.map((item, i) => {
             const on = i === index;
             return (
@@ -259,7 +319,9 @@ export default function HeroDemo() {
                 onClick={() => show(i, true)}
                 aria-pressed={on}
                 className={`press relative overflow-clip rounded-full px-4 py-1.5 text-sm font-bold ${
-                  on ? "bg-white/20 text-white" : "bg-white/[0.07] text-white/70 hover:bg-white/15 hover:text-white"
+                  on
+                    ? "bg-white/20 text-white"
+                    : "bg-white/[0.07] text-white/70 hover:bg-white/15 hover:text-white"
                 }`}
               >
                 {item.tab}
@@ -275,88 +337,104 @@ export default function HeroDemo() {
           })}
         </div>
 
-        {/* Auf dem Handy steht die Sprechblase unter dem Bild */}
-        <div className="mb-6 rounded-[20px] rounded-tl-[4px] bg-white px-5 py-4 text-navy md:hidden">
-          <p className="text-sm font-bold text-tealdark">{mine ? "Du" : demo.who}</p>
-          <p className="font-display text-lg font-bold leading-snug">„{bubble}“</p>
-        </div>
-
-        {step < 3 && (
-          <>
-            <p className="flex items-center gap-2.5 font-bold text-sun">
-              <span className="flex gap-1" aria-hidden="true">
-                <span className="h-4 w-1.5 rounded-sm bg-sun" />
-                <span className="h-4 w-1.5 rounded-sm bg-sun" />
-              </span>
-              Der Film hält an. Du bist dran.
+        <div
+          className={`transition-opacity duration-200 ${leaving ? "opacity-0" : "opacity-100"}`}
+        >
+          {/* Auf dem Handy steht die Sprechblase unter dem Bild */}
+          <div className="mb-6 rounded-[20px] rounded-tl-[4px] bg-white px-5 py-4 text-navy md:hidden">
+            <p className="text-sm font-bold text-tealdark">
+              {mine ? "Du" : demo.who}
             </p>
-            <h1 className="mt-1 font-display text-[clamp(48px,8vw,96px)] font-extrabold leading-[0.95] tracking-tighter">
-              Was sagst du?
-            </h1>
-            <div key={demo.slug} className="mt-6 grid gap-3 md:grid-cols-3">
-              {demo.answers.map((answer) => {
-                const chosen = picked?.id === answer.id;
-                return (
-                  <button
-                    key={answer.id}
-                    onClick={() => pick(answer)}
-                    disabled={!!picked}
-                    className={`press flex items-center gap-4 rounded-[18px] p-4 text-left md:flex-col md:items-start md:p-5 ${
-                      chosen
-                        ? "bg-sun text-navy"
-                        : picked
-                          ? "bg-white/30 text-navy"
-                          : "bg-white text-navy hover:bg-sun"
-                    }`}
+            <p className="font-display text-lg font-bold leading-snug">
+              „{bubble}“
+            </p>
+          </div>
+
+          {step < 3 && (
+            <>
+              <p className="flex items-center gap-2.5 font-bold text-sun">
+                <span className="flex gap-1" aria-hidden="true">
+                  <span className="h-4 w-1.5 rounded-sm bg-sun" />
+                  <span className="h-4 w-1.5 rounded-sm bg-sun" />
+                </span>
+                Der Film hält an. Du bist dran.
+              </p>
+              <h1 className="mt-1 font-display text-[clamp(48px,8vw,96px)] font-extrabold leading-[0.95] tracking-tighter">
+                Was sagst du?
+              </h1>
+              <div key={demo.slug} className="mt-6 grid gap-3 md:grid-cols-3">
+                {demo.answers.map((answer, i) => {
+                  const chosen = picked?.id === answer.id;
+                  return (
+                    <button
+                      key={answer.id}
+                      onClick={() => pick(answer)}
+                      disabled={!!picked}
+                      style={{ animationDelay: `${0.15 + i * 0.09}s` }}
+                      className={`rise-in press flex items-center gap-4 rounded-[18px] p-4 text-left md:flex-col md:items-start md:p-5 ${
+                        chosen
+                          ? "bg-sun text-navy"
+                          : picked
+                            ? "bg-white/30 text-navy"
+                            : "bg-white text-navy hover:bg-sun"
+                      }`}
+                    >
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy font-display text-lg font-extrabold text-white">
+                        {answer.id}
+                      </span>
+                      <span className="font-display text-xl font-bold leading-tight md:text-2xl">
+                        „{answer.text}“
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+              <p className="mt-6 max-w-[44rem] text-lg text-white/75">
+                Das ist Generalprobe: kurze gezeichnete Situationen, die dreimal
+                anhalten und auf deine Antwort warten. Üb den schwierigen
+                Moment, bevor er echt ist.
+              </p>
+            </>
+          )}
+
+          {step === 3 && picked && (
+            <div className="max-w-[46rem]">
+              <div className="pop-in flex items-center gap-4">
+                <span className="h-20 w-20 shrink-0 sm:h-24 sm:w-24">
+                  <svg
+                    viewBox="30 130 240 240"
+                    className="h-full w-full"
+                    aria-hidden="true"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy font-display text-lg font-extrabold text-white">
-                      {answer.id}
-                    </span>
-                    <span className="font-display text-xl font-bold leading-tight md:text-2xl">
-                      „{answer.text}“
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-            <p className="mt-6 max-w-[44rem] text-lg text-white/75">
-              Das ist Generalprobe: kurze gezeichnete Situationen, die dreimal anhalten und auf deine Antwort
-              warten. Üb den schwierigen Moment, bevor er echt ist.
-            </p>
-          </>
-        )}
-
-        {step === 3 && picked && (
-          <div className="max-w-[46rem]">
-            <div className="pop-in flex items-center gap-4">
-              <span className="h-20 w-20 shrink-0 sm:h-24 sm:w-24">
-                <svg viewBox="30 130 240 240" className="h-full w-full" aria-hidden="true">
-                  <Brain talking={false} />
-                </svg>
-              </span>
-              <div className="rounded-[20px] rounded-bl-[4px] bg-[#fde6ec] px-5 py-4 text-navy">
-                <p className="text-sm font-bold text-[#a8405c]">Dein Gehirn</p>
-                <p className="font-display text-[clamp(22px,2.6vw,31px)] font-bold leading-tight">
-                  {picked.brain}
-                </p>
+                    <Brain talking={false} />
+                  </svg>
+                </span>
+                <div className="rounded-[20px] rounded-bl-[4px] bg-[#fde6ec] px-5 py-4 text-navy">
+                  <p className="text-sm font-bold text-[#a8405c]">
+                    Dein Gehirn
+                  </p>
+                  <p className="font-display text-[clamp(22px,2.6vw,31px)] font-bold leading-tight">
+                    {picked.brain}
+                  </p>
+                </div>
+              </div>
+              <div className="pop-in mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 [animation-delay:0.3s]">
+                <Link
+                  href={`/s/${demo.slug}`}
+                  className="press rounded-[14px] bg-sun px-6 py-3.5 text-lg font-bold text-navy hover:bg-white"
+                >
+                  Ganze Situation spielen
+                </Link>
+                <button
+                  onClick={reset}
+                  className="font-bold text-white underline decoration-2 underline-offset-4 hover:text-sun"
+                >
+                  Andere Antwort probieren
+                </button>
               </div>
             </div>
-            <div className="pop-in mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 [animation-delay:0.3s]">
-              <Link
-                href={`/s/${demo.slug}`}
-                className="press rounded-[14px] bg-sun px-6 py-3.5 text-lg font-bold text-navy hover:bg-white"
-              >
-                Ganze Situation spielen
-              </Link>
-              <button
-                onClick={reset}
-                className="font-bold text-white underline decoration-2 underline-offset-4 hover:text-sun"
-              >
-                Andere Antwort probieren
-              </button>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );
