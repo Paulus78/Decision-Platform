@@ -5,7 +5,7 @@ Ziel: Alle Videos sehen aus und fühlen sich an wie eine Serie.
 
 ## 1. Ablauf (immer gleich)
 
-1. **Startbild**: rechts eine schräge Navy-Fläche mit Kategorie, Titel, einem Satz und Play-Knopf (`Poster` in `ui.tsx`). Die erste Szene bleibt links sichtbar, deshalb steht die Spielfigur im ersten Bild in der linken Hälfte.
+1. **Startbild**: rechts eine schräge Fläche in der Farbe der Kategorie mit Bildzeichen, Titel, einem Satz und Play-Knopf (`Poster` in `ui.tsx`). Die erste Szene bleibt links sichtbar, deshalb steht die Spielfigur im ersten Bild in der linken Hälfte.
 2. **Intro**, höchstens 15 Sekunden: Wer bist du, was steht auf dem Spiel.
 3. **Drei Pausen** mit „Was sagst du?" bzw. „Was schreibst du?" und drei Antwortkarten.
 4. Nach jeder Antwort: deine Antwort als Sprechblase, dann die Reaktion, dann springt die Anzeige oben.

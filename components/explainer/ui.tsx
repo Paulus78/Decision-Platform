@@ -6,6 +6,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { fill, type State } from "@/lib/engine";
 import type { Option, Story } from "@/lib/story";
+import CategoryIcon from "@/components/site/CategoryIcon";
+import { CATEGORIES, type CategoryId } from "@/stories";
 import { pop, setSfxMuted } from "./sfx";
 
 // Bausteine, die jede Situation benutzt: Abspiel-Steuerung, Bühne, Untertitel,
@@ -228,11 +230,18 @@ export function Overlay({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Namen der Kategorien, wie sie auf der Seite heißen.
-const CATEGORY_LABEL: Record<string, string> = { Work: "Job", Money: "Geld" };
+// Die Filme nennen ihre Kategorie noch englisch; hier wird sie der Kategorie der Seite zugeordnet.
+const CATEGORY_ID: Record<string, CategoryId> = {
+  Work: "job",
+  Money: "geld",
+  Alltag: "alltag",
+  Dating: "dating",
+  Freunde: "freunde",
+};
 
-// Startbild: rechts eine schräg geschnittene Navy-Fläche mit Titel und Play.
-// Links bleibt die Szene sichtbar, dort sitzt in allen Filmen die Spielfigur.
+// Startbild: rechts eine schräg geschnittene Fläche in der Farbe der Kategorie,
+// darauf Bildzeichen, Titel und Play. Links bleibt die Szene sichtbar,
+// dort sitzt in allen Filmen die Spielfigur.
 export function Poster({
   kicker,
   title,
@@ -252,21 +261,23 @@ export function Poster({
     },
     { scope: ref },
   );
-  const category = kicker.split(" · ")[0];
+  const id = CATEGORY_ID[kicker.split(" · ")[0]] ?? "job";
+  const category = CATEGORIES[id];
+  // Auf dunkler Fläche helle Schrift und oranger Knopf, auf heller Fläche umgekehrt.
+  const ink = category.dark ? "text-white" : "text-[#1e294b]";
   return (
-    <div ref={ref} className="absolute inset-0">
+    <div ref={ref} className={`absolute inset-0 ${ink}`}>
       <div
-        className="panel absolute inset-y-0 right-0 w-[51cqw] bg-[#1e294b]"
-        style={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)" }}
+        className="panel absolute inset-y-0 right-0 w-[51cqw]"
+        style={{ background: category.band, clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)" }}
       />
-      <div className="absolute inset-y-0 right-[3.5cqw] flex w-[37cqw] flex-col items-start justify-center gap-[1.6cqw] text-left">
-        <p className="item rounded-full bg-[#f2a33a] px-[1.5cqw] py-[0.4cqw] text-[1.4cqw] font-bold text-[#1e294b]">
-          {CATEGORY_LABEL[category] ?? category}
+      <div className="absolute inset-y-0 right-[3.5cqw] flex w-[37cqw] flex-col items-start justify-center gap-[1.5cqw] text-left">
+        <p className="item flex items-center gap-[1.2cqw] font-display text-[2.6cqw] font-extrabold leading-none">
+          <CategoryIcon id={id} className="h-[7cqw] w-[7cqw]" />
+          {category.label}
         </p>
-        <h1 className="item font-display text-[5cqw] font-extrabold leading-[0.95] tracking-tighter text-white">
-          {title}
-        </h1>
-        <p className="item text-[1.9cqw] leading-snug text-white/80">{subtitle}</p>
+        <h1 className="item font-display text-[5cqw] font-extrabold leading-[0.95] tracking-tighter">{title}</h1>
+        <p className="item text-[1.9cqw] leading-snug opacity-85">{subtitle}</p>
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -275,16 +286,18 @@ export function Poster({
           aria-label="Abspielen"
           className="item group mt-[0.6cqw] flex items-center gap-[1.6cqw] text-left"
         >
-          <span className="flex h-[7.4cqw] w-[7.4cqw] shrink-0 items-center justify-center rounded-full bg-[#f2a33a] text-[#1e294b] transition-transform duration-200 ease-out group-hover:scale-110">
+          <span
+            className={`flex h-[7.4cqw] w-[7.4cqw] shrink-0 items-center justify-center rounded-full transition-transform duration-200 ease-out group-hover:scale-110 ${
+              category.dark ? "bg-[#f2a33a] text-[#1e294b]" : "bg-[#1e294b] text-white"
+            }`}
+          >
             <svg viewBox="0 0 24 24" className="ml-[0.4cqw] h-[3.4cqw] w-[3.4cqw]" fill="currentColor">
               <path d="M8 5v14l11-7z" />
             </svg>
           </span>
           <span>
-            <span className="block font-display text-[2.4cqw] font-extrabold leading-tight text-white">
-              Abspielen
-            </span>
-            <span className="block text-[1.35cqw] text-white/65">
+            <span className="block font-display text-[2.4cqw] font-extrabold leading-tight">Abspielen</span>
+            <span className="block text-[1.35cqw] opacity-75">
               Drei Entscheidungen, etwa 3 Minuten. Am besten mit Ton.
             </span>
           </span>
