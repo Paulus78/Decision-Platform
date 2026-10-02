@@ -46,7 +46,7 @@ Jede Situation besteht aus genau diesen Teilen:
 | Sprechertexte und Stimmen | `stories/<name>.voice.json` |
 | Ablauf | `components/explainer/<Name>Film.tsx` |
 | Zeichnungen der Szenen | `components/explainer/<name>-art.tsx` |
-| Seite | `app/<name>/page.tsx` plus Karte in `app/page.tsx` |
+| Seite | Eintrag in `stories/index.ts` (Adresse `/s/<slug>`), Film in `components/Film.tsx`, Vorschaubild in `components/Thumb.tsx` |
 | Kurz-Doku mit Evidence Sheet | `docs/situation-NN-<name>.md` |
 
 Gemeinsam genutzt und nicht kopiert: `lib/engine.ts` (Logik), `lib/story.ts` (Format), `components/explainer/ui.tsx` (Bühne, Bedienleiste, Untertitel, Entscheidung, Rückblick, Vergleich, Schlusskarte), `sfx.ts` (Soundeffekte).

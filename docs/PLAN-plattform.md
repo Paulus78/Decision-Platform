@@ -72,7 +72,7 @@ Drei Erkennungsmerkmale, die sich durch alle Seiten ziehen:
 ### Zwei Wege zum Ziel
 
 - **Nach Lebensbereich:** Job · Geld · Alltag · Dating · Freunde.
-- **Nach Fähigkeit:** Verhandeln · Nein sagen · Betrug erkennen · Ins Gespräch kommen · Geld zurückfordern.
+- **Nach Fähigkeit:** Verhandeln · Unangenehmes ansprechen · Betrug erkennen · Ins Gespräch kommen.
 
 Jede Karte zeigt beides plus Dauer und, falls gespielt, einen Haken mit dem eigenen Ergebnis (im Browser gespeichert, ohne Login).
 
