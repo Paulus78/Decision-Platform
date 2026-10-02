@@ -28,6 +28,30 @@ export default function Home() {
       <main>
         <HeroDemo />
 
+        {/* Der Aufstieg: das Spiel */}
+        <section className="bg-sun text-navy">
+          <div className="mx-auto grid w-full max-w-[1120px] items-center gap-8 px-5 py-14 lg:grid-cols-[7fr_5fr]">
+            <div>
+              <p className="font-bold">Neu: das Spiel</p>
+              <h2 className="mt-1 font-display text-[clamp(48px,8vw,96px)] font-extrabold leading-[0.95] tracking-tighter">
+                Der Aufstieg
+              </h2>
+            </div>
+            <div>
+              <p className="text-xl leading-relaxed">
+                Erster Tag bei NOVARA. Du bist Praktikant, der CEO hält dich für ein Möbelstück. Überleb den Tag,
+                hol dir die Beförderung. Am Ende willst du seinen Stuhl.
+              </p>
+              <Link
+                href="/aufstieg"
+                className="press mt-6 inline-block rounded-[14px] bg-navy px-6 py-3.5 text-lg font-bold text-white hover:bg-[#2b3a67]"
+              >
+                Ersten Tag starten
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Kategorien: je ein Farbstreifen über die ganze Breite */}
         <section id="kategorien" className="scroll-mt-[72px]">
           <div className="mx-auto grid w-full max-w-[1120px] items-end gap-8 px-5 pb-12 pt-20 lg:grid-cols-[7fr_5fr]">

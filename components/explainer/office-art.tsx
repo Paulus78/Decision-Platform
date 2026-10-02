@@ -11,7 +11,7 @@ import { Brain } from "./date-art";
 const WALL = "#e6ecf3";
 
 // Herr Krüger: graue Haare, Schnurrbart, Brille, Anzug mit Krawatte.
-function Krueger({ mood, talking }: { mood: Mood; talking: boolean }) {
+export function Krueger({ mood, talking }: { mood: Mood; talking: boolean }) {
   const skin = "#edc3a2";
   const hair = "#a9aeb8";
   return (
