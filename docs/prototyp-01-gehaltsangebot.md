@@ -215,3 +215,16 @@ Hinweise:
 - Gemini Free Tier: 10 TTS-Anfragen pro Tag und Modell. Ausweichmodell per `TTS_MODEL=gemini-3.8-flash-lite-tts`. Für das ganze Video mehrere Sätze pro Anfrage bündeln und per ffmpeg schneiden.
 - Der API-Key liegt in `.env.local` (wird nicht committet).
 - Port 3000 ist oft von der Codex-Kopie belegt; die Vorschau hier läuft auf 3100.
+
+---
+
+## 6. Ganzes Video gebaut (2026-10-02)
+
+Das gezeichnete Erklärvideo läuft jetzt komplett durch: Intro → Anruf → Entscheidung 1 → Mail → Entscheidung 2 → Frist am Abend → Entscheidung 3 → Ergebnis → drei Erklär-Karten → „So hätte es auch laufen können".
+
+- Der Ablauf kommt aus `stories/gehaltsangebot.json`. Neu darin: `voice` an Zeilen (welche Audiodatei), `prompt` an Entscheidungen (Erzähler-Satz vor der Pause), `voice`/`night` an Szenen.
+- Neue Zeichnungen in `components/explainer/scenes2.tsx`: Mail-Szene (Tag/Nacht), Wecker, Jonas, Icons für die Erklär-Karten.
+- `stories/gehaltsangebot.audio.json` listet, welche Sätze schon eine Audiodatei haben (wird von `scripts/tts.mjs` geschrieben). Fehlt eine Datei, bleibt der Untertitel in Lesezeit stehen.
+- Stand Stimmen: 10 von 37 Sätzen vertont (Gemini). Die restlichen 27 (ca. 1.900 Zeichen) fehlen noch.
+- `scripts/tts.mjs` kann ElevenLabs (wenn `ELEVENLABS_API_KEY` in `.env.local` steht und die Stimme in der voice.json eine `elevenlabs`-ID hat), sonst Gemini. Der ElevenLabs-Weg ist noch ungetestet.
+- Frau Brandts Mails nennen bei Nachbesserungen jetzt den Aufschlag („Wir legen 1.500 € drauf") statt der Endsumme. So braucht es weniger Sprach-Varianten.

@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 
 export type Mood = "neutral" | "happy" | "surprised" | "worried";
 
-const C = {
+export const C = {
   navy: "#2b3a67",
   navyDark: "#1e294b",
   teal: "#2f9e8f",

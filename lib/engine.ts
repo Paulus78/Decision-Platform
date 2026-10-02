@@ -9,7 +9,7 @@ export type State = {
 };
 
 export type LogEntry =
-  | { kind: "scene"; title: string; time: string }
+  | { kind: "scene"; title: string; time: string; voice?: string; night?: boolean }
   | { kind: "line"; line: Line }
   // Ab hier zeigt die Anzeige "Zahl auf dem Tisch" diese Vorlage.
   | { kind: "table"; table: string };
@@ -57,7 +57,13 @@ export function advance(
     const beat = beats[index];
     if (beat.type === "decision") break;
     if (beat.type === "scene") {
-      entries.push({ kind: "scene", title: beat.title, time: beat.time });
+      entries.push({
+        kind: "scene",
+        title: beat.title,
+        time: beat.time,
+        voice: beat.voice,
+        night: beat.night,
+      });
       continue;
     }
     if (beat.table) {

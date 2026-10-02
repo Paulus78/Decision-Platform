@@ -10,6 +10,8 @@ export type Line = Condition & {
   channel: Channel;
   text: string;
   subject?: string;
+  // Sprecher-Datei zu dieser Zeile. {d1} wird durch die Wahl bei Entscheidung d1 ersetzt.
+  voice?: string;
 };
 
 // set/add verändern das aktuelle Angebot, flag merkt sich etwas (z. B. "accepted").
@@ -28,9 +30,16 @@ export type Option = {
 };
 
 export type Beat =
-  | { type: "scene"; title: string; time: string }
+  | { type: "scene"; title: string; time: string; voice?: string; night?: boolean }
   | { type: "lines"; lines: Line[]; table?: string }
-  | { type: "decision"; id: string; channel: Channel; options: Option[] };
+  | {
+      type: "decision";
+      id: string;
+      channel: Channel;
+      options: Option[];
+      // Sprecher-Satz direkt vor der Pause ("Was sagst du?")
+      prompt?: string;
+    };
 
 export type Ending = {
   id: string;

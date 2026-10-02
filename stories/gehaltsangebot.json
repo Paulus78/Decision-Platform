@@ -2,7 +2,9 @@
   "id": "gehaltsangebot",
   "title": "Das Angebot",
   "category": "work",
-  "tags": ["anchoring"],
+  "tags": [
+    "anchoring"
+  ],
   "goal": 55000,
   "characters": {
     "du": "Du",
@@ -15,12 +17,26 @@
     "Donnerstag, 16:42 Uhr. Dein Handy klingelt."
   ],
   "beats": [
-    { "type": "scene", "title": "Der Anruf", "time": "Donnerstag, 16:42 Uhr" },
+    {
+      "type": "scene",
+      "title": "Der Anruf",
+      "time": "Donnerstag, 16:42 Uhr"
+    },
     {
       "type": "lines",
       "lines": [
-        { "from": "brandt", "channel": "call", "text": "Hallo, Brandt von Novara. Gute Nachrichten: Wir würden Sie gern im Team haben." },
-        { "from": "brandt", "channel": "call", "text": "Bevor ich das Angebot fertig mache: Was hatten Sie sich gehaltlich vorgestellt?" }
+        {
+          "from": "brandt",
+          "channel": "call",
+          "text": "Hallo, Brandt von Novara. Gute Nachrichten: Wir würden Sie gern im Team haben.",
+          "voice": "b1"
+        },
+        {
+          "from": "brandt",
+          "channel": "call",
+          "text": "Bevor ich das Angebot fertig mache: Was hatten Sie sich gehaltlich vorgestellt?",
+          "voice": "b2"
+        }
       ]
     },
     {
@@ -31,45 +47,98 @@
         {
           "id": "A",
           "text": "57.500 €.",
-          "effects": [{ "set": 51000 }],
+          "effects": [
+            {
+              "set": 51000
+            }
+          ],
           "table": "57.500 € · deine Zahl",
           "replies": [
-            { "from": "brandt", "channel": "call", "text": "… Okay. Das liegt über dem, was wir eingeplant hatten. Ich spreche mit dem Fachbereich." }
+            {
+              "from": "brandt",
+              "channel": "call",
+              "text": "Oh. Okay. Das liegt über dem, was wir eingeplant hatten. Ich spreche mit dem Fachbereich.",
+              "voice": "d1A"
+            }
           ]
         },
         {
           "id": "B",
           "text": "Zwischen 50.000 und 56.000 €.",
-          "effects": [{ "set": 49000 }],
+          "effects": [
+            {
+              "set": 49000
+            }
+          ],
           "table": "50.000 € · sie hört nur das untere Ende",
           "replies": [
-            { "from": "brandt", "channel": "call", "text": "50.000, das nehme ich mal so mit." }
+            {
+              "from": "brandt",
+              "channel": "call",
+              "text": "50.000, das nehme ich mal so mit.",
+              "voice": "d1B"
+            }
           ]
         },
         {
           "id": "C",
           "text": "Was zahlen Sie denn?",
-          "effects": [{ "set": 48000 }],
+          "effects": [
+            {
+              "set": 48000
+            }
+          ],
           "table": "46.000–50.000 € · ihre Zahl",
           "replies": [
-            { "from": "brandt", "channel": "call", "text": "Wir liegen bei 46.000 bis 50.000 €, je nach Erfahrung." }
+            {
+              "from": "brandt",
+              "channel": "call",
+              "text": "Wir liegen bei 46.000 bis 50.000 €, je nach Erfahrung.",
+              "voice": "d1C"
+            }
           ]
+        }
+      ],
+      "prompt": "n4"
+    },
+    {
+      "type": "lines",
+      "lines": [
+        {
+          "from": "jonas",
+          "channel": "chat",
+          "text": "Und??? Haben sie angerufen"
         }
       ]
     },
     {
-      "type": "lines",
-      "lines": [
-        { "from": "jonas", "channel": "chat", "text": "Und??? Haben sie angerufen" }
-      ]
+      "type": "scene",
+      "title": "Die Mail",
+      "time": "20 Minuten später",
+      "voice": "n5"
     },
-    { "type": "scene", "title": "Die Mail", "time": "20 Minuten später" },
     {
       "type": "lines",
       "table": "{offer} € · ihr Angebot",
       "lines": [
-        { "from": "brandt", "channel": "mail", "subject": "Ihr Angebot – Novara GmbH", "text": "Wir freuen uns, Ihnen ein Jahresgehalt von {offer} € anbieten zu können. Unser Budget für die Stelle ist damit leider ausgeschöpft." },
-        { "from": "jonas", "channel": "chat", "text": "{offer}?? Bro. Ich krieg 41. NIMM." }
+        {
+          "from": "brandt",
+          "channel": "mail",
+          "subject": "Ihr Angebot – Novara GmbH",
+          "text": "Wir freuen uns, Ihnen ein Jahresgehalt von {offer} € anbieten zu können.",
+          "voice": "m1{d1}"
+        },
+        {
+          "from": "brandt",
+          "channel": "mail",
+          "text": "Unser Budget für die Stelle ist damit leider ausgeschöpft.",
+          "voice": "m2"
+        },
+        {
+          "from": "jonas",
+          "channel": "chat",
+          "text": "{offer}?? Bro. Ich krieg 41. NIMM."
+        }
       ]
     },
     {
@@ -80,36 +149,85 @@
         {
           "id": "A",
           "text": "Okay, passt.",
-          "effects": [{ "flag": "accepted" }],
+          "effects": [
+            {
+              "flag": "accepted"
+            }
+          ],
           "replies": [
-            { "from": "brandt", "channel": "mail", "text": "Wunderbar, dann mache ich den Vertrag fertig." }
+            {
+              "from": "brandt",
+              "channel": "mail",
+              "text": "Wunderbar, dann mache ich den Vertrag fertig.",
+              "voice": "d2A"
+            }
           ]
         },
         {
           "id": "B",
           "text": "Wie kommen wir näher an meine Zahl?",
-          "effects": [{ "add": 1500 }],
+          "effects": [
+            {
+              "add": 1500
+            }
+          ],
           "replies": [
-            { "from": "brandt", "channel": "mail", "text": "Verstehe ich. Ich frage noch mal beim Fachbereich nach." },
-            { "from": "brandt", "channel": "mail", "text": "Rückmeldung vom Fachbereich: Wir können auf {offer} € gehen." }
+            {
+              "from": "brandt",
+              "channel": "mail",
+              "text": "Verstehe ich. Ich frage noch mal beim Fachbereich nach.",
+              "voice": "d2B1"
+            },
+            {
+              "from": "brandt",
+              "channel": "mail",
+              "text": "Rückmeldung vom Fachbereich: Wir legen 1.500 € drauf.",
+              "voice": "d2B2"
+            }
           ]
         },
         {
           "id": "C",
           "text": "Okay, aber mit Gehaltserhöhung nach 6 Monaten.",
-          "effects": [{ "flag": "review" }],
+          "effects": [
+            {
+              "flag": "review"
+            }
+          ],
           "replies": [
-            { "from": "brandt", "channel": "mail", "text": "Ein Gehaltsgespräch nach 6 Monaten kann ich zusagen." }
+            {
+              "from": "brandt",
+              "channel": "mail",
+              "text": "Ein Gehaltsgespräch nach 6 Monaten kann ich zusagen.",
+              "voice": "d2C"
+            }
           ]
         }
-      ]
+      ],
+      "prompt": "n6"
     },
-    { "type": "scene", "title": "Der Druck", "time": "Am Abend" },
+    {
+      "type": "scene",
+      "title": "Der Druck",
+      "time": "Am Abend",
+      "voice": "n7",
+      "night": true
+    },
     {
       "type": "lines",
       "lines": [
-        { "from": "brandt", "channel": "mail", "text": "Kurzes Update: Wir bräuchten Ihre Antwort bis morgen 12 Uhr. Wir sind parallel noch mit einer zweiten Kandidatin im Gespräch." },
-        { "from": "jonas", "channel": "chat", "text": "Die haben ne ZWEITE?? Sag zu bevor die dich ersetzen" }
+        {
+          "from": "brandt",
+          "channel": "mail",
+          "text": "Kurzes Update: Wir bräuchten Ihre Antwort bis morgen 12 Uhr. Wir sind parallel noch mit einer zweiten Kandidatin im Gespräch.",
+          "voice": "b3",
+          "subject": "Kurzes Update"
+        },
+        {
+          "from": "jonas",
+          "channel": "chat",
+          "text": "Die haben ne ZWEITE?? Sag zu bevor die dich ersetzen"
+        }
       ]
     },
     {
@@ -121,28 +239,68 @@
           "id": "A",
           "text": "Ich sage zu.",
           "replies": [
-            { "from": "brandt", "channel": "mail", "text": "Schön! Der Vertrag kommt morgen." }
+            {
+              "from": "brandt",
+              "channel": "mail",
+              "text": "Schön! Der Vertrag kommt morgen.",
+              "voice": "d3A"
+            }
           ]
         },
         {
           "id": "B",
           "text": "Ich melde mich morgen früh.",
-          "effects": [{ "add": 500, "unlessFlag": "accepted" }],
+          "effects": [
+            {
+              "add": 500,
+              "unlessFlag": "accepted"
+            }
+          ],
           "replies": [
-            { "from": "brandt", "channel": "call", "text": "Guten Morgen! Ich wollte nicht bis 12 warten: Wir legen noch etwas drauf, {offer} €. Sind Sie dabei?", "unlessFlag": "accepted" },
-            { "from": "brandt", "channel": "mail", "text": "Guten Morgen! Der Vertrag liegt bereit.", "ifFlag": "accepted" }
+            {
+              "from": "brandt",
+              "channel": "call",
+              "unlessFlag": "accepted",
+              "voice": "d3B",
+              "text": "Guten Morgen! Ich wollte nicht bis 12 warten: Wir legen noch 500 € drauf. Sind Sie dabei?"
+            },
+            {
+              "from": "brandt",
+              "channel": "mail",
+              "ifFlag": "accepted",
+              "voice": "d3Bx",
+              "text": "Guten Morgen! Der Vertrag liegt bereit."
+            }
           ]
         },
         {
           "id": "C",
           "text": "Bei {offer+1000} € sage ich sofort zu.",
-          "effects": [{ "add": 1000, "unlessFlag": "accepted" }],
+          "effects": [
+            {
+              "add": 1000,
+              "unlessFlag": "accepted"
+            }
+          ],
           "replies": [
-            { "from": "brandt", "channel": "mail", "text": "{offer} €. Das kriege ich durch. Willkommen im Team!", "unlessFlag": "accepted" },
-            { "from": "brandt", "channel": "mail", "text": "Ich dachte, wir wären uns einig? Es bleibt bei {offer} €.", "ifFlag": "accepted" }
+            {
+              "from": "brandt",
+              "channel": "mail",
+              "unlessFlag": "accepted",
+              "voice": "d3C",
+              "text": "Das kriege ich durch. Willkommen im Team!"
+            },
+            {
+              "from": "brandt",
+              "channel": "mail",
+              "ifFlag": "accepted",
+              "voice": "d3Cx",
+              "text": "Ich dachte, wir wären uns einig? Es bleibt bei unserem Angebot."
+            }
           ]
         }
-      ]
+      ],
+      "prompt": "n8"
     }
   ],
   "endings": [
@@ -151,21 +309,37 @@
       "title": "Stark verhandelt",
       "text": "Du hast den Rahmen gesetzt, nicht sie.",
       "jonas": "{offer}?! Ich kündige und bewerb mich da.",
-      "when": [{ "minOffer": 52000 }, { "minOffer": 51000, "flag": "review" }]
+      "when": [
+        {
+          "minOffer": 52000
+        },
+        {
+          "minOffer": 51000,
+          "flag": "review"
+        }
+      ]
     },
     {
       "id": "solide",
       "title": "Solide",
       "text": "Guter Einstieg. Du hast nicht alles liegen lassen.",
       "jonas": "{offer}. Okay. Du zahlst heute.",
-      "when": [{ "minOffer": 49500 }]
+      "when": [
+        {
+          "minOffer": 49500
+        }
+      ]
     },
     {
       "id": "schnell",
       "title": "Der Schnellabschluss",
       "text": "Du hast den Job. Und das Gefühl, dass da mehr drin war.",
       "jonas": "Siehste. Easy. Hab ich doch gesagt.",
-      "when": [{ "minOffer": 0 }]
+      "when": [
+        {
+          "minOffer": 0
+        }
+      ]
     }
   ],
   "flagLabels": {
@@ -195,9 +369,18 @@
     "title": "So hätte es auch laufen können",
     "result": 53500,
     "steps": [
-      { "text": "57.500 €.", "label": "Anker gesetzt" },
-      { "text": "Wie kommen wir näher an meine Zahl?", "label": "Frage statt Nein" },
-      { "text": "Bei 53.500 € sage ich sofort zu.", "label": "Klare Zahl, klare Zusage" }
+      {
+        "text": "57.500 €.",
+        "label": "Anker gesetzt"
+      },
+      {
+        "text": "Wie kommen wir näher an meine Zahl?",
+        "label": "Frage statt Nein"
+      },
+      {
+        "text": "Bei 53.500 € sage ich sofort zu.",
+        "label": "Klare Zahl, klare Zusage"
+      }
     ]
   },
   "disclaimer": "Ein möglicher Verlauf. Alle Beträge und Reaktionen sind erfunden – belegt ist nur das Prinzip dahinter."
