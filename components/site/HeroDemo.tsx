@@ -100,8 +100,9 @@ export default function HeroDemo({ principles }: { principles: Principle[] }) {
       {/* Die Szene über die ganze Breite */}
       <div className="relative overflow-clip bg-creme">
         <svg
-          viewBox="0 0 1600 900"
-          preserveAspectRatio="xMidYMid slice"
+          // Ausschnitt beginnt knapp über den Köpfen, damit sie auf breiten Bildschirmen nicht abgeschnitten werden.
+          viewBox="0 230 1600 670"
+          preserveAspectRatio="xMidYMin slice"
           className="block aspect-video w-full md:aspect-auto md:h-[46vh] md:max-h-[520px] md:min-h-[340px]"
           aria-hidden="true"
         >
