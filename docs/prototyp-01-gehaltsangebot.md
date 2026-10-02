@@ -192,3 +192,26 @@ Format-Entscheidung: Die Situation läuft als **animiertes Video im Browser** (H
 Bedienung: Ein Tipp aufs Bild springt zur nächsten Einstellung.
 
 Noch offen: Sound, Feinschliff am Timing, Veröffentlichung (Vercel), Community-Vergleich (Supabase), Social Clip (HyperFrames – nutzt ebenfalls GSAP, die Animationen lassen sich deshalb später übernehmen).
+
+---
+
+## 5. Richtungswechsel: gezeichnetes Erklärvideo (2026-10-02)
+
+Vorbild: „Test 3: Erklärvideos" aus https://youtu.be/Vc0lLq3SVlw (ab 14:31). Gewünscht ist ein illustriertes 2D-Erklärvideo mit Sprecher, das an drei Stellen pausiert und fragt „Was sagst du?".
+
+Stand: **Stil-Test** der ersten Szene (Intro → Anruf → Entscheidung 1 → Reaktion) unter `/`.
+
+| Was | Wo |
+| --- | --- |
+| Ablauf des Stil-Tests | `components/explainer/Explainer.tsx` |
+| Zeichnungen (SVG, selbst gezeichnet) | `components/explainer/art.tsx` |
+| Soundeffekte (im Browser erzeugt) | `components/explainer/sfx.ts` |
+| Sprechertexte und Stimmen | `stories/gehaltsangebot.voice.json` |
+| Audio erzeugen (Gemini TTS, Free Tier) | `node scripts/tts.mjs` → `public/audio/*.wav` |
+| Erste Version (Text-Video) zum Vergleich | `/v1` |
+
+Hinweise:
+- Format 16:9, Stimmen: Erzähler „Puck", Frau Brandt „Kore" (Gemini 3.8 Flash TTS).
+- Gemini Free Tier: 10 TTS-Anfragen pro Tag und Modell. Ausweichmodell per `TTS_MODEL=gemini-3.8-flash-lite-tts`. Für das ganze Video mehrere Sätze pro Anfrage bündeln und per ffmpeg schneiden.
+- Der API-Key liegt in `.env.local` (wird nicht committet).
+- Port 3000 ist oft von der Codex-Kopie belegt; die Vorschau hier läuft auf 3100.

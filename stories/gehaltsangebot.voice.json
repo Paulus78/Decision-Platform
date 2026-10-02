@@ -1,0 +1,24 @@
+{
+  "voices": {
+    "narrator": {
+      "name": "Puck",
+      "style": "Deutsch. Lockerer, sympathischer Erzähler eines unterhaltsamen Erklärvideos. Zügiges Tempo, leicht verschmitzt, nie belehrend."
+    },
+    "brandt": {
+      "name": "Kore",
+      "style": "Deutsch. Freundliche, professionelle Personalerin am Telefon. Warm, aber geschäftlich."
+    }
+  },
+  "lines": [
+    { "id": "n1", "voice": "narrator", "text": "Das bist du. 24, Studium fertig – und seit drei Wochen wartest du auf genau einen Anruf.", "say": "Das bist du. Vierundzwanzig, Studium fertig – und seit drei Wochen wartest du auf genau einen Anruf." },
+    { "id": "n2a", "voice": "narrator", "text": "Dein Ziel: 55.000 Euro im Jahr.", "say": "Dein Ziel: fünfundfünfzigtausend Euro im Jahr." },
+    { "id": "n2b", "voice": "narrator", "text": "Dein Kontostand? Reden wir nicht drüber." },
+    { "id": "n3", "voice": "narrator", "text": "Donnerstag, 16:42 Uhr. Dein Handy klingelt.", "say": "Donnerstag, sechzehn Uhr zweiundvierzig. Dein Handy klingelt." },
+    { "id": "b1", "voice": "brandt", "text": "Hallo, Brandt von Novara. Gute Nachrichten: Wir würden Sie gern im Team haben." },
+    { "id": "b2", "voice": "brandt", "text": "Bevor ich das Angebot fertig mache: Was hatten Sie sich gehaltlich vorgestellt?" },
+    { "id": "n4", "voice": "narrator", "text": "Stopp. Genau jetzt entscheidet sich, wie viel du verdienst. Was sagst du?" },
+    { "id": "d1A", "voice": "brandt", "text": "Oh. Okay. Das liegt über dem, was wir eingeplant hatten. Ich spreche mit dem Fachbereich." },
+    { "id": "d1B", "voice": "brandt", "text": "50.000, das nehme ich mal so mit.", "say": "Fünfzigtausend, das nehme ich mal so mit." },
+    { "id": "d1C", "voice": "brandt", "text": "Wir liegen bei 46.000 bis 50.000 Euro, je nach Erfahrung.", "say": "Wir liegen bei sechsundvierzigtausend bis fünfzigtausend Euro, je nach Erfahrung." }
+  ]
+}
