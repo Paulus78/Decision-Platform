@@ -105,23 +105,6 @@ if (
 }
 const configPath = path.join(root, "stories/codex-autoverkauf.voices.json");
 const config = JSON.parse(await readFile(configPath, "utf8"));
-for (const role of ["narrator", "alex", "you"]) {
-  const voice = voices.find((v) => v.voice_id === config[role]?.id);
-  if (
-    !voice ||
-    !(
-      voice.labels?.language === "de" ||
-      voice.verified_languages?.some((l) => l.language === "de")
-    )
-  )
-    throw new Error(
-      `Stimme für ${role} hat keine bestätigte Deutsch-Unterstützung in der Kontoliste.`,
-    );
-  if (voice.category !== "premade")
-    throw new Error("Free-API: Nur kostenlose Standardstimmen verwenden.");
-  if (voice.sharing?.free_users_allowed === false)
-    throw new Error("Stimme nicht im kostenlosen Tarif verfügbar.");
-}
 await mkdir(output, { recursive: true });
 const lockPath = path.join(output, ".generation.lock");
 const lock = await open(lockPath, "wx").catch(() => {
@@ -171,6 +154,22 @@ try {
     console.log("Alle Audiodateien vorhanden. 0 neue Zeichen.");
     process.exitCode = 0;
   } else {
+    // German support is not a native German voice. Apply this stricter check
+    // only to new assets; existing audio remains usable without regeneration.
+    for (const role of new Set(pending.map(({ clip }) => clip.speaker))) {
+      const voice = voices.find((v) => v.voice_id === config[role]?.id);
+      if (voice?.labels?.language !== "de")
+        throw new Error(
+          `Neue Tonspur für ${role}: deutsche Ausgangsstimme erforderlich (Sprachlabel de). Keine Credits verbraucht.`,
+        );
+      if (
+        voice.category === "professional" ||
+        voice.sharing?.free_users_allowed === false
+      )
+        throw new Error(
+          "Diese deutsche Bibliotheksstimme ist über die Free-API nicht verfügbar. Keine Credits verbraucht.",
+        );
+    }
     // User confirmed Free tier. Subscription read is optional; no billing,
     // upgrade, overage or payment endpoint is ever called by this script.
     let sub;

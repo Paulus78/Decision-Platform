@@ -126,3 +126,38 @@ liefen die Dialoge automatisch; weitere Durchläufe prüften zusätzlich „Weit
 Reveal, Quellen, Beispiel und Vergleich mit eigenem Verlauf geprüft.
 Handyansicht bei 390×844: kein horizontaler Überlauf, alle Antwortkarten erreichbar.
 Audio-Pause/Fortsetzen geprüft. Vorschau der Produktionsversion: `http://127.0.0.1:3200/codex`.
+
+## Überarbeitung nach Feedback: Animation und Rückblick
+
+- Claudes laufendes Beispiel `/date` angesehen (Bildaufbau, Entscheidungen und
+  Abschluss). Keine Implementierung aus `components/explainer/` gelesen oder kopiert.
+- Fahrt neu gezeichnet: Insassen, echte Straße und nahtlos wiederholte Landschaft
+  mit zwei Geschwindigkeiten. Räder drehen um lokale feste Achsen. Platzierung,
+  Federung und Raddrehung liegen in getrennten SVG-Gruppen. Damit bewegen sich
+  Räder nicht mehr um den falschen Bezugspunkt; Pausieren hält alle Ebenen an.
+- Größere Figuren, Gesten mit gemeinsam bewegter Hand, Blinzeln, helle Sprechblasen,
+  klarere Antwortkarten und ein stärker auf den Film konzentrierter Einstieg.
+- Neuer Rückblick in `components/codex/Debrief.tsx`: drei eigene animierte Bilder,
+  daneben die tatsächlich gewählte Antwort, ihre Bedeutung und eine Formulierung
+  bzw. ein Tipp zum Mitnehmen. Die Erklärungen bleiben als Studie/Buchwissen markiert.
+  Das ist kein Urteil, dass eine andere Antwort garantiert besser ausgegangen wäre.
+- Abschluss mit drei erneut aufrufbaren Tipps. Das optionale Beispiel zeigt den
+  eigenen Ausgang und den erfundenen Beispielpreis direkt nebeneinander.
+  Der lange, doppelte Textblock unter dem Film entfällt; Quellen bleiben aufklappbar.
+- Stimmprüfung verschärft: Neue Aufnahmen brauchen jetzt das deutsche Sprachlabel
+  `de`. Mehrsprachige Englisch-Stimmen gelten nicht länger als deutsche Stimmen.
+  Bestehende Dateien werden weiterhin übersprungen. Die bisherigen Aufnahmen
+  sind noch unverändert: Rob und Clemens bleiben über die Free-API gesperrt.
+  Eine Freigabe zum Wechsel auf eine kostenlose Alternative wurde angefragt.
+  In dieser Überarbeitung wurden **0 neue ElevenLabs-Zeichen** erzeugt.
+
+Prüfung dieser Überarbeitung: Produktions-Build mit TypeScript erfolgreich,
+Lint auf den eigenen Dateien ohne Fehler, drei Story-/Asset-Tests erfolgreich
+(alle 27 Wege). Im Browser B→A→B automatisch bis zum Verkauf für 6.400 €,
+C→C→B mit „Weiter“ bis zur Ablehnung bei 6.100 €. Alle drei Entscheidungspausen,
+Rückblick, erneut aufrufbare Tipps, Quellen und Beispielvergleich geprüft.
+Beim zweiten Weg bleibt im Beispielvergleich „Dein Verlauf: Kein Abschluss“ erhalten.
+Pause/Fortsetzen während der Fahrt geprüft: Audioposition, Raddrehung und Straße
+bleiben beim Pausieren unverändert und bewegen sich erst nach dem Fortsetzen weiter.
+Handyprüfung 390×844: kein horizontaler Überlauf; Erklärung, Antwort und Untertitel
+überlappen nicht mehr. TTS-Wiederholung überspringt alle Dateien: 0 neue Zeichen.

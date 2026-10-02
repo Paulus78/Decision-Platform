@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import story from "@/stories/codex-autoverkauf.json";
 import Art from "./Art";
+import Debrief from "./Debrief";
 import { euros, finish, offerFor, type Choice } from "./game";
 import styles from "./film.module.css";
 
@@ -267,9 +268,10 @@ export default function CarFilm({
   useEffect(() => {
     if (phase === "choice") {
       gate.current = false;
-      choiceFocus.current?.focus();
+      choiceFocus.current?.focus({ preventScroll: true });
     }
-    if (phase === "result" || phase === "done") resultFocus.current?.focus();
+    if (phase === "result" || phase === "done")
+      resultFocus.current?.focus({ preventScroll: true });
   }, [phase]);
   useEffect(() => {
     const visibility = () => {
@@ -321,17 +323,52 @@ export default function CarFilm({
         tl.to(
           "[data-car]",
           {
-            y: "-=4",
-            duration: 0.25,
+            y: -3,
+            duration: 0.3,
             yoyo: true,
-            repeat: 27,
+            repeat: -1,
             ease: "sine.inOut",
           },
           0,
         );
-        tl.to("[data-wheel]", { rotation: 720, duration: 8, ease: "none" }, 0);
-        tl.to("[data-scenery]", { x: -120, duration: 8, ease: "none" }, 0);
-        tl.to("[data-road]", { x: -380, duration: 8, ease: "none" }, 0);
+        // Wheels rotate around their own local zero; placement is a separate group.
+        tl.to(
+          "[data-wheel]",
+          {
+            attr: { transform: "rotate(360)" },
+            duration: 1.2,
+            repeat: -1,
+            ease: "none",
+          },
+          0,
+        );
+        tl.to(
+          "[data-distant]",
+          { x: -1280, duration: 32, repeat: -1, ease: "none" },
+          0,
+        );
+        tl.to(
+          "[data-near]",
+          { x: -1280, duration: 6, repeat: -1, ease: "none" },
+          0,
+        );
+        tl.to(
+          "[data-road]",
+          { x: -320, duration: 0.65, repeat: -1, ease: "none" },
+          0,
+        );
+        tl.to(
+          "[data-radio]",
+          {
+            y: -12,
+            opacity: 0.4,
+            duration: 0.7,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut",
+          },
+          0,
+        );
       }
       if (clip.speaker !== "narrator")
         tl.to(
@@ -380,43 +417,70 @@ export default function CarFilm({
         </Link>
         <span className={styles.edition}>CODEX · SITUATION 01</span>
       </header>
-      <div className={styles.heading}>
-        <div>
-          <p className={styles.eyebrow}>ALLTAG HAT KEIN DREHBUCH.</p>
-          <h1>
-            Der Käufer ist schon da<span>.</span>
-          </h1>
-        </div>
-        <p>
-          Ein Auto. Zwei Preisvorstellungen.
-          <br />
-          Und du mittendrin.
-        </p>
-      </div>
+      <h1 className={styles.heading}>Der Käufer ist schon da.</h1>
       <div ref={screen} className={styles.player}>
         <div className={styles.screen}>
-          <div ref={art} className={styles.art}>
+          <div
+            ref={art}
+            className={styles.art}
+            aria-hidden={
+              isReveal ||
+              phase === "ready" ||
+              phase === "result" ||
+              phase === "done"
+            }
+            data-muted-stage={
+              phase === "ready" || phase === "result" || phase === "done"
+            }
+          >
             <Art
-              scene={displayedScene}
+              scene={
+                phase === "result" || phase === "done"
+                  ? result?.sold
+                    ? "handshake"
+                    : "empty"
+                  : displayedScene
+              }
               speaker={clip.speaker}
               playing={speaking}
-              offer={offer}
             />
           </div>
-          <div className={styles.sceneBadge}>
-            <span className={playing ? styles.live : styles.still} />
-            {badge}
-          </div>
-          {phase !== "ready" && !isReveal && (
-            <div className={styles.target}>
-              DEIN WUNSCH <strong>6.500 €</strong>
+          {!isReveal && (
+            <div className={styles.sceneBadge}>
+              <span className={playing ? styles.live : styles.still} />
+              {badge}
             </div>
           )}
+          {phase !== "ready" &&
+            phase !== "done" &&
+            phase !== "result" &&
+            !isReveal && (
+              <div className={styles.target}>
+                <span>
+                  DEIN WUNSCH <strong>6.500 €</strong>
+                </span>
+                {!["intro", "arrival", "drive"].includes(id) && (
+                  <span>
+                    AUF DEM TISCH <strong>{euros(offer)}</strong>
+                  </span>
+                )}
+              </div>
+            )}
           {phase === "ready" && (
             <div className={styles.start}>
               <span className={styles.startLabel}>
-                INTERAKTIVES ERKLÄRVIDEO · CA. 2 MIN.
+                AUTOVERKAUF · CA. 2 MINUTEN
               </span>
+              <h2>
+                Der Käufer
+                <br />
+                ist schon da<span>.</span>
+              </h2>
+              <p>
+                Drei Wochen online. Heute kommt Alex zur Probefahrt.
+                <br />
+                Du willst dein Auto verkaufen – aber zu welchem Preis?
+              </p>
               <button onClick={begin}>
                 <span>▶</span> Situation starten
               </button>
@@ -428,7 +492,11 @@ export default function CarFilm({
             </div>
           )}
           {phase === "playing" && !isReveal && (
-            <div className={styles.captions} key={`${id}-${index}`}>
+            <div
+              className={`${styles.captions} ${clip.speaker !== "narrator" ? styles.dialogue : ""}`}
+              data-speaker={clip.speaker}
+              key={`${id}-${index}`}
+            >
               <span>{names[clip.speaker]}</span>
               <p>{caption}</p>
               {isExample && ["b1", "a2", "b3"].includes(id) && (
@@ -443,46 +511,122 @@ export default function CarFilm({
             </div>
           )}
           {phase === "playing" && isReveal && (
-            <div className={styles.revealSlide}>
-              <span>
-                {reveals[revealIndex]?.type} · {revealIndex + 1}/3
-              </span>
-              <h2>{reveals[revealIndex]?.title}</h2>
-              <p>{clip.text}</p>
-            </div>
+            <Debrief
+              step={revealIndex}
+              answers={answers}
+              caption={caption}
+              playing={playing}
+            />
           )}
           {(phase === "result" || phase === "done") && (
             <div className={styles.resultCard}>
-              <span className={styles.resultLabel}>EIN MÖGLICHER VERLAUF</span>
+              <span className={styles.resultLabel}>
+                {phase === "done" && !isExample
+                  ? "DEIN RÜCKBLICK"
+                  : "EIN MÖGLICHER VERLAUF"}
+              </span>
               <h2 tabIndex={-1} ref={resultFocus}>
                 {isExample
                   ? "6.400 € · abgemacht."
-                  : result?.sold
-                    ? `${euros(result.price!)} · verkauft.`
-                    : "Heute kein Verkauf."}
+                  : phase === "done"
+                    ? "Drei Dinge fürs nächste Mal."
+                    : result?.sold
+                      ? `${euros(result.price!)} · verkauft.`
+                      : "Heute kein Verkauf."}
               </h2>
               <p>
                 {isExample
-                  ? `Dein Verlauf: ${result?.sold ? euros(result.price!) : "kein Abschluss"}. Dieses Beispiel ist erfunden; es verspricht keinen besseren Preis.`
-                  : result?.sold
-                    ? `Dein Wunsch war 6.500 €. Du hast dich für einen Abschluss entschieden.`
-                    : `Alex’ letztes Angebot: ${euros(result?.offer ?? offer)}. Die andere Interessentin hat noch keinen Termin bestätigt.`}
+                  ? "Gleiche Situation. Andere Sätze. Ein möglicher Verlauf – keine Garantie."
+                  : phase === "done"
+                    ? "Eine Zahl im Kopf. Ein fairer Vergleich. Ein echter Plan B."
+                    : result?.sold
+                      ? `Dein Wunsch war 6.500 €. Du hast dich für einen Abschluss entschieden.`
+                      : `Alex’ letztes Angebot: ${euros(result?.offer ?? offer)}. Die andere Interessentin hat noch keinen Termin bestätigt.`}
               </p>
+              {isExample ? (
+                <div className={styles.resultComparison}>
+                  <div>
+                    <span>DEIN VERLAUF</span>
+                    <strong>
+                      {result?.sold ? euros(result.price!) : "Kein Abschluss"}
+                    </strong>
+                  </div>
+                  <div>
+                    <span>DAS BEISPIEL</span>
+                    <strong>6.400 €</strong>
+                  </div>
+                </div>
+              ) : phase === "done" ? (
+                <div className={styles.summaryTips}>
+                  {reveals.map((item, i) => (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        setIsReveal(true);
+                        setIsExample(false);
+                        setQueue([item.id]);
+                        setIndex(0);
+                        setPaused(false);
+                        setPlayhead(0);
+                        setPhase("playing");
+                      }}
+                    >
+                      <span>0{i + 1}</span>
+                      <strong>
+                        {
+                          ["Eigene Zahl", "Fairer Vergleich", "Echter Plan B"][
+                            i
+                          ]
+                        }
+                      </strong>
+                      <small>Noch einmal ansehen ↗</small>
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div className={styles.resultComparison}>
+                  <div>
+                    <span>DEIN WUNSCH</span>
+                    <strong>6.500 €</strong>
+                  </div>
+                  <div>
+                    <span>
+                      {result?.sold ? "DEIN ABSCHLUSS" : "LETZTES ANGEBOT"}
+                    </span>
+                    <strong>
+                      {euros(result?.price ?? result?.offer ?? offer)}
+                    </strong>
+                  </div>
+                </div>
+              )}
               {phase === "result" ? (
                 <button className={styles.primary} onClick={reveal}>
                   Was ist gerade passiert? <span>→</span>
                 </button>
               ) : (
                 <>
-                  <button className={styles.primary} onClick={example}>
-                    So hätte es auch laufen können <span>▶</span>
-                  </button>
+                  {!isExample && (
+                    <button className={styles.primary} onClick={example}>
+                      So hätte es auch laufen können <span>▶</span>
+                    </button>
+                  )}
+                  {isExample && (
+                    <button
+                      className={styles.secondary}
+                      onClick={() => {
+                        setIsExample(false);
+                        setIsReveal(true);
+                      }}
+                    >
+                      ← Zurück zum Rückblick
+                    </button>
+                  )}
                   <button className={styles.secondary} onClick={begin}>
                     ↻ Nochmal spielen
                   </button>
                 </>
               )}
-              <small>Stimmen: ElevenLabs</small>
+              <small>Stimmen: ElevenLabs · Ausgang erfunden</small>
             </div>
           )}
           {phase === "playing" && paused && (
@@ -578,24 +722,6 @@ export default function CarFilm({
       </div>
       {(isReveal || phase === "done") && (
         <section className={styles.takeaways}>
-          <p className={styles.eyebrow}>DEIN VERLAUF, NOCH EINMAL ANGESEHEN</p>
-          <div className={styles.takeawayGrid}>
-            {reveals.map((item, i) => (
-              <article key={item.id}>
-                <span>
-                  {item.type} · 0{i + 1}
-                </span>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-                {answers[i] !== undefined && (
-                  <blockquote>
-                    <b>Du:</b> „{story.decisions[i].options[answers[i]].label}“
-                    <small>{story.decisions[i].options[answers[i]].note}</small>
-                  </blockquote>
-                )}
-              </article>
-            ))}
-          </div>
           <button
             className={styles.sourceToggle}
             aria-expanded={showSources}
