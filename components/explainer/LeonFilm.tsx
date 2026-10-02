@@ -311,7 +311,6 @@ export default function LeonFilm({ story, voice }: { story: Story; voice: VoiceL
         <EndCard
           kicker={`Zurück: ${euro(back(cue.hud))} € · Freundschaft: ${friendship(cue.hud)} %`}
           disclaimer={story.disclaimer}
-          credit="Stimmen: Gemini"
           onReplay={play}
         />
       )}

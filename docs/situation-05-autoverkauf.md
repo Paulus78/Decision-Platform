@@ -34,7 +34,7 @@ Quellen (von Codex am 2026-10-02 nachgeschlagen; die Anker-Studie hat Claude fü
 
 ## Stimmen
 
-Erzähler = George, Alex = Will (ElevenLabs). 33 Sätze, ca. 2.300 Zeichen. **Noch nicht erzeugt**: Der neue ElevenLabs-Key fehlte bei Fertigstellung. Bis dahin laufen die Untertitel in Lesezeit. Danach: `node scripts/tts.mjs --story autoverkauf`.
+Erzähler = George, Alex = Will (ElevenLabs). 33 Sätze, ca. 2.300 Zeichen. Alle 33 Sätze sind erzeugt (`node scripts/tts.mjs --story autoverkauf`).
 
 ## Dateien
 

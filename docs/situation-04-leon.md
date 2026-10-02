@@ -29,9 +29,9 @@ Quelle (am 2026-10-02 per Websuche geprüft, nur Zusammenfassung gelesen): Dezs�
 
 ## Stimmen
 
-ElevenLabs war aufgebraucht (Monatslimit 10.000 Zeichen). Diese Situation nutzt deshalb **Gemini TTS** (Erzähler „Puck", Gehirn „Fenrir"), also andere Stimmen als die ersten drei Videos.
+ElevenLabs wie in den anderen Videos: Erzähler = George, Gehirn = Liam. 27 Sätze, ca. 1.500 Zeichen. Leon schreibt nur und hat keine Stimme.
 
-Erzeugt mit `node scripts/tts-bundle.mjs --story leon --model gemini-3.8-flash-lite-tts`: mehrere Sätze pro Anfrage, danach per ffmpeg an den längsten Pausen geschnitten. Die Schnitte wurden per Gemini-Transkription geprüft; ein abgeschnittener Satz wurde einzeln neu erzeugt.
+Die erste Fassung lief mit Gemini TTS, weil das ElevenLabs-Guthaben aufgebraucht war. Das Skript dafür (`scripts/tts-bundle.mjs`) bleibt als Ausweichweg erhalten.
 
 ## Dateien
 
