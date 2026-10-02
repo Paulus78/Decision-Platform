@@ -228,6 +228,11 @@ export function Overlay({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Namen der Kategorien, wie sie auf der Seite heißen.
+const CATEGORY_LABEL: Record<string, string> = { Work: "Job", Money: "Geld" };
+
+// Startbild: rechts eine schräg geschnittene Navy-Fläche mit Titel und Play.
+// Links bleibt die Szene sichtbar, dort sitzt in allen Filmen die Spielfigur.
 export function Poster({
   kicker,
   title,
@@ -239,27 +244,53 @@ export function Poster({
   subtitle: string;
   onStart: () => void;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useGSAP(
+    () => {
+      gsap.from(".panel", { xPercent: 100, duration: 0.6, ease: "power3.out" });
+      gsap.from(".item", { opacity: 0, x: 30, duration: 0.4, delay: 0.3, stagger: 0.08, ease: "power2.out" });
+    },
+    { scope: ref },
+  );
+  const category = kicker.split(" · ")[0];
   return (
-    <Overlay>
-      <p className="text-[1.5cqw] font-bold uppercase tracking-[0.3em] text-[#f2a33a]">{kicker}</p>
-      <h1 className="text-[7cqw] font-black leading-none text-white">{title}</h1>
-      <p className="text-[2.2cqw] text-white/75">{subtitle}</p>
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onStart();
-        }}
-        aria-label="Abspielen"
-        className="mt-[1cqw] flex h-[9cqw] w-[9cqw] items-center justify-center rounded-full bg-[#f2a33a] text-[#1e294b] hover:brightness-110"
-      >
-        <svg viewBox="0 0 24 24" className="ml-[0.5cqw] h-[4cqw] w-[4cqw]" fill="currentColor">
-          <path d="M8 5v14l11-7z" />
-        </svg>
-      </button>
-      <p className="text-[1.4cqw] text-white/50">
-        Mit Ton ansehen · Klick aufs Bild springt weiter
-      </p>
-    </Overlay>
+    <div ref={ref} className="absolute inset-0">
+      <div
+        className="panel absolute inset-y-0 right-0 w-[51cqw] bg-[#1e294b]"
+        style={{ clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0 100%)" }}
+      />
+      <div className="absolute inset-y-0 right-[3.5cqw] flex w-[37cqw] flex-col items-start justify-center gap-[1.6cqw] text-left">
+        <p className="item rounded-full bg-[#f2a33a] px-[1.5cqw] py-[0.4cqw] text-[1.4cqw] font-bold text-[#1e294b]">
+          {CATEGORY_LABEL[category] ?? category}
+        </p>
+        <h1 className="item font-display text-[5cqw] font-extrabold leading-[0.95] tracking-tighter text-white">
+          {title}
+        </h1>
+        <p className="item text-[1.9cqw] leading-snug text-white/80">{subtitle}</p>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onStart();
+          }}
+          aria-label="Abspielen"
+          className="item group mt-[0.6cqw] flex items-center gap-[1.6cqw] text-left"
+        >
+          <span className="flex h-[7.4cqw] w-[7.4cqw] shrink-0 items-center justify-center rounded-full bg-[#f2a33a] text-[#1e294b] transition-transform duration-200 ease-out group-hover:scale-110">
+            <svg viewBox="0 0 24 24" className="ml-[0.4cqw] h-[3.4cqw] w-[3.4cqw]" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+          <span>
+            <span className="block font-display text-[2.4cqw] font-extrabold leading-tight text-white">
+              Abspielen
+            </span>
+            <span className="block text-[1.35cqw] text-white/65">
+              Drei Entscheidungen, etwa 3 Minuten. Am besten mit Ton.
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
   );
 }
 

@@ -66,14 +66,35 @@ export default async function SituationPage({ params }: Props) {
               {category.label}
             </Link>
           </nav>
-          <h1 className="mt-4 font-display text-[clamp(48px,8vw,96px)] font-extrabold leading-[0.95] tracking-tighter text-navy">
-            {situation.title}
-          </h1>
-          <p className="mt-5 max-w-[42rem] text-xl leading-relaxed text-navy/80">{situation.hook}</p>
-          <p className="mt-3 max-w-[42rem] text-lg font-semibold text-navy">
-            Du übst: {situation.skills.map((id) => SKILLS[id]).join(" und ")}. Drei Entscheidungen, etwa{" "}
-            {situation.minutes} Minuten, am besten mit Ton.
-          </p>
+          <div className="mt-5 grid gap-x-12 gap-y-6 lg:grid-cols-[7fr_5fr]">
+            <div>
+              <p className="font-display text-[clamp(31px,4vw,49px)] font-extrabold leading-[1.02] tracking-tight text-navy">
+                {situation.title}
+              </p>
+              <p className="mt-3 text-xl leading-relaxed text-navy/80">{situation.hook}</p>
+            </div>
+            <dl className="grid content-start gap-4 text-lg">
+              <div>
+                <dt className="text-sm font-bold text-tealdark">Du übst</dt>
+                <dd className="font-semibold text-navy">
+                  {situation.skills.map((id) => SKILLS[id]).join(" und ")}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-sm font-bold text-tealdark">So läuft es</dt>
+                <dd className="font-semibold text-navy">
+                  Der Film hält dreimal an und wartet auf deine Antwort. Am Ende zeigt der Rückblick, was hinter
+                  jeder Antwort steckt.
+                </dd>
+              </div>
+              <div>
+                <dt className="text-sm font-bold text-tealdark">Bedienung</dt>
+                <dd className="font-semibold text-navy">
+                  Ein Klick ins Bild springt zum nächsten Satz. Pause, Ton und Vollbild findest du unten rechts.
+                </dd>
+              </div>
+            </dl>
+          </div>
         </section>
 
         <section className="bg-navy text-white">
