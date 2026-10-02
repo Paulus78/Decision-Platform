@@ -94,7 +94,7 @@ export default function DateFilm({ story, voice }: { story: Story; voice: VoiceL
   const [cue, setCue] = useState<Cue>(START);
   const [ask, setAsk] = useState<Ask | null>(null);
   const [runKey, setRunKey] = useState(0);
-  const { wait, playFile, begin, skipNow } = useDirector();
+  const { wait, playFile, begin, skipNow, mark, controls } = useDirector();
 
   const decisions = story.beats.filter((b): b is DecisionBeat => b.type === "decision");
 
@@ -191,6 +191,7 @@ export default function DateFilm({ story, voice }: { story: Story; voice: VoiceL
       await show(next.entries);
       if (!alive()) return;
       index = next.index;
+      mark((index + 1) / (story.beats.length + 5));
 
       const beat = story.beats[index];
       if (!beat || beat.type !== "decision") break;
@@ -226,6 +227,7 @@ export default function DateFilm({ story, voice }: { story: Story; voice: VoiceL
     }
 
     // --- Ergebnis, Erklärung, starker Verlauf ---
+    mark(0.88);
     const ending = pickEnding(story, state);
     set({
       view: "result",
@@ -260,7 +262,7 @@ export default function DateFilm({ story, voice }: { story: Story; voice: VoiceL
   }
 
   return (
-    <Stage onSkip={() => !ask && skipNow()}>
+    <Stage onSkip={() => !ask && skipNow()} controls={phase === "playing" ? controls : null}>
       <svg viewBox="0 0 1600 900" className="absolute inset-0 h-full w-full">
         {cue.view === "date" && (
           <DateScene
@@ -287,6 +289,7 @@ export default function DateFilm({ story, voice }: { story: Story; voice: VoiceL
       {cue.view === "reveal" && (
         <RevealPanel
           story={story}
+          choices={cue.hud.choices}
           step={cue.revealStep}
           icons={story.reveal.map((card, i) => (
             <DateIcon key={card.title} kind={i} />

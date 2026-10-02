@@ -95,7 +95,7 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
   const [ask, setAsk] = useState<Ask | null>(null);
   const [runKey, setRunKey] = useState(0);
 
-  const { wait, playFile, begin, skipNow } = useDirector();
+  const { wait, playFile, begin, skipNow, mark, controls } = useDirector();
 
   const decisions = story.beats.filter((b): b is DecisionBeat => b.type === "decision");
 
@@ -252,6 +252,7 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
       await show(next.entries, state);
       if (!alive()) return;
       index = next.index;
+      mark((index + 1) / (story.beats.length + 5));
 
       const beat = story.beats[index];
       if (!beat || beat.type !== "decision") break;
@@ -282,6 +283,7 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
     }
 
     // --- Ergebnis, Erklärung, starker Verlauf ---
+    mark(0.88);
     const ending = pickEnding(story, state);
     setHud(state);
     set({
@@ -323,7 +325,7 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
     phase === "playing" && inScene && !cue.title && cue.hud.table !== initialState.table;
 
   return (
-    <Stage onSkip={() => !ask && skipNow()}>
+    <Stage onSkip={() => !ask && skipNow()} controls={phase === "playing" ? controls : null}>
       <svg viewBox="0 0 1600 900" className="absolute inset-0 h-full w-full">
         {cue.view === "home" && (
           <HomeScene key={runKey} mood={cue.youMood} thought={cue.thought} ringing={cue.ringing} />
@@ -359,6 +361,7 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
       {cue.view === "reveal" && (
         <RevealPanel
           story={story}
+          choices={cue.hud.choices}
           step={cue.revealStep}
           icons={story.reveal.map((card, i) => (
             <RevealIcon key={card.title} kind={i} />

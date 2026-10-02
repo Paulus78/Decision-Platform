@@ -2,7 +2,10 @@
   "id": "leon",
   "title": "500 € für Leon",
   "category": "friends",
-  "tags": ["geld-leihen", "self-serving-bias"],
+  "tags": [
+    "geld-leihen",
+    "self-serving-bias"
+  ],
   "goal": 0,
   "start": 0,
   "start2": 80,
@@ -18,13 +21,30 @@
     "„Kannst du mir 500 € leihen? Kriegst du nächste Woche zurück, safe.“"
   ],
   "beats": [
-    { "type": "scene", "title": "Die Frage", "time": "Dienstag, 20:41 Uhr" },
+    {
+      "type": "scene",
+      "title": "Die Frage",
+      "time": "Dienstag, 20:41 Uhr"
+    },
     {
       "type": "lines",
       "lines": [
-        { "from": "leon", "channel": "chat", "text": "Bro. Kurze Frage." },
-        { "from": "leon", "channel": "chat", "text": "Kannst du mir 500 € leihen? Kriegst du nächste Woche zurück, safe. ❤️❤️❤️" },
-        { "from": "gehirn", "channel": "chat", "text": "Fünfhundert. Das ist unser Urlaub. Aber es ist Leon!", "voice": "g1" }
+        {
+          "from": "leon",
+          "channel": "chat",
+          "text": "Bro. Kurze Frage."
+        },
+        {
+          "from": "leon",
+          "channel": "chat",
+          "text": "Kannst du mir 500 € leihen? Kriegst du nächste Woche zurück, safe. ❤️❤️❤️"
+        },
+        {
+          "from": "gehirn",
+          "channel": "chat",
+          "text": "Fünfhundert. Das ist unser Urlaub. Aber es ist Leon!",
+          "voice": "g1"
+        }
       ]
     },
     {
@@ -36,37 +56,96 @@
         {
           "id": "A",
           "text": "Klar, schick ich dir.",
-          "effects": [{ "set": 500 }, { "add2": 5 }],
+          "effects": [
+            {
+              "set": 500
+            },
+            {
+              "add2": 5
+            }
+          ],
           "replies": [
-            { "from": "leon", "channel": "chat", "text": "DU BIST DER BESTE. Nächste Woche, versprochen!!" },
-            { "from": "gehirn", "channel": "chat", "text": "Kein Datum, kein Plan. Was soll schon schiefgehen.", "voice": "d1Ag" }
+            {
+              "from": "leon",
+              "channel": "chat",
+              "text": "DU BIST DER BESTE. Nächste Woche, versprochen!!"
+            },
+            {
+              "from": "gehirn",
+              "channel": "chat",
+              "text": "Kein Datum, kein Plan. Was soll schon schiefgehen.",
+              "voice": "d1Ag"
+            }
           ]
         },
         {
           "id": "B",
           "text": "Wofür brauchst du es, und bis wann genau?",
-          "effects": [{ "set": 500 }, { "flag": "terms" }],
+          "effects": [
+            {
+              "set": 500
+            },
+            {
+              "flag": "terms"
+            }
+          ],
           "replies": [
-            { "from": "leon", "channel": "chat", "text": "Miete. Mein Nebenjob zahlt erst am 15. Am 16. hast du es wieder. Deal?" },
-            { "from": "gehirn", "channel": "chat", "text": "Ein Datum! Wir sind praktisch eine Bank.", "voice": "d1Bg" }
+            {
+              "from": "leon",
+              "channel": "chat",
+              "text": "Miete. Mein Nebenjob zahlt erst am 15. Am 16. hast du es wieder. Deal?"
+            },
+            {
+              "from": "gehirn",
+              "channel": "chat",
+              "text": "Ein Datum! Wir sind praktisch eine Bank.",
+              "voice": "d1Bg"
+            }
           ]
         },
         {
           "id": "C",
           "text": "Ich kann dir 200 leihen.",
-          "effects": [{ "set": 200 }, { "add2": -5 }],
+          "effects": [
+            {
+              "set": 200
+            },
+            {
+              "add2": -5
+            }
+          ],
           "replies": [
-            { "from": "leon", "channel": "chat", "text": "Besser als nichts. Danke, echt!" },
-            { "from": "gehirn", "channel": "chat", "text": "Zweihundert. Der Kompromiss, bei dem beide unzufrieden sind.", "voice": "d1Cg" }
+            {
+              "from": "leon",
+              "channel": "chat",
+              "text": "Besser als nichts. Danke, echt!"
+            },
+            {
+              "from": "gehirn",
+              "channel": "chat",
+              "text": "Zweihundert. Der Kompromiss, bei dem beide unzufrieden sind.",
+              "voice": "d1Cg"
+            }
           ]
         }
       ]
     },
-    { "type": "scene", "title": "Die Story", "time": "Drei Wochen später", "voice": "n_s2" },
+    {
+      "type": "scene",
+      "title": "Die Story",
+      "time": "Drei Wochen später",
+      "voice": "n_s2"
+    },
     {
       "type": "lines",
       "lines": [
-        { "from": "gehirn", "channel": "chat", "text": "Festival. FESTIVAL! Von unserem Geld?", "voice": "g2", "visual": "festival" }
+        {
+          "from": "gehirn",
+          "channel": "chat",
+          "text": "Festival. FESTIVAL! Von unserem Geld?",
+          "voice": "g2",
+          "visual": "festival"
+        }
       ]
     },
     {
@@ -78,38 +157,96 @@
         {
           "id": "A",
           "text": "(Nichts schreiben.)",
-          "effects": [{ "add2": -10 }],
+          "effects": [
+            {
+              "add2": -10
+            }
+          ],
           "replies": [
-            { "from": "gehirn", "channel": "chat", "text": "Wir sagen nichts. Wir sind nur innerlich sehr laut.", "voice": "d2Ag" }
+            {
+              "from": "gehirn",
+              "channel": "chat",
+              "text": "Wir sagen nichts. Wir sind nur innerlich sehr laut.",
+              "voice": "d2Ag"
+            }
           ]
         },
         {
           "id": "B",
           "text": "Hey, wie sieht's mit dem Geld aus?",
           "replies": [
-            { "from": "leon", "channel": "chat", "text": "Oh Mist, total verpeilt. Sorry!! Ich melde mich morgen." },
-            { "from": "gehirn", "channel": "chat", "text": "Direkt gefragt. Und niemand ist gestorben.", "voice": "d2Bg" }
+            {
+              "from": "leon",
+              "channel": "chat",
+              "text": "Oh Mist, total verpeilt. Sorry!! Ich melde mich morgen."
+            },
+            {
+              "from": "gehirn",
+              "channel": "chat",
+              "text": "Direkt gefragt. Und niemand ist gestorben.",
+              "voice": "d2Bg"
+            }
           ]
         },
         {
           "id": "C",
           "text": "Schönes Festival. Von meinem Geld?",
-          "effects": [{ "add2": -25 }],
+          "effects": [
+            {
+              "add2": -25
+            }
+          ],
           "replies": [
-            { "from": "leon", "channel": "chat", "text": "Wow. Das hättest du mir auch privat schreiben können." },
-            { "from": "gehirn", "channel": "chat", "text": "Öffentlich. Vor allen. Mutig. Oder dumm.", "voice": "d2Cg" }
+            {
+              "from": "leon",
+              "channel": "chat",
+              "text": "Wow. Das hättest du mir auch privat schreiben können."
+            },
+            {
+              "from": "gehirn",
+              "channel": "chat",
+              "text": "Öffentlich. Vor allen. Mutig. Oder dumm.",
+              "voice": "d2Cg"
+            }
           ]
         }
       ]
     },
-    { "type": "scene", "title": "Die Ausrede", "time": "Am nächsten Tag", "voice": "n_s3", "night": true },
+    {
+      "type": "scene",
+      "title": "Die Ausrede",
+      "time": "Am nächsten Tag",
+      "voice": "n_s3",
+      "night": true
+    },
     {
       "type": "lines",
       "lines": [
-        { "from": "leon", "channel": "chat", "text": "Ich weiß, der 16. war ausgemacht. Ich kann dir gerade nur 100 geben.", "ifFlag": "terms", "visual": "sorry" },
-        { "from": "leon", "channel": "chat", "text": "Also. Ich kann dir gerade nur 100 geben.", "unlessFlag": "terms", "visual": "sorry" },
-        { "from": "leon", "channel": "chat", "text": "Brauchst du es echt so dringend?" },
-        { "from": "gehirn", "channel": "chat", "text": "Nur hundert. Und die Gegenfrage gratis dazu.", "voice": "g3" }
+        {
+          "from": "leon",
+          "channel": "chat",
+          "text": "Ich weiß, der 16. war ausgemacht. Ich kann dir gerade nur 100 geben.",
+          "ifFlag": "terms",
+          "visual": "sorry"
+        },
+        {
+          "from": "leon",
+          "channel": "chat",
+          "text": "Also. Ich kann dir gerade nur 100 geben.",
+          "unlessFlag": "terms",
+          "visual": "sorry"
+        },
+        {
+          "from": "leon",
+          "channel": "chat",
+          "text": "Brauchst du es echt so dringend?"
+        },
+        {
+          "from": "gehirn",
+          "channel": "chat",
+          "text": "Nur hundert. Und die Gegenfrage gratis dazu.",
+          "voice": "g3"
+        }
       ]
     },
     {
@@ -121,31 +258,75 @@
         {
           "id": "A",
           "text": "Passt schon, vergiss es.",
-          "effects": [{ "flag": "forgiven" }, { "add2": 5 }],
+          "effects": [
+            {
+              "flag": "forgiven"
+            },
+            {
+              "add2": 5
+            }
+          ],
           "replies": [
-            { "from": "leon", "channel": "chat", "text": "Du bist ein Schatz. Ich lad dich mal ein!" },
-            { "from": "gehirn", "channel": "chat", "text": "Passt schon. Der teuerste Satz der deutschen Sprache.", "voice": "d3Ag" }
+            {
+              "from": "leon",
+              "channel": "chat",
+              "text": "Du bist ein Schatz. Ich lad dich mal ein!"
+            },
+            {
+              "from": "gehirn",
+              "channel": "chat",
+              "text": "Passt schon. Der teuerste Satz der deutschen Sprache.",
+              "voice": "d3Ag"
+            }
           ]
         },
         {
           "id": "B",
           "text": "100 jetzt, der Rest in Raten. Deal?",
-          "effects": [{ "add2": 10 }],
+          "effects": [
+            {
+              "add2": 10
+            }
+          ],
           "replies": [
-            { "from": "leon", "channel": "chat", "text": "Deal. Danke, dass du nicht sauer bist." },
-            { "from": "gehirn", "channel": "chat", "text": "Raten. Erwachsen. Fast schon unheimlich.", "voice": "d3Bg" }
+            {
+              "from": "leon",
+              "channel": "chat",
+              "text": "Deal. Danke, dass du nicht sauer bist."
+            },
+            {
+              "from": "gehirn",
+              "channel": "chat",
+              "text": "Raten. Erwachsen. Fast schon unheimlich.",
+              "voice": "d3Bg"
+            }
           ]
         },
         {
           "id": "C",
           "text": "Ich will alles bis Freitag.",
           "effects": [
-            { "add2": -25, "unlessFlag": "terms" },
-            { "add2": -10, "ifFlag": "terms" }
+            {
+              "add2": -25,
+              "unlessFlag": "terms"
+            },
+            {
+              "add2": -10,
+              "ifFlag": "terms"
+            }
           ],
           "replies": [
-            { "from": "leon", "channel": "chat", "text": "Okay. Kriegst du." },
-            { "from": "gehirn", "channel": "chat", "text": "Ein Ultimatum. Unter Freunden. Na dann.", "voice": "d3Cg" }
+            {
+              "from": "leon",
+              "channel": "chat",
+              "text": "Okay. Kriegst du."
+            },
+            {
+              "from": "gehirn",
+              "channel": "chat",
+              "text": "Ein Ultimatum. Unter Freunden. Na dann.",
+              "voice": "d3Cg"
+            }
           ]
         }
       ]
@@ -157,21 +338,35 @@
       "title": "Geld weg, Freund noch da",
       "text": "Großzügig. Aber beim nächsten Mal fragt er wieder.",
       "jonas": "",
-      "when": [{ "minOffer": 0, "flag": "forgiven" }]
+      "when": [
+        {
+          "minOffer": 0,
+          "flag": "forgiven"
+        }
+      ]
     },
     {
       "id": "gut",
       "title": "Geld zurück, Freund behalten",
       "text": "Unangenehm war es nur kurz.",
       "jonas": "",
-      "when": [{ "minOffer": 0, "minSecond": 50 }]
+      "when": [
+        {
+          "minOffer": 0,
+          "minSecond": 50
+        }
+      ]
     },
     {
       "id": "funk",
       "title": "Geld zurück, Funkstille",
       "text": "Du hast dein Geld. Leon meldet sich erst mal nicht mehr.",
       "jonas": "",
-      "when": [{ "minOffer": 0 }]
+      "when": [
+        {
+          "minOffer": 0
+        }
+      ]
     }
   ],
   "flagLabels": {},
@@ -180,28 +375,49 @@
       "title": "Vorher klären: Betrag und Datum.",
       "text": "Ein fester Termin nimmt euch später den Streit darüber, was ausgemacht war.",
       "strength": "Erfahrungswissen",
-      "source": "Kein Studienbeleg, aber naheliegend"
+      "source": "Kein Studienbeleg, aber naheliegend",
+      "decision": "d1",
+      "best": [
+        "B"
+      ]
     },
     {
       "title": "Früh und direkt nachfragen.",
       "text": "Wer leiht und wer schuldet, erinnert sich unterschiedlich an denselben Kredit.",
       "strength": "Belegt · Studie",
-      "source": "Dezső & Loewenstein (2012), Journal of Economic Psychology"
+      "source": "Dezső & Loewenstein (2012), Journal of Economic Psychology",
+      "decision": "d2",
+      "best": [
+        "B"
+      ]
     },
     {
       "title": "Raten statt Ultimatum.",
       "text": "Nicht zurückgezahlte Kredite belasten die Freundschaft. Ein machbarer Plan hilft beiden.",
       "strength": "Teils belegt",
-      "source": "Dezső & Loewenstein (2012) · Raten: Erfahrungswissen"
+      "source": "Dezső & Loewenstein (2012) · Raten: Erfahrungswissen",
+      "decision": "d3",
+      "best": [
+        "B"
+      ]
     }
   ],
   "strongRun": {
     "title": "So hätte es auch laufen können",
     "result": 500,
     "steps": [
-      { "text": "Wofür brauchst du es, und bis wann genau?", "label": "Datum ausgemacht" },
-      { "text": "Hey, wie sieht's mit dem Geld aus?", "label": "Direkt gefragt" },
-      { "text": "100 jetzt, der Rest in Raten. Deal?", "label": "Plan statt Druck" }
+      {
+        "text": "Wofür brauchst du es, und bis wann genau?",
+        "label": "Datum ausgemacht"
+      },
+      {
+        "text": "Hey, wie sieht's mit dem Geld aus?",
+        "label": "Direkt gefragt"
+      },
+      {
+        "text": "100 jetzt, der Rest in Raten. Deal?",
+        "label": "Plan statt Druck"
+      }
     ]
   },
   "disclaimer": "Ein möglicher Verlauf. Bei Geld unter Freunden gibt es kein Richtig oder Falsch – nur Folgen."

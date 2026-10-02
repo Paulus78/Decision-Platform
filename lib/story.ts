@@ -3,7 +3,13 @@
 
 export type Channel = "call" | "mail" | "chat";
 
-type Condition = { ifFlag?: string; unlessFlag?: string };
+// Bedingungen: Merker gesetzt / nicht gesetzt, Betrag mindestens / darunter.
+type Condition = {
+  ifFlag?: string;
+  unlessFlag?: string;
+  minOffer?: number;
+  belowOffer?: number;
+};
 
 export type Line = Condition & {
   from: string;
@@ -69,7 +75,17 @@ export type Story = {
   beats: Beat[];
   endings: Ending[];
   flagLabels: Record<string, string>;
-  reveal: { title: string; text: string; strength: string; source: string }[];
+  reveal: {
+    title: string;
+    text: string;
+    strength: string;
+    source: string;
+    // Persönlicher Rückblick: zu welcher Entscheidung die Karte gehört,
+    // welche Antworten dazu passen, und ein Hinweis, falls es keine "beste" gibt.
+    decision?: string;
+    best?: string[];
+    tip?: string;
+  }[];
   strongRun: {
     title: string;
     result: number;

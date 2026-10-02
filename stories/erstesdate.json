@@ -2,7 +2,10 @@
   "id": "erstesdate",
   "title": "Das erste Date",
   "category": "dating",
-  "tags": ["nachfragen", "liking-gap"],
+  "tags": [
+    "nachfragen",
+    "liking-gap"
+  ],
   "goal": 0,
   "start": 50,
   "characters": {
@@ -18,14 +21,33 @@
     "Und dann kommt Lena."
   ],
   "beats": [
-    { "type": "scene", "title": "Die Bar", "time": "Freitag, 19:30 Uhr" },
+    {
+      "type": "scene",
+      "title": "Die Bar",
+      "time": "Freitag, 19:30 Uhr"
+    },
     {
       "type": "lines",
       "table": "{offer}",
       "lines": [
-        { "from": "lena", "channel": "call", "text": "Hey! Sorry, die Bahn. Schön, dass es endlich klappt.", "voice": "l1" },
-        { "from": "lena", "channel": "call", "text": "Ich komme direkt von der Arbeit. Ich bin Tierärztin. Heute hatte ich einen Papagei, der mich beleidigt hat.", "voice": "l2" },
-        { "from": "gehirn", "channel": "call", "text": "Stille. Seit vier Sekunden. Sag was. NICHT das mit dem Wetter!", "voice": "g2" }
+        {
+          "from": "lena",
+          "channel": "call",
+          "text": "Hey! Sorry, die Bahn. Schön, dass es endlich klappt.",
+          "voice": "l1"
+        },
+        {
+          "from": "lena",
+          "channel": "call",
+          "text": "Ich komme direkt von der Arbeit. Ich bin Tierärztin. Heute hatte ich einen Papagei, der mich beleidigt hat.",
+          "voice": "l2"
+        },
+        {
+          "from": "gehirn",
+          "channel": "call",
+          "text": "Stille. Seit vier Sekunden. Sag was. NICHT das mit dem Wetter!",
+          "voice": "g2"
+        }
       ]
     },
     {
@@ -37,38 +59,94 @@
         {
           "id": "A",
           "text": "Krass. Also bei mir im Büro …",
-          "effects": [{ "add": -15 }],
+          "effects": [
+            {
+              "add": -15
+            }
+          ],
           "replies": [
-            { "from": "lena", "channel": "call", "text": "Aha. Spannend.", "voice": "d1A" },
-            { "from": "gehirn", "channel": "call", "text": "Vier Minuten Excel. Sie zählt die Eiswürfel.", "voice": "d1Ag" }
+            {
+              "from": "lena",
+              "channel": "call",
+              "text": "Aha. Spannend.",
+              "voice": "d1A"
+            },
+            {
+              "from": "gehirn",
+              "channel": "call",
+              "text": "Vier Minuten Excel. Sie zählt die Eiswürfel.",
+              "voice": "d1Ag"
+            }
           ]
         },
         {
           "id": "B",
           "text": "Was hat der Papagei gesagt?",
-          "effects": [{ "add": 20 }],
+          "effects": [
+            {
+              "add": 20
+            }
+          ],
           "replies": [
-            { "from": "lena", "channel": "call", "text": "Er hat „Du schon wieder“ gesagt. Ich habe mich noch nie so ertappt gefühlt.", "voice": "d1B" },
-            { "from": "gehirn", "channel": "call", "text": "Sie lacht. SIE LACHT. Weiter so!", "voice": "d1Bg" }
+            {
+              "from": "lena",
+              "channel": "call",
+              "text": "Er hat „Du schon wieder“ gesagt. Ich habe mich noch nie so ertappt gefühlt.",
+              "voice": "d1B"
+            },
+            {
+              "from": "gehirn",
+              "channel": "call",
+              "text": "Sie lacht. SIE LACHT. Weiter so!",
+              "voice": "d1Bg"
+            }
           ]
         },
         {
           "id": "C",
           "text": "Ganz schön kalt geworden, oder?",
-          "effects": [{ "add": -10 }],
+          "effects": [
+            {
+              "add": -10
+            }
+          ],
           "replies": [
-            { "from": "lena", "channel": "call", "text": "Ja. Herbst halt.", "voice": "d1C" },
-            { "from": "gehirn", "channel": "call", "text": "Herbst halt. Wir sind erledigt.", "voice": "d1Cg" }
+            {
+              "from": "lena",
+              "channel": "call",
+              "text": "Ja. Herbst halt.",
+              "voice": "d1C"
+            },
+            {
+              "from": "gehirn",
+              "channel": "call",
+              "text": "Herbst halt. Wir sind erledigt.",
+              "voice": "d1Cg"
+            }
           ]
         }
       ]
     },
-    { "type": "scene", "title": "Das Handy", "time": "20 Minuten später", "voice": "n_s2" },
+    {
+      "type": "scene",
+      "title": "Das Handy",
+      "time": "20 Minuten später",
+      "voice": "n_s2"
+    },
     {
       "type": "lines",
       "lines": [
-        { "from": "jonas", "channel": "chat", "text": "UND?? Ist sie in echt auch so cool?" },
-        { "from": "gehirn", "channel": "call", "text": "Das ist Jonas. Natürlich ist das Jonas.", "voice": "g3" }
+        {
+          "from": "jonas",
+          "channel": "chat",
+          "text": "UND?? Ist sie in echt auch so cool?"
+        },
+        {
+          "from": "gehirn",
+          "channel": "call",
+          "text": "Das ist Jonas. Natürlich ist das Jonas.",
+          "voice": "g3"
+        }
       ]
     },
     {
@@ -80,38 +158,96 @@
         {
           "id": "A",
           "text": "Sorry, ganz kurz.",
-          "effects": [{ "add": -15 }],
+          "effects": [
+            {
+              "add": -15
+            }
+          ],
           "replies": [
-            { "from": "lena", "channel": "call", "text": "Kein Problem.", "voice": "d2A" },
-            { "from": "gehirn", "channel": "call", "text": "Sie guckt zur Tür. Zur TÜR.", "voice": "d2Ag" }
+            {
+              "from": "lena",
+              "channel": "call",
+              "text": "Kein Problem.",
+              "voice": "d2A"
+            },
+            {
+              "from": "gehirn",
+              "channel": "call",
+              "text": "Sie guckt zur Tür. Zur TÜR.",
+              "voice": "d2Ag"
+            }
           ]
         },
         {
           "id": "B",
           "text": "Das kann warten.",
-          "effects": [{ "add": 10 }],
+          "effects": [
+            {
+              "add": 10
+            }
+          ],
           "replies": [
-            { "from": "lena", "channel": "call", "text": "Oh. Danke.", "voice": "d2B" },
-            { "from": "gehirn", "channel": "call", "text": "Souverän. Wer bist du, und wo warst du bisher?", "voice": "d2Bg" }
+            {
+              "from": "lena",
+              "channel": "call",
+              "text": "Oh. Danke.",
+              "voice": "d2B"
+            },
+            {
+              "from": "gehirn",
+              "channel": "call",
+              "text": "Souverän. Wer bist du, und wo warst du bisher?",
+              "voice": "d2Bg"
+            }
           ]
         },
         {
           "id": "C",
           "text": "Mein Kumpel fragt, ob du in echt auch so cool bist.",
-          "effects": [{ "add": 10 }],
+          "effects": [
+            {
+              "add": 10
+            }
+          ],
           "replies": [
-            { "from": "lena", "channel": "call", "text": "Sag ihm: cooler.", "voice": "d2C" },
-            { "from": "gehirn", "channel": "call", "text": "Riskant. Aber sie grinst.", "voice": "d2Cg" }
+            {
+              "from": "lena",
+              "channel": "call",
+              "text": "Sag ihm: cooler.",
+              "voice": "d2C"
+            },
+            {
+              "from": "gehirn",
+              "channel": "call",
+              "text": "Riskant. Aber sie grinst.",
+              "voice": "d2Cg"
+            }
           ]
         }
       ]
     },
-    { "type": "scene", "title": "Der Abschied", "time": "Zwei Stunden später", "voice": "n_s3", "night": true },
+    {
+      "type": "scene",
+      "title": "Der Abschied",
+      "time": "Zwei Stunden später",
+      "voice": "n_s3",
+      "night": true
+    },
     {
       "type": "lines",
       "lines": [
-        { "from": "lena", "channel": "call", "text": "Also dann. Ich muss da lang.", "voice": "l3" },
-        { "from": "gehirn", "channel": "call", "text": "Jetzt. Der Moment. Sag etwas Kluges. Oder überhaupt etwas.", "voice": "g4" }
+        {
+          "from": "lena",
+          "channel": "call",
+          "text": "Also dann. Ich muss da lang.",
+          "voice": "l3"
+        },
+        {
+          "from": "gehirn",
+          "channel": "call",
+          "text": "Jetzt. Der Moment. Sag etwas Kluges. Oder überhaupt etwas.",
+          "voice": "g4"
+        }
       ]
     },
     {
@@ -123,27 +259,65 @@
         {
           "id": "A",
           "text": "Ich meld mich.",
-          "effects": [{ "add": -10 }],
+          "effects": [
+            {
+              "add": -10
+            }
+          ],
           "replies": [
-            { "from": "lena", "channel": "call", "text": "Okay. Mach das.", "voice": "d3A" },
-            { "from": "gehirn", "channel": "call", "text": "„Ich meld mich.“ Der Satz, nach dem sich nie jemand meldet.", "voice": "d3Ag" }
+            {
+              "from": "lena",
+              "channel": "call",
+              "text": "Okay. Mach das.",
+              "voice": "d3A"
+            },
+            {
+              "from": "gehirn",
+              "channel": "call",
+              "text": "„Ich meld mich.“ Der Satz, nach dem sich nie jemand meldet.",
+              "voice": "d3Ag"
+            }
           ]
         },
         {
           "id": "B",
           "text": "Ich würde dich gern wiedersehen.",
-          "effects": [{ "add": 20 }],
+          "effects": [
+            {
+              "add": 20
+            }
+          ],
           "replies": [
-            { "from": "lena", "channel": "call", "text": "Schön, dass du das sagst.", "voice": "d3B" },
-            { "from": "gehirn", "channel": "call", "text": "Du hast es gesagt. Laut. Mit Worten.", "voice": "d3Bg" }
+            {
+              "from": "lena",
+              "channel": "call",
+              "text": "Schön, dass du das sagst.",
+              "voice": "d3B"
+            },
+            {
+              "from": "gehirn",
+              "channel": "call",
+              "text": "Du hast es gesagt. Laut. Mit Worten.",
+              "voice": "d3Bg"
+            }
           ]
         },
         {
           "id": "C",
           "text": "Komm gut nach Hause!",
           "replies": [
-            { "from": "lena", "channel": "call", "text": "Du auch!", "voice": "d3C" },
-            { "from": "gehirn", "channel": "call", "text": "Eine Umarmung. Und kein Plan. Klassiker.", "voice": "d3Cg" }
+            {
+              "from": "lena",
+              "channel": "call",
+              "text": "Du auch!",
+              "voice": "d3C"
+            },
+            {
+              "from": "gehirn",
+              "channel": "call",
+              "text": "Eine Umarmung. Und kein Plan. Klassiker.",
+              "voice": "d3Cg"
+            }
           ]
         }
       ]
@@ -155,21 +329,33 @@
       "title": "Zweites Date",
       "text": "Am nächsten Morgen schreibt Lena: „Samstag?“",
       "jonas": "SAMSTAG?? Ich will alles wissen.",
-      "when": [{ "minOffer": 75 }]
+      "when": [
+        {
+          "minOffer": 75
+        }
+      ]
     },
     {
       "id": "mal",
       "title": "Mal sehen",
       "text": "Es war nett. Wer zuerst schreibt, ist noch offen.",
       "jonas": "„Nett“ ist kein Ergebnis. Schreib ihr.",
-      "when": [{ "minOffer": 45 }]
+      "when": [
+        {
+          "minOffer": 45
+        }
+      ]
     },
     {
       "id": "anekdote",
       "title": "Die Anekdote",
       "text": "Lena erzählt ihren Freundinnen von dem Abend. Sie lachen viel.",
       "jonas": "Kopf hoch. Der Papagei hätte es auch nicht besser gemacht.",
-      "when": [{ "minOffer": 0 }]
+      "when": [
+        {
+          "minOffer": 0
+        }
+      ]
     }
   ],
   "flagLabels": {},
@@ -178,28 +364,50 @@
       "title": "Nachfragen macht sympathisch.",
       "text": "In Speed-Dating-Daten bekam häufiger ein zweites Date, wer mehr Nachfragen stellte.",
       "strength": "Belegt · Studie",
-      "source": "Huang u. a. (2017), Journal of Personality and Social Psychology"
+      "source": "Huang u. a. (2017), Journal of Personality and Social Psychology",
+      "decision": "d1",
+      "best": [
+        "B"
+      ]
     },
     {
       "title": "Handy weg heißt: Du bist gemeint.",
       "text": "Ob schon ein Handy auf dem Tisch stört, ist umstritten. Wegstecken ist ein klares Zeichen.",
       "strength": "Studienlage gemischt",
-      "source": "Przybylski & Weinstein (2013), spätere Studien uneinheitlich"
+      "source": "Przybylski & Weinstein (2013), spätere Studien uneinheitlich",
+      "decision": "d2",
+      "best": [
+        "B",
+        "C"
+      ]
     },
     {
       "title": "Du kommst besser an, als du denkst.",
       "text": "Nach Gesprächen unterschätzen Menschen, wie sehr das Gegenüber sie mochte.",
       "strength": "Belegt · Studie",
-      "source": "Boothby u. a. (2018), Psychological Science"
+      "source": "Boothby u. a. (2018), Psychological Science",
+      "decision": "d3",
+      "best": [
+        "B"
+      ]
     }
   ],
   "strongRun": {
     "title": "So hätte es auch laufen können",
     "result": 100,
     "steps": [
-      { "text": "Was hat der Papagei gesagt?", "label": "Nachgefragt" },
-      { "text": "Das kann warten.", "label": "Aufmerksamkeit gezeigt" },
-      { "text": "Ich würde dich gern wiedersehen.", "label": "Klar gesagt" }
+      {
+        "text": "Was hat der Papagei gesagt?",
+        "label": "Nachgefragt"
+      },
+      {
+        "text": "Das kann warten.",
+        "label": "Aufmerksamkeit gezeigt"
+      },
+      {
+        "text": "Ich würde dich gern wiedersehen.",
+        "label": "Klar gesagt"
+      }
     ]
   },
   "disclaimer": "Ein möglicher Verlauf. Beim Dating gibt es kein Richtig oder Falsch – aber ein paar Dinge helfen nachweislich."

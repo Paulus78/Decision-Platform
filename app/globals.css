@@ -54,3 +54,20 @@ body {
 .talk { transform-box: fill-box; transform-origin: center; animation: talk 0.2s ease-in-out infinite alternate; }
 .breathe { animation: breathe 3.2s ease-in-out infinite; }
 .ring { transform-box: fill-box; transform-origin: center; animation: ringing 0.22s linear infinite; }
+
+/* Autofahrt: drehende Räder, federnde Karosserie, vorbeiziehende Landschaft */
+/* Eigene Namen: "spin" und "bounce" gibt es schon in Tailwind. */
+@keyframes wheel-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes car-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes scenery-scroll {
+  to { transform: translateX(-1600px); }
+}
+.spin { transform-box: fill-box; transform-origin: center; animation: wheel-spin 0.5s linear infinite; }
+.bounce { animation: car-bounce 0.45s ease-in-out infinite; }
+.scroll-slow { animation: scenery-scroll 14s linear infinite; }
+.scroll-fast { animation: scenery-scroll 2.6s linear infinite; }

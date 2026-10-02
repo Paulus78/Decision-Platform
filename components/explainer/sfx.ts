@@ -1,6 +1,11 @@
 // Kleine Soundeffekte direkt im Browser erzeugt (keine Dateien, keine Kosten).
 
 let ctx: AudioContext | null = null;
+let muted = false;
+
+export function setSfxMuted(value: boolean) {
+  muted = value;
+}
 
 function context(): AudioContext {
   ctx ??= new AudioContext();
@@ -8,6 +13,7 @@ function context(): AudioContext {
 }
 
 function tone(freq: number, start: number, length: number, volume: number) {
+  if (muted) return;
   const ac = context();
   const osc = ac.createOscillator();
   const gain = ac.createGain();

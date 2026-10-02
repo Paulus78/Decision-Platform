@@ -36,11 +36,13 @@ export function fill(text: string, state: State): string {
 }
 
 function matches(
-  cond: { ifFlag?: string; unlessFlag?: string },
+  cond: { ifFlag?: string; unlessFlag?: string; minOffer?: number; belowOffer?: number },
   state: State,
 ): boolean {
   if (cond.ifFlag && !state.flags.includes(cond.ifFlag)) return false;
   if (cond.unlessFlag && state.flags.includes(cond.unlessFlag)) return false;
+  if (cond.minOffer !== undefined && state.offer < cond.minOffer) return false;
+  if (cond.belowOffer !== undefined && state.offer >= cond.belowOffer) return false;
   return true;
 }
 

@@ -1,0 +1,215 @@
+{
+  "id": "autoverkauf",
+  "title": "Der Käufer ist da",
+  "category": "money",
+  "tags": ["anchoring", "sachliche-kriterien", "alternative"],
+  "goal": 6500,
+  "start": 5800,
+  "characters": {
+    "du": "Du",
+    "alex": "Alex",
+    "jonas": "Jonas",
+    "lisa": "Lisa · Interessentin",
+    "erzaehler": "Erzähler"
+  },
+  "intro": [
+    "Dein Auto steht seit drei Wochen online: 6.800 € VB. Du hoffst auf 6.500 €.",
+    "Heute kommt Alex zur Probefahrt.",
+    "„Fährt sich gut. Aber die Reifen sind bald fällig. Ich gebe dir 5.800.“"
+  ],
+  "beats": [
+    { "type": "scene", "title": "Das Angebot", "time": "Samstag, 11:20 Uhr" },
+    {
+      "type": "lines",
+      "table": "{offer} € · dein Wunsch: 6.500 €",
+      "lines": [
+        { "from": "alex", "channel": "call", "text": "Fährt sich gut. Aber die Reifen sind bald fällig. Ich gebe dir 5.800.", "voice": "x2" },
+        { "from": "jonas", "channel": "chat", "text": "Unter 6 gibst du den nicht her. Ich kenn mich aus, ich hab mal ein Fahrrad verkauft." }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d1",
+      "channel": "call",
+      "prompt": "p1",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ich dachte eher an 6.500.",
+          "effects": [{ "set": 6200 }],
+          "replies": [
+            { "from": "alex", "channel": "call", "text": "Puh. Da liegen wir weit auseinander. Na gut: 6.200.", "voice": "d1A" }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Wie kommst du auf 5.800?",
+          "effects": [{ "set": 6000 }],
+          "replies": [
+            { "from": "alex", "channel": "call", "text": "Reifen, Ummelden, Versicherung. Das kostet alles. Sagen wir 6.000.", "voice": "d1B" }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Die Inspektion ist frisch gemacht.",
+          "effects": [{ "set": 6100 }],
+          "replies": [
+            { "from": "alex", "channel": "call", "text": "Stimmt, das spart mir die Werkstatt. Dann 6.100.", "voice": "d1C" }
+          ]
+        }
+      ]
+    },
+    { "type": "scene", "title": "Der Vergleich", "time": "Zwei Minuten später", "voice": "n_s2" },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "alex", "channel": "call", "text": "Hier: ein ähnlicher Wagen für 6.200. Warum sollte ich für deinen mehr zahlen?", "voice": "x3", "visual": "compare" },
+        { "from": "erzaehler", "channel": "call", "text": "Gleiches Baujahr. Aber der andere hat 40.000 Kilometer mehr.", "voice": "n_km" }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d2",
+      "channel": "call",
+      "prompt": "p2",
+      "options": [
+        {
+          "id": "A",
+          "text": "Der hat 40.000 Kilometer mehr.",
+          "effects": [{ "add": 200 }],
+          "replies": [
+            { "from": "alex", "channel": "call", "text": "Okay, das ist ein Argument. Dann lege ich 200 drauf.", "voice": "d2A" }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Bei den Reifen komme ich dir entgegen.",
+          "replies": [
+            { "from": "alex", "channel": "call", "text": "Fair. Dann bleibt es bei meinem Preis, und die Reifen mache ich selbst.", "voice": "d2B" }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Hauptsache, er ist heute weg.",
+          "effects": [{ "add": -100 }],
+          "replies": [
+            { "from": "alex", "channel": "call", "text": "Dann machen wir es einfach: 100 weniger, und ich nehme ihn gleich mit.", "voice": "d2C" }
+          ]
+        }
+      ]
+    },
+    { "type": "scene", "title": "Die Uhr tickt", "time": "Kurz darauf", "voice": "n_s3" },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "lisa", "channel": "chat", "text": "Vielleicht kann ich morgen vorbeikommen. Vielleicht." },
+        { "from": "alex", "channel": "call", "text": "Das ist mein letztes Wort. Und ich muss gleich los, meine Tochter abholen.", "voice": "x4" }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d3",
+      "channel": "call",
+      "prompt": "p3",
+      "options": [
+        {
+          "id": "A",
+          "text": "Gut, machen wir es.",
+          "effects": [{ "flag": "sold" }],
+          "replies": [
+            { "from": "alex", "channel": "call", "text": "Abgemacht! Machen wir den Vertrag fertig.", "voice": "d3A" }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Leg noch 200 drauf, dann gehört er dir.",
+          "effects": [
+            { "flag": "sold", "minOffer": 6200 },
+            { "add": 200, "minOffer": 6200 },
+            { "flag": "gone", "belowOffer": 6200 }
+          ],
+          "replies": [
+            { "from": "alex", "channel": "call", "text": "Du bist hartnäckig. Na gut, abgemacht.", "voice": "d3B", "minOffer": 6200 },
+            { "from": "alex", "channel": "call", "text": "Das ist mir zu viel. Danke für die Probefahrt.", "voice": "d3Bx", "belowOffer": 6200 }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Ich warte lieber noch.",
+          "effects": [{ "flag": "wait" }],
+          "replies": [
+            { "from": "alex", "channel": "call", "text": "Verstehe. Dann viel Erfolg. Ich schaue weiter.", "voice": "d3C" }
+          ]
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "stark",
+      "title": "Stark verkauft",
+      "text": "Fast dein Wunschpreis, und das Auto ist heute weg.",
+      "jonas": "{offer}?! Okay, du darfst mein Fahrrad auch verkaufen.",
+      "when": [{ "minOffer": 6300, "flag": "sold" }]
+    },
+    {
+      "id": "verkauft",
+      "title": "Verkauft",
+      "text": "Unter deinem Wunsch, aber erledigt. Ob mehr drin war, weißt du nicht.",
+      "jonas": "{offer}. Hm. Ich hätte ja mehr rausgeholt. Theoretisch.",
+      "when": [{ "minOffer": 0, "flag": "sold" }]
+    },
+    {
+      "id": "geplatzt",
+      "title": "Geplatzt",
+      "text": "Alex ist weg. Und Lisa schreibt: „Morgen wird doch nichts.“",
+      "jonas": "Autsch. Soll ich ihn auf meinem Fahrradportal einstellen?",
+      "when": [{ "minOffer": 0, "flag": "gone" }]
+    },
+    {
+      "id": "offen",
+      "title": "Alles offen",
+      "text": "Das Auto bleibt bei dir. Ob Lisa wirklich kommt, weißt du morgen.",
+      "jonas": "Mutig. Sag Bescheid, wenn Lisa wirklich auftaucht.",
+      "when": [{ "minOffer": 0 }]
+    }
+  ],
+  "flagLabels": {},
+  "reveal": [
+    {
+      "title": "Die erste Zahl bleibt hängen.",
+      "text": "5.800 zieht das Gespräch nach unten. Eine eigene Zahl zieht es zurück.",
+      "strength": "Gut belegt · Studien",
+      "source": "Galinsky & Mussweiler (2001), Journal of Personality and Social Psychology",
+      "decision": "d1",
+      "best": ["A"]
+    },
+    {
+      "title": "Vergleiche, die wirklich passen.",
+      "text": "Baujahr allein reicht nicht. Kilometer, Zustand und Service zählen mit.",
+      "strength": "Fachbuch",
+      "source": "Fisher, Ury & Patton, Getting to Yes (Harvard-Konzept)",
+      "decision": "d2",
+      "best": ["A"]
+    },
+    {
+      "title": "Kenne deine echte Alternative.",
+      "text": "Ein „Vielleicht morgen“ ist noch kein Käufer.",
+      "strength": "Fachbuch",
+      "source": "Fisher, Ury & Patton, Getting to Yes (Harvard-Konzept)",
+      "decision": "d3",
+      "best": [],
+      "tip": "Hier gibt es kein Richtig. Frag dich: Wie sicher ist deine Alternative wirklich?"
+    }
+  ],
+  "strongRun": {
+    "title": "So hätte es auch laufen können",
+    "result": 6400,
+    "steps": [
+      { "text": "Ich dachte eher an 6.500.", "label": "Eigene Zahl dagegengesetzt" },
+      { "text": "Der hat 40.000 Kilometer mehr.", "label": "Sachlich verglichen" },
+      { "text": "Gut, machen wir es.", "label": "Sicheren Abschluss genommen" }
+    ]
+  },
+  "disclaimer": "Ein möglicher Verlauf. Alle Beträge und Reaktionen sind erfunden – belegt ist nur das Prinzip dahinter."
+}

@@ -29,6 +29,13 @@ const SITUATIONS = [
     hook: "„Kriegst du nächste Woche zurück, safe.“ Drei Wochen später postet er Festival-Fotos.",
     color: "#f2a33a",
   },
+  {
+    href: "/auto",
+    category: "Money",
+    title: "Der Käufer ist da",
+    hook: "Dein Auto: 6.800 € VB. Alex nach der Probefahrt: „Ich gebe dir 5.800.“",
+    color: "#2b3a67",
+  },
 ];
 
 export default function Home() {

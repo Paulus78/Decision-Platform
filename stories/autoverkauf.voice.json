@@ -1,0 +1,49 @@
+{
+  "voices": {
+    "narrator": {
+      "name": "Puck",
+      "style": "Deutsch. Lockerer, sympathischer Erzähler eines unterhaltsamen Erklärvideos. Zügiges Tempo, leicht verschmitzt, nie belehrend.",
+      "elevenlabs": "JBFqnCBsd6RMkjVDRZzb"
+    },
+    "alex": {
+      "name": "Charon",
+      "style": "Deutsch. Freundlicher Familienvater, der ein Auto kaufen will. Locker, aber er verhandelt geschickt.",
+      "elevenlabs": "bIHbv24MWmeRgasZH58o"
+    }
+  },
+  "lines": [
+    { "id": "a1", "voice": "narrator", "text": "Das ist dein Auto. Seit drei Wochen steht es online: 6.800 Euro Verhandlungsbasis.", "say": "Das ist dein Auto. Seit drei Wochen steht es online: sechstausendachthundert Euro Verhandlungsbasis." },
+    { "id": "a2", "voice": "narrator", "text": "Insgeheim hoffst du auf 6.500. Heute kommt endlich jemand zur Probefahrt.", "say": "Insgeheim hoffst du auf sechstausendfünfhundert. Heute kommt endlich jemand zur Probefahrt." },
+    { "id": "x1", "voice": "alex", "text": "Hi, ich bin Alex. Sieht gut aus! Können wir eine Runde fahren?" },
+    { "id": "a3", "voice": "narrator", "text": "Zehn Minuten später. Der Motor läuft rund. Alex hat vor allem das Radio getestet. Gründlich." },
+    { "id": "x2", "voice": "alex", "text": "Fährt sich gut. Aber die Reifen sind bald fällig. Ich gebe dir 5.800.", "say": "Fährt sich gut. Aber die Reifen sind bald fällig. Ich gebe dir fünftausendachthundert." },
+    { "id": "p1", "voice": "narrator", "text": "Tausend Euro unter deinem Preis. Was sagst du?" },
+    { "id": "d1A", "voice": "alex", "text": "Puh. Da liegen wir weit auseinander. Na gut: 6.200.", "say": "Puh. Da liegen wir weit auseinander. Na gut: sechstausendzweihundert." },
+    { "id": "d1B", "voice": "alex", "text": "Reifen, Ummelden, Versicherung. Das kostet alles. Sagen wir 6.000.", "say": "Reifen, Ummelden, Versicherung. Das kostet alles. Sagen wir sechstausend." },
+    { "id": "d1C", "voice": "alex", "text": "Stimmt, das spart mir die Werkstatt. Dann 6.100.", "say": "Stimmt, das spart mir die Werkstatt. Dann sechstausendeinhundert." },
+    { "id": "n_s2", "voice": "narrator", "text": "Zwei Minuten später zückt Alex sein Handy." },
+    { "id": "x3", "voice": "alex", "text": "Hier: ein ähnlicher Wagen für 6.200. Warum sollte ich für deinen mehr zahlen?", "say": "Hier: ein ähnlicher Wagen für sechstausendzweihundert. Warum sollte ich für deinen mehr zahlen?" },
+    { "id": "n_km", "voice": "narrator", "text": "Gleiches Baujahr. Aber der andere hat 40.000 Kilometer mehr.", "say": "Gleiches Baujahr. Aber der andere hat vierzigtausend Kilometer mehr." },
+    { "id": "p2", "voice": "narrator", "text": "Ein Vergleich, der hinkt. Was sagst du?" },
+    { "id": "d2A", "voice": "alex", "text": "Okay, das ist ein Argument. Dann lege ich 200 drauf.", "say": "Okay, das ist ein Argument. Dann lege ich zweihundert drauf." },
+    { "id": "d2B", "voice": "alex", "text": "Fair. Dann bleibt es bei meinem Preis, und die Reifen mache ich selbst." },
+    { "id": "d2C", "voice": "alex", "text": "Dann machen wir es einfach: 100 weniger, und ich nehme ihn gleich mit.", "say": "Dann machen wir es einfach: hundert weniger, und ich nehme ihn gleich mit." },
+    { "id": "n_s3", "voice": "narrator", "text": "Kurz darauf vibriert dein Handy. Eine andere Interessentin." },
+    { "id": "x4", "voice": "alex", "text": "Das ist mein letztes Wort. Und ich muss gleich los, meine Tochter abholen." },
+    { "id": "p3", "voice": "narrator", "text": "Ein Angebot jetzt. Ein Vielleicht morgen. Was sagst du?" },
+    { "id": "d3A", "voice": "alex", "text": "Abgemacht! Machen wir den Vertrag fertig." },
+    { "id": "d3B", "voice": "alex", "text": "Du bist hartnäckig. Na gut, abgemacht." },
+    { "id": "d3Bx", "voice": "alex", "text": "Das ist mir zu viel. Danke für die Probefahrt." },
+    { "id": "d3C", "voice": "alex", "text": "Verstehe. Dann viel Erfolg. Ich schaue weiter." },
+    { "id": "e_stark", "voice": "narrator", "text": "Stark verkauft. Fast dein Wunschpreis, und das Auto ist heute weg." },
+    { "id": "e_verkauft", "voice": "narrator", "text": "Verkauft. Unter deinem Wunsch, aber erledigt. Ob mehr drin war, weißt du nicht." },
+    { "id": "e_geplatzt", "voice": "narrator", "text": "Geplatzt. Alex ist weg. Und Lisa schreibt: Morgen wird doch nichts." },
+    { "id": "e_offen", "voice": "narrator", "text": "Alles offen. Das Auto bleibt bei dir. Ob Lisa wirklich kommt, weißt du morgen." },
+    { "id": "r0", "voice": "narrator", "text": "Was ist da gerade passiert? Drei Dinge." },
+    { "id": "r1", "voice": "narrator", "text": "Erstens: Die erste Zahl bleibt hängen. 5.800 zieht alles nach unten. Deine eigene Zahl zieht es zurück.", "say": "Erstens: Die erste Zahl bleibt hängen. Fünftausendachthundert zieht alles nach unten. Deine eigene Zahl zieht es zurück." },
+    { "id": "r2", "voice": "narrator", "text": "Zweitens: Vergleiche müssen passen. Baujahr allein reicht nicht. Kilometer und Zustand zählen mit." },
+    { "id": "r3", "voice": "narrator", "text": "Drittens: Kenne deine echte Alternative. Ein Vielleicht morgen ist noch kein Käufer." },
+    { "id": "s1", "voice": "narrator", "text": "So hätte es auch laufen können: eigene Zahl nennen, sachlich vergleichen, den sicheren Abschluss nehmen." },
+    { "id": "out", "voice": "narrator", "text": "Das war nur ein möglicher Verlauf. Probier es ruhig noch mal." }
+  ]
+}
