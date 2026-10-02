@@ -354,10 +354,13 @@ export function HudChip({
   label,
   text,
   danger,
+  align = "center",
 }: {
   label: string;
   text: string;
   danger?: boolean;
+  // "right", wenn in der Mitte Sprechblasen erscheinen.
+  align?: "center" | "right";
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [main, sub] = text.split(" · ");
@@ -365,7 +368,11 @@ export function HudChip({
     gsap.from(ref.current, { scale: 1.5, duration: 0.5, ease: "back.out(2)" });
   });
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-[1.6cqw] flex justify-center">
+    <div
+      className={`pointer-events-none absolute top-[1.6cqw] flex ${
+        align === "right" ? "right-[1.6cqw]" : "inset-x-0 justify-center"
+      }`}
+    >
       <div
         ref={ref}
         className="rounded-[1.4cqw] bg-white px-[2.2cqw] py-[0.7cqw] text-center shadow-xl"

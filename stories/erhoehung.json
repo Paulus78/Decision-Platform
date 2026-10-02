@@ -1,0 +1,228 @@
+{
+  "id": "erhoehung",
+  "title": "Das Jahresgespräch",
+  "category": "work",
+  "tags": ["gehaltserhoehung", "anchoring", "vertrauen"],
+  "goal": 450,
+  "start": 0,
+  "characters": {
+    "du": "Du",
+    "krueger": "Herr Krüger",
+    "gehirn": "Dein Gehirn",
+    "jonas": "Jonas",
+    "erzaehler": "Erzähler"
+  },
+  "intro": [
+    "Zwei Jahre bei Novara. Du hast das Projekt Phoenix gerettet. Dein Gehalt: seit zwei Jahren gleich.",
+    "Heute ist dein Jahresgespräch bei Herrn Krüger.",
+    "„So. Gibt es von Ihrer Seite noch etwas?“"
+  ],
+  "beats": [
+    { "type": "scene", "title": "Das Jahresgespräch", "time": "Dienstag, 10:00 Uhr" },
+    {
+      "type": "lines",
+      "table": "{offer} € · mehr pro Monat",
+      "lines": [
+        { "from": "krueger", "channel": "call", "text": "Setzen Sie sich. Phoenix lief ja ganz ordentlich.", "voice": "k1" },
+        { "from": "gehirn", "channel": "call", "text": "Ganz ordentlich? Wir haben drei Wochenenden durchgearbeitet!", "voice": "g2" },
+        { "from": "krueger", "channel": "call", "text": "So. Gibt es von Ihrer Seite noch etwas?", "voice": "k2" }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d1",
+      "channel": "call",
+      "prompt": "p1",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ich bräuchte mehr Geld. Meine Miete ist gestiegen.",
+          "replies": [
+            { "from": "krueger", "channel": "call", "text": "Das tut mir leid. Aber die Miete zahlt leider nicht die Firma.", "voice": "d1A" },
+            { "from": "gehirn", "channel": "call", "text": "Er hat recht. Das ist das Schlimmste daran.", "voice": "d1Ag" }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Ja: mein Gehalt. Phoenix war drei Wochen früher fertig. Wegen mir.",
+          "effects": [{ "flag": "leistung" }],
+          "replies": [
+            { "from": "krueger", "channel": "call", "text": "Hm. Das stimmt allerdings.", "voice": "d1B" },
+            { "from": "gehirn", "channel": "call", "text": "Er hat genickt. Das war ein Nicken!", "voice": "d1Bg" }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Nein, alles gut.",
+          "effects": [{ "flag": "late" }],
+          "replies": [
+            { "from": "krueger", "channel": "call", "text": "Schön. Dann wären wir ja durch.", "voice": "d1C" },
+            { "from": "gehirn", "channel": "call", "text": "Alles gut?! Nichts ist gut! Sag es. Jetzt!", "voice": "d1Cg" },
+            { "from": "du", "channel": "call", "text": "Moment. Eine Sache doch: mein Gehalt." }
+          ]
+        }
+      ]
+    },
+    { "type": "scene", "title": "Die Zahl", "time": "Eine Minute später", "voice": "n_s2" },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "krueger", "channel": "call", "text": "An was hatten Sie denn gedacht?", "voice": "k3" },
+        { "from": "gehirn", "channel": "call", "text": "Eine Zahl. Er will eine Zahl. Haben wir eine Zahl?", "voice": "g3" }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d2",
+      "channel": "call",
+      "prompt": "p2",
+      "options": [
+        {
+          "id": "A",
+          "text": "Was halt so möglich ist.",
+          "effects": [{ "set": 100 }],
+          "replies": [
+            { "from": "krueger", "channel": "call", "text": "Möglich wären 100 Euro.", "voice": "d2A" },
+            { "from": "gehirn", "channel": "call", "text": "Hundert. Jetzt hat er die Zahl genannt. Seine Zahl.", "voice": "d2Ag" }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "450 Euro mehr im Monat.",
+          "effects": [{ "set": 300 }, { "add": 50, "ifFlag": "leistung" }],
+          "replies": [
+            { "from": "krueger", "channel": "call", "text": "Das ist ordentlich. 350 könnte ich mir vorstellen.", "voice": "d2Bl", "ifFlag": "leistung" },
+            { "from": "krueger", "channel": "call", "text": "Das ist ordentlich. 300 könnte ich mir vorstellen.", "voice": "d2B", "unlessFlag": "leistung" },
+            { "from": "gehirn", "channel": "call", "text": "Er verhandelt. Er verhandelt mit uns!", "voice": "d2Bg" }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "20 Prozent. Sonst muss ich mir was überlegen.",
+          "effects": [{ "set": 150 }, { "flag": "threat" }],
+          "replies": [
+            { "from": "krueger", "channel": "call", "text": "Zwanzig Prozent. Und eine Drohung. Sagen wir 150.", "voice": "d2C" },
+            { "from": "gehirn", "channel": "call", "text": "Ein Ultimatum. An einem Dienstag. Vor dem Mittagessen.", "voice": "d2Cg" }
+          ]
+        }
+      ]
+    },
+    { "type": "scene", "title": "Das Aber", "time": "Dann schaut er in seine Unterlagen", "voice": "n_s3" },
+    {
+      "type": "lines",
+      "table": "{offer} € · auf Eis",
+      "lines": [
+        { "from": "krueger", "channel": "call", "text": "Ich muss ehrlich sein: Dieses Jahr ist das Budget durch. Frühestens nächstes Jahr.", "voice": "k4" },
+        { "from": "jonas", "channel": "chat", "text": "UND?? Hast du das mit dem anderen Angebot gesagt??" },
+        { "from": "gehirn", "channel": "call", "text": "Nicht. Auf. Jonas. Hören.", "voice": "g4" }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d3",
+      "channel": "call",
+      "prompt": "p3",
+      "options": [
+        {
+          "id": "A",
+          "text": "Okay. Schade.",
+          "effects": [{ "set": 0 }],
+          "table": "0 € · vielleicht nächstes Jahr",
+          "replies": [
+            { "from": "krueger", "channel": "call", "text": "Wir reden nächstes Jahr noch mal. Versprochen.", "voice": "d3A" },
+            { "from": "gehirn", "channel": "call", "text": "Nächstes Jahr. Ohne Termin. Also nie.", "voice": "d3Ag" }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Was muss passieren, damit es in sechs Monaten klappt?",
+          "effects": [{ "flag": "plan" }],
+          "table": "{offer} € · ab April, schriftlich",
+          "replies": [
+            { "from": "krueger", "channel": "call", "text": "Wenn das neue Projekt läuft: einverstanden. Ab April. Ich schicke Ihnen das heute per Mail.", "voice": "d3B" },
+            { "from": "gehirn", "channel": "call", "text": "Schriftlich. Mit Datum. Wer sind wir geworden?", "voice": "d3Bg" }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Ich habe ein anderes Angebot.",
+          "effects": [{ "set": 0 }, { "flag": "busted" }],
+          "table": "0 € · Vertrauen weg",
+          "replies": [
+            { "from": "krueger", "channel": "call", "text": "Oh. Von wem denn?", "voice": "d3C" },
+            { "from": "gehirn", "channel": "call", "text": "Von wem denn. Wir haben keinen Namen vorbereitet!", "voice": "d3Cg" },
+            { "from": "du", "channel": "call", "text": "Äh. Von einer … Firma." },
+            { "from": "krueger", "channel": "call", "text": "Aha. Dann überlegen Sie sich das gut.", "voice": "d3C2" }
+          ]
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "verzockt",
+      "title": "Verzockt",
+      "text": "Kein Geld. Und Krüger schaut dich jetzt anders an.",
+      "jonas": "Hm. Bei meinem Cousin hat es geklappt. Glaub ich. Er arbeitet da nicht mehr.",
+      "when": [{ "minOffer": 0, "flag": "busted" }]
+    },
+    {
+      "id": "stark",
+      "title": "Fahrplan mit Zahl",
+      "text": "{offer} € mehr ab April, schwarz auf weiß.",
+      "jonas": "{offer} mehr?! Okay, du zahlst Freitag. Und Samstag.",
+      "when": [{ "minOffer": 300, "flag": "plan" }]
+    },
+    {
+      "id": "klein",
+      "title": "Kleiner Fahrplan",
+      "text": "{offer} € mehr ab April. Wenig, aber fest zugesagt.",
+      "jonas": "{offer}. Besser als nix. Aber ich hätte ja geblufft.",
+      "when": [{ "minOffer": 0, "flag": "plan" }]
+    },
+    {
+      "id": "vertroestet",
+      "title": "Vertröstet",
+      "text": "Kein Geld, kein Termin. Nächstes Jahr fragt keiner mehr.",
+      "jonas": "Nächstes Jahr? Das sagt mein Fitnessstudio auch immer.",
+      "when": [{ "minOffer": 0 }]
+    }
+  ],
+  "flagLabels": {},
+  "reveal": [
+    {
+      "title": "Leistung zählt, nicht dein Bedarf.",
+      "text": "Deine Miete ist nicht das Problem der Firma. Was du gebracht hast, schon.",
+      "strength": "Erfahrungswissen",
+      "source": "Gängiger Rat aus der Verhandlungspraxis, kein Studienbeleg",
+      "decision": "d1",
+      "best": ["B"]
+    },
+    {
+      "title": "Nenne selbst eine konkrete Zahl.",
+      "text": "Wer zuerst eine Zahl nennt, setzt den Rahmen. Genaue Zahlen wirken dabei stärker als runde.",
+      "strength": "Belegt · Studien",
+      "source": "Galinsky & Mussweiler (2001) · Mason u. a. (2013)",
+      "decision": "d2",
+      "best": ["B"]
+    },
+    {
+      "title": "Mach aus dem Nein einen Fahrplan.",
+      "text": "Frag, was passieren muss, und halte es fest. Ein Bluff kostet Vertrauen, das kaum zurückkommt.",
+      "strength": "Fachbuch · Studie zum Bluff",
+      "source": "William Ury, Getting Past No · Schweitzer u. a. (2006)",
+      "decision": "d3",
+      "best": ["B"]
+    }
+  ],
+  "strongRun": {
+    "title": "So hätte es auch laufen können",
+    "result": 350,
+    "steps": [
+      { "text": "Phoenix war drei Wochen früher fertig. Wegen mir.", "label": "Mit Leistung begründet" },
+      { "text": "450 Euro mehr im Monat.", "label": "Eigene Zahl genannt" },
+      { "text": "Was muss passieren, damit es in sechs Monaten klappt?", "label": "Aus dem Nein einen Plan gemacht" }
+    ]
+  },
+  "disclaimer": "Ein möglicher Verlauf. Alle Beträge und Reaktionen sind erfunden – belegt ist nur das Prinzip dahinter."
+}

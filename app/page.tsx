@@ -36,6 +36,13 @@ const SITUATIONS = [
     hook: "Dein Auto: 6.800 € VB. Alex nach der Probefahrt: „Ich gebe dir 5.800.“",
     color: "#2b3a67",
   },
+  {
+    href: "/erhoehung",
+    category: "Work",
+    title: "Das Jahresgespräch",
+    hook: "Zwei Jahre, ein gerettetes Projekt, null Euro mehr. Heute fragst du nach einer Gehaltserhöhung.",
+    color: "#2f9e8f",
+  },
 ];
 
 export default function Home() {

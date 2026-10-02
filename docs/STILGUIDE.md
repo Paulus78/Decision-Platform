@@ -56,7 +56,7 @@ Im Rückblick braucht jede Karte `decision` (zu welcher Entscheidung sie gehört
 ## 5. Stimmen
 
 - Erzähler ist in allen Videos dieselbe Stimme: ElevenLabs „George".
-- Freigegebene Figurenstimmen (ElevenLabs, Modell `eleven_multilingual_v2`): Sarah (Frau Brandt), Lily (Lena), Charlie (Markus), Liam (dein Gehirn), Will (Alex).
+- Freigegebene Figurenstimmen (ElevenLabs, Modell `eleven_multilingual_v2`): Sarah (Frau Brandt), Lily (Lena), Charlie (Markus), Liam (dein Gehirn), Will (Alex), Daniel (Herr Krüger).
 - Zahlen im Sprechtext ausschreiben (`say`), im Untertitel als Ziffern (`text`).
 - Erzeugen: `node scripts/tts.mjs --story <name>`. Ist ElevenLabs aufgebraucht: `node scripts/tts-bundle.mjs --story <name>` (Gemini, mehrere Sätze pro Anfrage).
 - Die Spielfigur hat keine Stimme, nur Sprechblasen.

@@ -6,7 +6,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { advance, choose, initialState, pickEnding } from "../lib/engine.ts";
 
-const STORIES = ["gehaltsangebot", "traumwohnung", "erstesdate", "leon", "autoverkauf"];
+const STORIES = ["gehaltsangebot", "traumwohnung", "erstesdate", "leon", "autoverkauf", "erhoehung"];
 const json = (file) => JSON.parse(readFileSync(file, "utf8"));
 let failed = false;
 

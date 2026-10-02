@@ -1,0 +1,67 @@
+{
+  "voices": {
+    "narrator": {
+      "name": "Puck",
+      "style": "Deutsch. Lockerer, sympathischer Erzähler eines unterhaltsamen Erklärvideos. Zügiges Tempo, leicht verschmitzt, nie belehrend.",
+      "elevenlabs": "JBFqnCBsd6RMkjVDRZzb"
+    },
+    "krueger": {
+      "name": "Charon",
+      "style": "Deutsch. Chef um die 55. Freundlich, ausweichend, etwas von oben herab.",
+      "elevenlabs": "onwK4e9ZLuTAKqWW03F9"
+    },
+    "gehirn": {
+      "name": "Fenrir",
+      "style": "Deutsch. Panische, gehetzte innere Stimme. Schnell, halb geflüstert, komisch übertrieben.",
+      "elevenlabs": "TX3LPaxmHKxFdv7VOQHJ"
+    }
+  },
+  "lines": [
+    { "id": "i1", "voice": "narrator", "text": "Das bist du. Seit zwei Jahren bei Novara. Du hast das Projekt Phoenix gerettet." },
+    { "id": "i2", "voice": "narrator", "text": "Dein Gehalt in diesen zwei Jahren: unverändert. Heute ist dein Jahresgespräch." },
+    { "id": "g1", "voice": "gehirn", "text": "Wir fragen nach mehr Geld. Heute. Wirklich. Oder nächstes Jahr. Nein, heute!" },
+    { "id": "i3", "voice": "narrator", "text": "Zehn Uhr. Die Tür von Herrn Krüger geht auf." },
+    { "id": "k1", "voice": "krueger", "text": "Setzen Sie sich. Phoenix lief ja ganz ordentlich." },
+    { "id": "g2", "voice": "gehirn", "text": "Ganz ordentlich? Wir haben drei Wochenenden durchgearbeitet!" },
+    { "id": "k2", "voice": "krueger", "text": "So. Gibt es von Ihrer Seite noch etwas?" },
+    { "id": "p1", "voice": "narrator", "text": "Das ist deine Tür. Was sagst du?" },
+    { "id": "d1A", "voice": "krueger", "text": "Das tut mir leid. Aber die Miete zahlt leider nicht die Firma." },
+    { "id": "d1Ag", "voice": "gehirn", "text": "Er hat recht. Das ist das Schlimmste daran." },
+    { "id": "d1B", "voice": "krueger", "text": "Hm. Das stimmt allerdings." },
+    { "id": "d1Bg", "voice": "gehirn", "text": "Er hat genickt. Das war ein Nicken!" },
+    { "id": "d1C", "voice": "krueger", "text": "Schön. Dann wären wir ja durch." },
+    { "id": "d1Cg", "voice": "gehirn", "text": "Alles gut?! Nichts ist gut! Sag es. Jetzt!" },
+    { "id": "n_s2", "voice": "narrator", "text": "Eine Minute später kommt die Frage, vor der sich alle fürchten." },
+    { "id": "k3", "voice": "krueger", "text": "An was hatten Sie denn gedacht?" },
+    { "id": "g3", "voice": "gehirn", "text": "Eine Zahl. Er will eine Zahl. Haben wir eine Zahl?" },
+    { "id": "p2", "voice": "narrator", "text": "Jetzt zählt jedes Wort. Was sagst du?" },
+    { "id": "d2A", "voice": "krueger", "text": "Möglich wären 100 Euro.", "say": "Möglich wären hundert Euro." },
+    { "id": "d2Ag", "voice": "gehirn", "text": "Hundert. Jetzt hat er die Zahl genannt. Seine Zahl." },
+    { "id": "d2B", "voice": "krueger", "text": "Das ist ordentlich. 300 könnte ich mir vorstellen.", "say": "Das ist ordentlich. Dreihundert könnte ich mir vorstellen." },
+    { "id": "d2Bl", "voice": "krueger", "text": "Das ist ordentlich. 350 könnte ich mir vorstellen.", "say": "Das ist ordentlich. Dreihundertfünfzig könnte ich mir vorstellen." },
+    { "id": "d2Bg", "voice": "gehirn", "text": "Er verhandelt. Er verhandelt mit uns!" },
+    { "id": "d2C", "voice": "krueger", "text": "Zwanzig Prozent. Und eine Drohung. Sagen wir 150.", "say": "Zwanzig Prozent. Und eine Drohung. Sagen wir hundertfünfzig." },
+    { "id": "d2Cg", "voice": "gehirn", "text": "Ein Ultimatum. An einem Dienstag. Vor dem Mittagessen." },
+    { "id": "n_s3", "voice": "narrator", "text": "Dann schaut Herr Krüger in seine Unterlagen. Und es kommt das Aber." },
+    { "id": "k4", "voice": "krueger", "text": "Ich muss ehrlich sein: Dieses Jahr ist das Budget durch. Frühestens nächstes Jahr." },
+    { "id": "g4", "voice": "gehirn", "text": "Nicht. Auf. Jonas. Hören." },
+    { "id": "p3", "voice": "narrator", "text": "Ein Nein. Oder doch nicht? Was sagst du?" },
+    { "id": "d3A", "voice": "krueger", "text": "Wir reden nächstes Jahr noch mal. Versprochen." },
+    { "id": "d3Ag", "voice": "gehirn", "text": "Nächstes Jahr. Ohne Termin. Also nie." },
+    { "id": "d3B", "voice": "krueger", "text": "Wenn das neue Projekt läuft: einverstanden. Ab April. Ich schicke Ihnen das heute per Mail." },
+    { "id": "d3Bg", "voice": "gehirn", "text": "Schriftlich. Mit Datum. Wer sind wir geworden?" },
+    { "id": "d3C", "voice": "krueger", "text": "Oh. Von wem denn?" },
+    { "id": "d3Cg", "voice": "gehirn", "text": "Von wem denn. Wir haben keinen Namen vorbereitet!" },
+    { "id": "d3C2", "voice": "krueger", "text": "Aha. Dann überlegen Sie sich das gut." },
+    { "id": "e_verzockt", "voice": "narrator", "text": "Verzockt. Kein Geld. Und Herr Krüger schaut dich jetzt anders an." },
+    { "id": "e_stark", "voice": "narrator", "text": "Fahrplan mit Zahl. Mehr Geld ab April, schwarz auf weiß." },
+    { "id": "e_klein", "voice": "narrator", "text": "Kleiner Fahrplan. Wenig, aber fest zugesagt." },
+    { "id": "e_vertroestet", "voice": "narrator", "text": "Vertröstet. Kein Geld, kein Termin. Nächstes Jahr fragt keiner mehr." },
+    { "id": "r0", "voice": "narrator", "text": "Was ist da gerade passiert? Drei Dinge." },
+    { "id": "r1", "voice": "narrator", "text": "Erstens: Leistung zählt, nicht dein Bedarf. Deine Miete ist nicht das Problem der Firma." },
+    { "id": "r2", "voice": "narrator", "text": "Zweitens: Nenne selbst eine konkrete Zahl. Sonst nennt er seine." },
+    { "id": "r3", "voice": "narrator", "text": "Drittens: Mach aus dem Nein einen Fahrplan. Und bluffe nicht. Vertrauen kommt kaum zurück." },
+    { "id": "s1", "voice": "narrator", "text": "So hätte es auch laufen können: mit Leistung begründen, eigene Zahl nennen, aus dem Nein einen Plan machen." },
+    { "id": "out", "voice": "narrator", "text": "Das war nur ein möglicher Verlauf. Probier es ruhig noch mal." }
+  ]
+}
