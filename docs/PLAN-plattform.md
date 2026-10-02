@@ -1,116 +1,144 @@
 # Plan: Die Plattform (Webseite um die Situationen herum)
 
-Stand: 2026-10-02 · Status: Plan, noch nichts gebaut
+Stand: 2026-10-02 · Status: Plan V2, noch nichts gebaut
 
-## Grundlage
+V2 ersetzt V1: Statt auf gesammelte Vorbilder zu warten, legt Claude die Design-Richtung anhand von Recherche selbst fest. Paul entscheidet an zwei Stellen (Entwürfe, Handy).
 
-Vorbild für die Vorgehensweise: Chase AI, „Turn Claude Into A Design Genius In 3 Simple Steps" (https://www.youtube.com/watch?v=7FU98O0JLHs).
+## 1. Was die Recherche ergeben hat
 
-Das Transkript ließ sich nicht abrufen. Die folgenden Punkte stammen aus Titel, Kapiteln und zwei schriftlichen Zusammenfassungen des Videos:
+| Erkenntnis | Folge für uns |
+| --- | --- |
+| „KI-Look" hat zwei Wellen: (1) lila Verlauf, Inter-Schrift, zentrierter Hero, drei Kästen. (2) die „geschmackvolle" Variante: Creme mit Terrakotta, Serifen-Überschrift, „01 / 02 / 03", gesperrte Großbuchstaben-Zeilen, überall dieselbe Einblend-Animation. | Unsere Video-Palette (Creme, Koralle) liegt nah an Welle 2. Die Seite darf nicht einfach „Creme plus Koralle" sein. Siehe Abschnitt 3. |
+| Gutes Design leitet sich aus dem Produkt ab, nicht aus einer Stilvorlage. | Unser Material: gezeichnete Figuren, Sprechblasen, Antwortkarten A/B/C, Jonas' Chat, das Gehirn. Daraus bauen wir die Seite. |
+| Besucher verbringen die meiste Zeit im ersten Bildschirm. Am besten erklärt sich ein Produkt, wenn man es dort direkt benutzt. | Der erste Bildschirm ist eine spielbare Mini-Entscheidung, kein Werbetext. |
+| Animationen: Rückmeldung 100–150 ms, Überfahren 150–200 ms, größere Wechsel 200–300 ms, nie über 500 ms. | Feste Zeiten im Design-Brief. |
+| Karten sind zum Stöbern da: ein Bild, ein Titel, ein Satz, eine Aktion. Filter müssen ohne Fachwörter auskommen. | Karten bleiben schlank. Filter heißen so, wie Nutzer denken („Verhandeln", „Nein sagen"). |
+| Next.js 16 bringt Seitenübergänge mit (`ViewTransition`, in den Docs im Projekt nachgelesen). Ohne Browser-Unterstützung läuft die Seite normal, nur ohne Animation. | Vorschaubild wächst beim Klick zur Videobühne. Kein Zusatzpaket nötig. |
+| Scroll-Animationen rein per CSS: Unterstützung in Firefox ist unklar (Quellen widersprechen sich). | Wir nehmen GSAP, das ist schon installiert und kostenlos. |
 
-1. **Geschmack vorgeben:** 20 bis 30 Screenshots von Seiten sammeln, die einem gefallen (Dribbble, Pinterest, X). KI allein landet beim Durchschnitt („sieht nach KI aus": dieselben Farben, dieselbe Schrift).
-2. **Werkzeuge ergänzen:** ein Design-Skill (im Video „Impeccable", alternativ „Taste"), 21st.dev für einzelne Bausteine, Higgsfield für Bilder.
-3. **In Runden bauen:** nicht alles in einem Wurf. Fünf Richtungen entwerfen, drei behalten, nebeneinander vergleichen, dann feinschleifen. Nie „mach es hochwertiger" ohne Vorlage sagen.
+Lernplattformen wie Brilliant lösen dieselbe Aufgabe (ernster Inhalt, verspielte Form) mit einer festen Figur, die die Hürde senkt. Das haben wir schon: Jonas und das Gehirn.
 
-## Was die Plattform leisten muss
+## 2. Leitidee
 
-- Man versteht in fünf Sekunden, was das ist, und kann sofort eine Situation starten.
-- Jede Situation ist schnell zu finden: nach Kategorie, nach Thema, per Suche.
-- Die Seite sieht aus wie die Videos (gleiche Farben, gleiche Figuren), nur ruhiger und erwachsener.
-- Wenige, gezielte Animationen, vor allem beim Überfahren mit der Maus.
-- Alles bleibt kostenlos: kein Login, keine Datenbank, keine bezahlten Bild-Tools in dieser Phase.
+**Die Seite ist selbst eine Situation.** Sie erklärt nicht, was wir machen. Sie lässt es einen in zehn Sekunden erleben.
 
-## Phase 1 – Geschmack festlegen (du + Claude)
+Drei Erkennungsmerkmale, die sich durch alle Seiten ziehen:
 
-1. **Du sammelst 10 bis 20 Vorbilder:** Screenshots oder Links von Seiten, die dir gefallen. Dazu je ein Satz, was genau (Farben, Schrift, Aufbau, eine Animation). Ablage: `design/inspiration/`.
-2. **Claude sortiert und beschriftet** sie nach Startseite, Karten, Navigation, Schrift, Bewegung.
-3. **Ergebnis ist ein Design-Brief** (`docs/DESIGN.md`): Farben, Schriften, Abstände, Ecken, Schatten, Tonfall, Regeln für Bewegung, und was ausdrücklich nicht gewollt ist.
+1. **Die Antwortkarte (A/B/C)** ist unser wichtigstes Bedienelement. Kategorien, Filter und Knöpfe sehen aus wie Verwandte davon.
+2. **Die Sprechblase** ersetzt Werbezeilen: Jede Situation stellt sich mit dem Satz vor, auf den man reagieren muss.
+3. **Jonas und das Gehirn** kommentieren am Rand: leere Zustände, Fehlerseite, „schon alles gespielt".
 
-Ausgangspunkt für die Farben ist die Palette der Videos (Creme, Navy, Teal, Koralle, Orange).
+## 3. Aussehen
 
-## Phase 2 – Werkzeuge (Claude prüft, du entscheidest)
+**Farbe** (Verteilung 60 / 30 / 10):
+- 60 % ruhige helle Fläche. Kein Creme über die ganze Seite, sondern ein kühles Papierweiß; Creme bleibt den Videos vorbehalten.
+- 30 % Navy für Schrift, Navigation und die Fußzeile.
+- 10 % ein Akzent für alles Klickbare. Kandidat: Teal (Koralle ist in den Videos „Gefahr").
+- Jede Kategorie hat ihre Farbe, aber nur als kleine Markierung und im Vorschaubild.
 
-| Werkzeug | Wofür | Plan |
-| --- | --- | --- |
-| Design-Skill („Impeccable" oder „Taste") | bessere Typografie, Abstände, Details | Verfügbarkeit und Kosten prüfen, dann einbinden |
-| 21st.dev | fertige Bausteine als Vorlage (Navigation, Karten, Filter) | als Ideenquelle nutzen |
-| Higgsfield | erzeugte Bilder | vorerst nicht: Kosten ungeprüft, und unsere eigenen Zeichnungen sind das Erkennungsmerkmal |
+**Schrift:** eine Überschriften-Schrift mit Charakter plus eine gut lesbare Textschrift, beide kostenlos über Google Fonts. Kandidaten: Bricolage Grotesque (Überschrift) und Hanken Grotesk (Text). Ausgeschlossen, weil KI-Standard: Inter, Geist, Space Grotesk, Serifen-Überschriften. Entscheidung fällt in der Entwurfsrunde. Zu prüfen: Die Videos erben die Schrift der Seite und müssen danach noch passen.
 
-Bilder kommen aus den vorhandenen Szenen: Jede Situation bekommt ein Vorschaubild aus ihrer eigenen Zeichnung.
+**Formen:** Trennung durch Abstand und leichte Flächenunterschiede, keine grauen Rahmen um jede Karte. Ein einziger Eckenradius, ein einziger Schatten.
 
-## Phase 3 – Aufbau der Seite (Struktur)
+**Bilder:** nur unsere eigenen Zeichnungen. Jede Situation bekommt ein Vorschaubild aus ihrer Szene (die Figur, der entscheidende Moment). Keine Icon-Sammlung, keine erzeugten Bilder.
+
+**Texte:** deutsch, konkret, wie in den Videos. Verboten: „Entdecke", „Nahtlos", „Jetzt loslegen".
+
+**Bewusst nicht:** Verläufe, Glas-Effekte, Zähler, die hochlaufen, erfundene Nutzerstimmen, Zahlen wie „10.000 Nutzer".
+
+## 4. Aufbau
+
+### Startseite (von oben nach unten)
+
+1. **Erster Bildschirm:** links ein Satz, was das ist („Üb den schwierigen Moment, bevor er echt ist."), rechts eine echte Szene: Frau Brandt fragt nach deiner Gehaltsvorstellung, drei Antwortkarten. Klick → die Figur reagiert, das Gehirn kommentiert, Knopf „Ganze Situation spielen".
+2. **So läuft es ab:** drei Schritte mit je einer kleinen Zeichnung: Schauen · Entscheiden · Verstehen, warum.
+3. **Was willst du üben?** Die Kategorien als große Kacheln mit Figur und Anzahl der Situationen.
+4. **Neu / Empfohlen:** drei Situationskarten.
+5. **Woher wissen wir das?** Ehrlich in drei Sätzen: Studien und Fachbücher, Ausgänge sind „ein möglicher Verlauf". Link zu „Wissen".
+6. Fußzeile.
 
 ### Seiten
 
 | Seite | Adresse | Inhalt |
 | --- | --- | --- |
-| Startseite | `/` | Claim, eine Situation direkt startbar, „So funktioniert's" in drei Schritten, Auswahl nach Kategorie, „Woher wissen wir das?", Fußzeile |
-| Alle Situationen | `/situationen` | Raster mit Filter (Kategorie, Thema) und Suche |
-| Eine Situation | `/s/<name>` | Video, darunter: worum es geht, was man mitnimmt, Quellen, nächste Situation |
-| Kategorie | `/kategorie/<name>` | Situationen einer Kategorie mit kurzer Einleitung |
-| Wissen | `/wissen` und `/wissen/<thema>` | die Prinzipien einzeln erklärt (z. B. „Die erste Zahl"), mit passenden Situationen. Wichtig für Suchmaschinen. |
-| Über | `/ueber` | Idee, Arbeitsweise, Umgang mit Quellen, „ein möglicher Verlauf" |
-| Rechtliches | `/impressum`, `/datenschutz` | Pflicht, sobald die Seite öffentlich ist |
+| Startseite | `/` | siehe oben |
+| Üben | `/ueben` | alle Kategorien untereinander, jede mit ihren Situationen. Oben Filter-Karten nach Fähigkeit. |
+| Kategorie | `/ueben/<kategorie>` | kurze Einleitung, Situationen, dazu passende Prinzipien |
+| Situation | `/s/<name>` | Video groß, darunter: „Das übst du hier", Dauer, Quellen, nächste Situation |
+| Wissen | `/wissen`, `/wissen/<thema>` | jedes Prinzip einzeln, mit Quelle, Stärke und Grenze, und den Situationen dazu |
+| Über | `/ueber` | Idee, Umgang mit Quellen |
+| Rechtliches | `/impressum`, `/datenschutz` | Pflicht vor Veröffentlichung |
+
+### Zwei Wege zum Ziel
+
+- **Nach Lebensbereich:** Job · Geld · Alltag · Dating · Freunde.
+- **Nach Fähigkeit:** Verhandeln · Nein sagen · Betrug erkennen · Ins Gespräch kommen · Geld zurückfordern.
+
+Jede Karte zeigt beides plus Dauer und, falls gespielt, einen Haken mit dem eigenen Ergebnis (im Browser gespeichert, ohne Login).
 
 ### Navigation
 
-- Oben: Logo, Situationen, Kategorien, Wissen, Über, rechts ein Knopf „Zufällige Situation".
-- Auf dem Handy: dasselbe als ausklappbares Menü.
-- Auf jeder Situations-Seite: „Zurück zur Übersicht" und „Nächste Situation".
+Logo · Üben · Wissen · Über · rechts „Zufällige Situation". Auf dem Handy als Leiste unten. Auf Unterseiten eine Pfadzeile („Üben › Job › Das Jahresgespräch").
 
-### Auffindbarkeit
+### Technische Grundlage
 
-- Eine zentrale Liste aller Situationen (`stories/index.ts`) mit Titel, Kategorie, Hook, Dauer, Themen, Farbe und Vorschaubild. Startseite, Übersicht, Kategorie- und Wissensseiten lesen alle aus dieser einen Liste.
-- „Schon gespielt" und das eigene Ergebnis merkt sich der Browser (ohne Login).
-- Die bisherigen Adressen (`/gehalt`, `/wohnung`, `/date`, `/leon`, `/auto`, `/erhoehung`) leiten auf die neuen um.
+Eine zentrale Liste `stories/index.ts`: pro Situation Titel, Kategorie, Fähigkeiten, Einstiegssatz, Dauer, Farbe, Vorschaubild, Prinzipien. Alle Seiten lesen daraus. Eine neue Situation heißt dann: ein Eintrag, und sie erscheint überall. Alte Adressen (`/gehalt` usw.) leiten um.
 
-## Phase 4 – Design in Runden
+## 5. Animationen
 
-1. **Fünf Richtungen für die Startseite**, jeweils mit echtem Inhalt, unter `/entwurf/1` bis `/entwurf/5`. Dazu eine Vergleichsseite, die alle nebeneinander zeigt.
-2. **Du wählst drei.** Claude verfeinert sie nach deinen Anmerkungen.
-3. **Du wählst eine.** Daraus entstehen die festen Bausteine (Navigation, Karte, Knopf, Filter, Fußzeile).
-4. **Ausrollen** auf die übrigen Seiten, Entwürfe löschen.
+| Wo | Was passiert | Zweck |
+| --- | --- | --- |
+| Erster Bildschirm | spielbare Mini-Entscheidung, Figur reagiert | erklärt das Produkt |
+| Situationskarte, Maus darüber | Figur schaut auf und blinzelt, die Sprechblase mit dem Einstiegssatz ploppt auf, Karte hebt sich leicht | macht neugierig |
+| Klick auf Karte | Vorschaubild wächst zur Videobühne | zeigt: gleiche Sache, jetzt groß |
+| Filter wechseln | Karten gleiten an ihren neuen Platz | Orientierung |
+| „So läuft es ab" | die drei Schritte spielen beim Scrollen einmal nacheinander ab | Erklärung |
+| Knöpfe, Antwortkarten | geben beim Drücken kurz nach | Rückmeldung |
+| Situation beendet | Haken wird auf die Karte „gestempelt" | Belohnung |
+| Fehlerseite, leere Liste | Jonas schreibt eine Chat-Nachricht | Humor |
 
-## Phase 5 – Bewegung (sparsam)
+Regeln: Jede Animation hat einen Zweck aus der rechten Spalte. Nicht jede Sektion blendet gleich ein. Wer im System „weniger Bewegung" eingestellt hat, bekommt keine.
 
-- Karten heben sich beim Überfahren leicht an; die Figur im Vorschaubild blinzelt oder schaut auf.
-- Knöpfe reagieren beim Drücken.
-- Abschnitte blenden beim Scrollen einmal dezent ein.
-- Der Filter sortiert sichtbar um, statt hart zu springen.
-- Wer im System „weniger Bewegung" eingestellt hat, bekommt keine Animationen.
+## 6. Werkzeuge und Kosten
 
-## Phase 6 – Qualität
+Alles kostenlos: Next.js, Tailwind, GSAP (vorhanden), Google Fonts, Vercel für die Veröffentlichung. Keine Bild-KI. Optional: der kostenlose Vercel-Skill für Seitenübergänge. Der Design-Skill „Impeccable" aus dem Video ist ungeprüft und nicht nötig.
 
-- Handy, Tablet, Desktop. Offene Frage: Die Videos sind Querformat; auf dem Handy entweder Hinweis „bitte drehen" oder eine angepasste Darstellung.
-- Ladezeit: Ton und Zeichnungen einer Situation erst laden, wenn sie gestartet wird.
-- Bedienbar mit Tastatur, lesbare Kontraste.
-- Titel, Beschreibung und Vorschaubild für jede Seite (Suchmaschinen, Teilen).
-- `npm run test:stories`, Typprüfung, Lint und Build bleiben grün.
+## 7. Reihenfolge
 
-## Phase 7 – Veröffentlichen
+1. **Fundament** (unsichtbar): zentrale Liste, neue Adressen, Umleitungen, Vorschaubilder aus den Szenen.
+2. **Design-Brief** `docs/DESIGN.md`: Farben, Schrift, Abstände, Animations-Zeiten, Verbotsliste. Schutz davor, dass spätere Seiten wieder nach Standard aussehen.
+3. **Drei Entwürfe** des ersten Bildschirms plus Karte, mit echtem Inhalt, nebeneinander auf einer Vergleichsseite. Paul wählt einen.
+4. **Startseite** komplett.
+5. **Üben, Kategorie, Situation.**
+6. **Wissen, Über.**
+7. **Animationen** aus Abschnitt 5.
+8. **Prüfung:** Handy, Tastatur, Kontraste, Ladezeit, Codex liest gegen.
+9. **Rechtliches, Veröffentlichung.**
 
-- Vercel (kostenlos). Eigene Adresse später.
-- Vor dem Veröffentlichen: Impressum und Datenschutz, Hinweis „Stimmen: ElevenLabs" bleibt.
-- Der kostenlose ElevenLabs-Tarif erlaubt keine kommerzielle Nutzung. Solange nichts verkauft wird, ist das unkritisch; vor einem Prep Pack müsste der Tarif gewechselt oder neu vertont werden.
+## 8. Risiken
 
-## Bewusst nicht in dieser Runde
+- **Zu wenig Inhalt:** Mit sechs Situationen hat fast jede Kategorie nur eine. Kategorien wirken dann leer. Vor Veröffentlichung zwei bis drei pro Kategorie anpeilen; bis dahin zeigt `/ueben` alles auf einer Seite.
+- **Handy:** Die Videos sind Querformat. Günstig: Hinweis „Handy drehen". Aufwendig: eigene Hochkant-Darstellung.
+- **ElevenLabs kostenlos** erlaubt keine kommerzielle Nutzung. Solange nichts verkauft wird, unkritisch.
 
-Login, Bezahlung, Vergleich mit anderen Spielern, Statistik, Newsletter, Social Clips.
+## 9. Bewusst nicht in dieser Runde
 
-## Reihenfolge
+Login, Bezahlung, Vergleich mit anderen Spielern, Statistik, Newsletter, Suche (lohnt erst ab etwa 20 Situationen).
 
-1. Du: Vorbilder sammeln, offene Fragen beantworten.
-2. Claude: Design-Brief, zentrale Situations-Liste, neue Adressen (ohne sichtbare Änderung).
-3. Claude: fünf Startseiten-Entwürfe. Du: Auswahl in zwei Runden.
-4. Claude: Bausteine, alle Seiten, Bewegung.
-5. Gemeinsam: Handy-Test, Texte, Rechtliches. Dann veröffentlichen.
+## 10. Offene Fragen an Paul
 
-Codex prüft nach Schritt 4: Struktur, Fehler, Bedienbarkeit.
+1. Handy: reicht zum Start „bitte drehen"?
+2. Name: bleibt „Decision Platform" als Arbeitstitel? Der Claim wird deutsch.
 
-## Offene Fragen an dich
+## Quellen
 
-1. Name der Plattform (bisher „Decision Platform") und Claim („Make the mistake here. Not in real life." oder deutsch)?
-2. Hell wie die Videos oder dunkel?
-3. Nur Deutsch?
-4. Wie wichtig ist das Handy zum Start?
-5. Hast du schon konkrete Seiten im Kopf, die dir gefallen?
+- https://github.com/funboy322/avoid-ai-design (Merkmale von KI-Design)
+- https://www.925studios.co/blog/ai-slop-web-design-guide
+- https://unbounce.com/landing-page-articles/landing-page-best-practices/
+- https://www.nngroup.com/articles/filter-categories-values/
+- https://rive.app/blog/how-brilliant-org-motivates-learners-with-rive-animations
+- https://ustwo.com/work/brilliant/
+- `node_modules/next/dist/docs/01-app/02-guides/view-transitions.md`
+- https://www.youtube.com/watch?v=7FU98O0JLHs (Vorgehen in Runden)
+
+Die Web-Quellen wurden nur als Such-Zusammenfassung gelesen, nicht vollständig.
