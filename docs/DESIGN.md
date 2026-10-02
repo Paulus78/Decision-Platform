@@ -2,7 +2,7 @@
 
 Stand: 2026-10-02 · Gilt für alle Seiten außerhalb der Videos. Für die Videos gilt `docs/STILGUIDE.md`.
 
-Zweck: Jede neue Seite wird gegen diese Regeln gebaut, damit nichts in Standard-Optik zurückfällt. Punkte mit **(offen)** entscheidet Paul in der Entwurfsrunde.
+Zweck: Jede neue Seite wird gegen diese Regeln gebaut, damit nichts in Standard-Optik zurückfällt. Akzentfarbe und Schriften sind seit dem ersten Bau der Startseite umgesetzt; Paul kann sie noch kippen.
 
 ## 1. Leitidee
 
@@ -21,9 +21,10 @@ Verteilung 60 / 30 / 10.
 | Rolle | Farbe | Einsatz |
 | --- | --- | --- |
 | Fläche | `#f4f6f9` (kühles Papierweiß), Karten `#ffffff` | Hintergrund |
+| Markierung | `#f2a33a` (Orange) | gewählte Antwortkarte, Play-Knopf, Stärke-Schild auf Navy |
 | Tinte | `#1e294b` (Navy dunkel) | Schrift, Navigation, Fußzeile |
 | Tinte leise | `#55607f` | Nebentexte. Kontrast auf Fläche mindestens 4,5:1. |
-| Akzent **(offen)** | `#2f9e8f` (Teal) | nur Klickbares: Knöpfe, Links, aktive Filter |
+| Akzent | `#2f9e8f` (Teal) | nur Klickbares: Knöpfe, Links, aktive Filter |
 | Warnung | `#ef6f5e` (Koralle) | nur Fehler und Gefahr, nie Dekoration |
 | Bühne | `#f6e7cf` (Creme) | nur innerhalb der Vorschaubilder und Videos |
 
@@ -33,11 +34,11 @@ Neue Farbtöne sind nicht erlaubt. Abstufungen entstehen durch Aufhellen oder Ab
 
 ## 3. Schrift
 
-- Überschriften **(offen)**: Bricolage Grotesque, fett. Text: Hanken Grotesk. Beide kostenlos über `next/font/google`.
+- Überschriften: Bricolage Grotesque, fett. Text: Hanken Grotesk. Beide kostenlos über `next/font/google`.
 - Nicht verwenden: Inter, Geist, Space Grotesk, Serifen-Überschriften.
 - Größen auf einer Leiter mit Faktor 1,25: 16 · 20 · 25 · 31 · 39 · 49 · 61 px. Fließtext mindestens 16 px, Zeilenlänge 60 bis 80 Zeichen.
 - Keine gesperrten Großbuchstaben-Zeilen als Dekoration. Kleine Hinweise in normaler Schreibweise.
-- Die Videos erben die Schrift der Seite. Nach dem Wechsel alle sechs Videos auf Umbrüche prüfen.
+- Die Videos behalten ihre bisherige Schrift (Geist, gesetzt an der Bühne in `components/explainer/ui.tsx`), damit dort keine Zeile anders umbricht.
 
 ## 4. Formen und Abstände
 
@@ -92,7 +93,13 @@ Neue Farbtöne sind nicht erlaubt. Abstufungen entstehen durch Aufhellen oder Ab
 - Klickflächen mindestens 44 × 44 px.
 - Handy im Prototyp: Seiten funktionieren hochkant, das Video zeigt den Hinweis „Bitte Handy drehen".
 
-## 10. Prüfung vor jeder neuen Seite
+## 10. Wo was liegt
+
+- Farben, Schatten, Schriften als Tailwind-Namen (`bg-page`, `text-navy`, `text-mute`, `bg-teal`, `shadow-card`, `font-display`): `app/globals.css`.
+- Bausteine: `components/site/` (Header, Footer, SituationCard, CategoryTile, CategoryTabs, Browse, HeroDemo, Reveal).
+- Screenshots zum Prüfen: Edge ohne Fenster, z. B. `msedge --headless --window-size=1280,1500 --virtual-time-budget=9000 --screenshot=datei.png http://localhost:3100/`.
+
+## 11. Prüfung vor jeder neuen Seite
 
 - [ ] Nur Farben, Abstände, Radien und Schatten aus diesem Dokument
 - [ ] Kein Punkt aus der Verbotsliste

@@ -1,5 +1,7 @@
 "use client";
 
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
 import { CallScene } from "@/components/explainer/art";
 import { ParkingScene } from "@/components/explainer/auto-art";
 import { DateScene } from "@/components/explainer/date-art";
@@ -79,8 +81,21 @@ function scene(slug: string) {
 }
 
 export default function Thumb({ slug, className }: { slug: string; className?: string }) {
+  const ref = useRef<SVGSVGElement>(null);
+
+  // Die Szenen fahren im Film von außen herein. Als Vorschaubild sollen sie sofort fertig dastehen.
+  useLayoutEffect(() => {
+    const svg = ref.current;
+    if (!svg) return;
+    for (const tween of gsap.globalTimeline.getChildren(true, true, false)) {
+      const inside = (tween.targets() as Element[]).some((target) => svg.contains(target));
+      if (inside) tween.progress(1);
+    }
+  }, [slug]);
+
   return (
     <svg
+      ref={ref}
       viewBox="0 0 1600 900"
       className={className}
       style={{ background: "#f6e7cf" }}

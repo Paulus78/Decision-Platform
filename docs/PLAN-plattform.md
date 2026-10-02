@@ -115,6 +115,12 @@ Alles kostenlos: Next.js, Tailwind, GSAP (vorhanden), Google Fonts, Vercel für 
 8. **Prüfung:** Handy, Tastatur, Kontraste, Ladezeit, Codex liest gegen.
 9. **Rechtliches, Veröffentlichung.**
 
+## Stand 2026-10-02
+
+Erledigt: Schritte 1, 2, 4 und 5 (Startseite, `/ueben`, `/ueben/<kategorie>`, `/s/<slug>`, Fehlerseite) sowie die Animationen Mini-Entscheidung, Karten-Sprechblase, Stapel-Fächer, Ablauf beim Scrollen, Knopfdruck, Übergang Karte zu Bühne. Schritt 3 (drei Entwürfe) wurde auf Pauls Wunsch übersprungen: eine Richtung direkt gebaut. Name: Generalprobe.
+
+Offen: Wissen- und Über-Seite, „schon gespielt"-Haken, Filter nach Fähigkeit, Rechtliches, Veröffentlichung, Gegenlesen durch Codex.
+
 ## 8. Risiken
 
 - **Zu wenig Inhalt:** Mit sechs Situationen hat fast jede Kategorie nur eine. Kategorien wirken dann leer. Vor Veröffentlichung zwei bis drei pro Kategorie anpeilen; bis dahin zeigt `/ueben` alles auf einer Seite.

@@ -168,13 +168,13 @@ export function Stage({
   }
 
   return (
-    <main
+    <section
       ref={frame}
-      className="flex h-dvh w-full items-center justify-center overflow-hidden bg-[#1e294b]"
+      className="stage flex h-[var(--stage-h,100dvh)] w-full items-center justify-center overflow-hidden bg-[#1e294b] font-[family-name:var(--font-geist-sans)]"
     >
       <div
         onClick={onSkip}
-        className="relative aspect-video w-full max-w-[177.78dvh] overflow-clip bg-[#f6e7cf] text-[#33273b] [container-type:size]"
+        className="relative aspect-video w-full max-w-[calc(var(--stage-h,100dvh)*1.7778)] overflow-clip bg-[#f6e7cf] text-[#33273b] [container-type:size]"
       >
         {children}
         {controls && (
@@ -216,7 +216,7 @@ export function Stage({
           </>
         )}
       </div>
-    </main>
+    </section>
   );
 }
 
@@ -291,7 +291,7 @@ export function EndCard({
           Nochmal spielen
         </button>
         <Link
-          href="/"
+          href="/ueben"
           onClick={(e) => e.stopPropagation()}
           className="rounded-full border-[0.2cqw] border-white/50 px-[3.4cqw] py-[1.4cqw] text-[2cqw] font-bold text-white hover:border-[#f2a33a]"
         >

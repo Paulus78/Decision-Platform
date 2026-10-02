@@ -1,17 +1,79 @@
 @import "tailwindcss";
 
+/* Farben, Schriften und Schatten nach docs/DESIGN.md.
+   ink, accent, paper gehören zu den alten Versionen unter /v1 und /text. */
 @theme inline {
   --color-ink: #0b0f1a;
   --color-accent: #d7ff3f;
   --color-paper: #f4f1ea;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-page: #f4f6f9;
+  --color-navy: #1e294b;
+  --color-mute: #55607f;
+  --color-teal: #2f9e8f;
+  --color-tealdark: #237a6e;
+  --color-coral: #ef6f5e;
+  --color-sun: #f2a33a;
+  --color-creme: #f6e7cf;
+
+  --font-sans: var(--font-text);
+  --font-display: var(--font-display);
+  --font-mono: ui-monospace, monospace;
+
+  --shadow-card: 0 8px 24px rgb(30 41 75 / 0.08);
+  --shadow-lift: 0 14px 32px rgb(30 41 75 / 0.14);
 }
 
 body {
-  background: #000;
-  color: #fff;
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background: #f4f6f9;
+  color: #1e294b;
+  font-family: var(--font-text), Arial, Helvetica, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid #2f9e8f;
+  outline-offset: 2px;
+}
+
+/* Film-Bühne: Höhe kommt von der Seite, im Vollbild der ganze Bildschirm. */
+.stage:fullscreen { --stage-h: 100dvh; }
+
+/* Auftritt wie die Sprechblasen in den Filmen */
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.8) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.pop-in { animation: pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+/* Abschnitte, die beim Scrollen einmal nacheinander erscheinen */
+.reveal > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+}
+.reveal.in > * { opacity: 1; transform: none; }
+.reveal.in > *:nth-child(2) { transition-delay: 0.18s; }
+.reveal.in > *:nth-child(3) { transition-delay: 0.36s; }
+
+/* Knöpfe und Reiter geben beim Drücken kurz nach */
+.press { transition-property: color, background-color, transform; transition-duration: 150ms; }
+.press:active { transform: scale(0.96); }
+
+/* Stapel in den Kategorie-Kacheln: fächert sich beim Überfahren auf */
+.pile { transform: translate(var(--x), calc(var(--x) * -0.5)) rotate(var(--r)); }
+.group:hover .pile {
+  transform: translate(calc(var(--x) * 2.2), calc(var(--x) * -0.9)) rotate(calc(var(--r) * 2.2)) scale(1.04);
+}
+
+/* Übergang: Vorschaubild wächst zur Film-Bühne */
+::view-transition-group(.morph) { animation-duration: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal > * { opacity: 1; transform: none; }
 }
 
 /* Tonspur-Balken im Anruf */
