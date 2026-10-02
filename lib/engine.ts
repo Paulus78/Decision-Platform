@@ -2,6 +2,8 @@ import type { Beat, Ending, Line, Option, Story } from "./story";
 
 export type State = {
   offer: number;
+  // Zweite Zahl, die manche Situationen mitzählen (z. B. "Freundschaft").
+  second: number;
   flags: string[];
   // Vorlage für die Anzeige "Zahl auf dem Tisch", z. B. "{offer} € · ihr Angebot"
   table: string;
@@ -16,6 +18,7 @@ export type LogEntry =
 
 export const initialState: State = {
   offer: 0,
+  second: 0,
   flags: [],
   table: "— €",
   choices: {},
@@ -90,15 +93,18 @@ export function choose(
   // Bedingungen prüfen wir gegen den Stand vor der Entscheidung.
   const before = state;
   let offer = state.offer;
+  let second = state.second;
   const flags = [...state.flags];
   for (const effect of option.effects ?? []) {
     if (!matches(effect, before)) continue;
     if (effect.set !== undefined) offer = effect.set;
     if (effect.add !== undefined) offer += effect.add;
+    if (effect.add2 !== undefined) second += effect.add2;
     if (effect.flag && !flags.includes(effect.flag)) flags.push(effect.flag);
   }
   const next: State = {
     offer,
+    second,
     flags,
     table: option.table ?? state.table,
     choices: { ...state.choices, [decision.id]: option.id },
@@ -113,7 +119,9 @@ export function pickEnding(story: Story, state: State): Ending {
   const found = story.endings.find((ending) =>
     ending.when.some(
       (w) =>
-        state.offer >= w.minOffer && (!w.flag || state.flags.includes(w.flag)),
+        state.offer >= w.minOffer &&
+        (!w.flag || state.flags.includes(w.flag)) &&
+        (w.minSecond === undefined || state.second >= w.minSecond),
     ),
   );
   return found ?? story.endings[story.endings.length - 1];

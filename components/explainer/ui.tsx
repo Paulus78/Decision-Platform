@@ -133,10 +133,12 @@ export function Poster({
 export function EndCard({
   kicker,
   disclaimer,
+  credit = "Stimmen: ElevenLabs",
   onReplay,
 }: {
   kicker: string;
   disclaimer: string;
+  credit?: string;
   onReplay: () => void;
 }) {
   return (
@@ -164,7 +166,7 @@ export function EndCard({
         </Link>
       </div>
       <p className="max-w-[60cqw] text-[1.3cqw] text-white/50">{disclaimer}</p>
-      <p className="text-[1.1cqw] text-white/40">Stimmen: ElevenLabs</p>
+      <p className="text-[1.1cqw] text-white/40">{credit}</p>
     </Overlay>
   );
 }
@@ -355,7 +357,9 @@ export function Decision({
               {option.id}
             </span>
             <span className="text-[2.3cqw] font-bold leading-[1.2]">
-              „{fill(option.text, state)}“
+              {option.text.startsWith("(")
+                ? option.text.slice(1, -1)
+                : `„${fill(option.text, state)}“`}
             </span>
           </button>
         ))}

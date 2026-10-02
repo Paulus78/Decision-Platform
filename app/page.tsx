@@ -22,6 +22,13 @@ const SITUATIONS = [
     hook: "Drei Wochen geschrieben. Jetzt sitzt ihr euch gegenüber, und dein Gehirn dreht durch.",
     color: "#8b6fc0",
   },
+  {
+    href: "/leon",
+    category: "Freunde",
+    title: "500 € für Leon",
+    hook: "„Kriegst du nächste Woche zurück, safe.“ Drei Wochen später postet er Festival-Fotos.",
+    color: "#f2a33a",
+  },
 ];
 
 export default function Home() {
@@ -33,7 +40,7 @@ export default function Home() {
         </p>
         <h1 className="mt-2 text-5xl font-black">Was würdest du tun?</h1>
       </div>
-      <div className="flex w-full max-w-6xl flex-col gap-6 md:flex-row">
+      <div className="grid w-full max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
         {SITUATIONS.map((s) => (
           <Link
             key={s.href}

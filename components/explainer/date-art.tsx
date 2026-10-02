@@ -35,7 +35,7 @@ function Lena({ mood, talking }: { mood: Mood; talking: boolean }) {
 }
 
 // Dein Gehirn: klein, rosa, dauerhaft in Panik.
-function Brain({ talking }: { talking: boolean }) {
+export function Brain({ talking }: { talking: boolean }) {
   const ref = useRef<SVGGElement>(null);
   useGSAP(() => {
     gsap.from(ref.current, {

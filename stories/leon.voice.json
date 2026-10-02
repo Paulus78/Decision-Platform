@@ -1,0 +1,43 @@
+{
+  "voices": {
+    "narrator": {
+      "name": "Puck",
+      "style": "Deutsch. Lockerer, sympathischer Erzähler eines unterhaltsamen Erklärvideos. Zügiges Tempo, leicht verschmitzt, nie belehrend.",
+      "elevenlabs": "JBFqnCBsd6RMkjVDRZzb"
+    },
+    "gehirn": {
+      "name": "Fenrir",
+      "style": "Deutsch. Panische, gehetzte innere Stimme. Schnell, halb geflüstert, komisch übertrieben.",
+      "elevenlabs": "TX3LPaxmHKxFdv7VOQHJ"
+    }
+  },
+  "lines": [
+    { "id": "f1", "voice": "narrator", "text": "Das ist Leon. Dein Freund seit der siebten Klasse. Herzensguter Typ. Finanziell eher Freestyle." },
+    { "id": "g1", "voice": "gehirn", "text": "Fünfhundert. Das ist unser Urlaub. Aber es ist Leon!" },
+    { "id": "p1", "voice": "narrator", "text": "Fünfhundert Euro unter Freunden. Was schreibst du?" },
+    { "id": "d1Ag", "voice": "gehirn", "text": "Kein Datum, kein Plan. Was soll schon schiefgehen." },
+    { "id": "d1Bg", "voice": "gehirn", "text": "Ein Datum! Wir sind praktisch eine Bank." },
+    { "id": "d1Cg", "voice": "gehirn", "text": "Zweihundert. Der Kompromiss, bei dem beide unzufrieden sind." },
+    { "id": "n_s2", "voice": "narrator", "text": "Drei Wochen später. Kein Geld. Dafür: Leons neue Story." },
+    { "id": "g2", "voice": "gehirn", "text": "Festival. FESTIVAL! Von unserem Geld?", "say": "Festival. Festival! Von unserem Geld?" },
+    { "id": "p2", "voice": "narrator", "text": "Er feiert. Du wartest. Was schreibst du?" },
+    { "id": "d2Ag", "voice": "gehirn", "text": "Wir sagen nichts. Wir sind nur innerlich sehr laut." },
+    { "id": "d2Bg", "voice": "gehirn", "text": "Direkt gefragt. Und niemand ist gestorben." },
+    { "id": "d2Cg", "voice": "gehirn", "text": "Öffentlich. Vor allen. Mutig. Oder dumm." },
+    { "id": "n_s3", "voice": "narrator", "text": "Am nächsten Tag meldet sich Leon." },
+    { "id": "g3", "voice": "gehirn", "text": "Nur hundert. Und die Gegenfrage gratis dazu." },
+    { "id": "p3", "voice": "narrator", "text": "Letzte Entscheidung. Was schreibst du?" },
+    { "id": "d3Ag", "voice": "gehirn", "text": "Passt schon. Der teuerste Satz der deutschen Sprache." },
+    { "id": "d3Bg", "voice": "gehirn", "text": "Raten. Erwachsen. Fast schon unheimlich." },
+    { "id": "d3Cg", "voice": "gehirn", "text": "Ein Ultimatum. Unter Freunden. Na dann." },
+    { "id": "e_weg", "voice": "narrator", "text": "Geld weg, Freund noch da. Großzügig. Aber beim nächsten Mal fragt er wieder." },
+    { "id": "e_gut", "voice": "narrator", "text": "Geld zurück, Freund behalten. Unangenehm war es nur kurz." },
+    { "id": "e_funk", "voice": "narrator", "text": "Geld zurück, Funkstille. Du hast dein Geld. Leon meldet sich erst mal nicht mehr." },
+    { "id": "r0", "voice": "narrator", "text": "Was ist da gerade passiert? Drei Dinge." },
+    { "id": "r1", "voice": "narrator", "text": "Erstens: Vorher klären. Betrag und Datum nehmen euch später den Streit." },
+    { "id": "r2", "voice": "narrator", "text": "Zweitens: Früh und direkt fragen. Wer leiht, erinnert sich anders als der, der schuldet." },
+    { "id": "r3", "voice": "narrator", "text": "Drittens: Raten statt Ultimatum. So kommt dein Geld zurück, und der Freund bleibt." },
+    { "id": "s1", "voice": "narrator", "text": "So hätte es auch laufen können: Datum ausmachen, direkt nachfragen, Raten anbieten." },
+    { "id": "out", "voice": "narrator", "text": "Das war nur ein möglicher Verlauf. Probier es ruhig noch mal." }
+  ]
+}

@@ -20,6 +20,8 @@ export type Line = Condition & {
 export type Effect = Condition & {
   set?: number;
   add?: number;
+  // Verändert die zweite Zahl (z. B. "Freundschaft").
+  add2?: number;
   flag?: string;
 };
 
@@ -49,7 +51,7 @@ export type Ending = {
   text: string;
   jonas: string;
   // Mindestens eine der Bedingungen muss passen.
-  when: { minOffer: number; flag?: string }[];
+  when: { minOffer: number; flag?: string; minSecond?: number }[];
 };
 
 export type Story = {
@@ -60,6 +62,8 @@ export type Story = {
   goal: number;
   // Startwert der Zahl, die die Situation mitzählt (Standard: 0).
   start?: number;
+  // Startwert einer zweiten Zahl, falls die Situation zwei Dinge mitzählt.
+  start2?: number;
   characters: Record<string, string>;
   intro: string[];
   beats: Beat[];
