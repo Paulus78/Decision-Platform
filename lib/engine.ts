@@ -10,7 +10,9 @@ export type State = {
 
 export type LogEntry =
   | { kind: "scene"; title: string; time: string }
-  | { kind: "line"; line: Line };
+  | { kind: "line"; line: Line }
+  // Ab hier zeigt die Anzeige "Zahl auf dem Tisch" diese Vorlage.
+  | { kind: "table"; table: string };
 
 export const initialState: State = {
   offer: 0,
@@ -58,7 +60,10 @@ export function advance(
       entries.push({ kind: "scene", title: beat.title, time: beat.time });
       continue;
     }
-    if (beat.table) state = { ...state, table: beat.table };
+    if (beat.table) {
+      state = { ...state, table: beat.table };
+      entries.push({ kind: "table", table: beat.table });
+    }
     for (const line of beat.lines) {
       if (matches(line, state)) entries.push(toEntry(line, state));
     }

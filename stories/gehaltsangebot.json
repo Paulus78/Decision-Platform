@@ -68,7 +68,7 @@
       "type": "lines",
       "table": "{offer} € · ihr Angebot",
       "lines": [
-        { "from": "brandt", "channel": "mail", "text": "Betreff: Ihr Angebot – Novara GmbH. Wir freuen uns, Ihnen ein Jahresgehalt von {offer} € anbieten zu können. Unser Budget für die Stelle ist damit leider ausgeschöpft." },
+        { "from": "brandt", "channel": "mail", "subject": "Ihr Angebot – Novara GmbH", "text": "Wir freuen uns, Ihnen ein Jahresgehalt von {offer} € anbieten zu können. Unser Budget für die Stelle ist damit leider ausgeschöpft." },
         { "from": "jonas", "channel": "chat", "text": "{offer}?? Bro. Ich krieg 41. NIMM." }
       ]
     },

@@ -174,3 +174,21 @@ Handy-Rahmen · Intro-Karten · Eingehender Anruf · Anruf-Ansicht mit Sprechbla
 ### Offene Entscheidungen
 
 - Arbeitsteilung mit Codex (z. B. Claude baut, Codex prüft und spielt gegen)
+
+---
+
+## 4. Stand der Umsetzung (2026-10-02)
+
+Format-Entscheidung: Die Situation läuft als **animiertes Video im Browser** (Hochformat 9:16), das an drei Stellen pausiert und eine Entscheidung verlangt. Es ist keine Videodatei, sondern live animiert (GSAP), damit Texte und Beträge ohne neues Rendern änderbar bleiben.
+
+| Was | Wo |
+| --- | --- |
+| Story (einzige Quelle) | `stories/gehaltsangebot.json` |
+| Logik (Beträge, Bedingungen, Enden) | `lib/engine.ts`, `lib/story.ts` |
+| Video-Player (Ablauf, Pausen, Entscheidungen) | `components/video/VideoPlayer.tsx` |
+| Szenen und Animationen | `components/video/scenes.tsx` |
+| Textversion zum Testen | `/text` (`components/TextPlayer.tsx`) |
+
+Bedienung: Ein Tipp aufs Bild springt zur nächsten Einstellung.
+
+Noch offen: Sound, Feinschliff am Timing, Veröffentlichung (Vercel), Community-Vergleich (Supabase), Social Clip (HyperFrames – nutzt ebenfalls GSAP, die Animationen lassen sich deshalb später übernehmen).

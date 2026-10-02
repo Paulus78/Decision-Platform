@@ -9,6 +9,7 @@ export type Line = Condition & {
   from: string;
   channel: Channel;
   text: string;
+  subject?: string;
 };
 
 // set/add verändern das aktuelle Angebot, flag merkt sich etwas (z. B. "accepted").

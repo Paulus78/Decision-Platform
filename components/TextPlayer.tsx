@@ -83,7 +83,7 @@ export default function TextPlayer({ story }: { story: Story }) {
               · {entry.time}
             </span>
           </h2>
-        ) : (
+        ) : entry.kind === "table" ? null : (
           <p key={i} className={entry.line.from === "du" ? "text-right" : ""}>
             <span className="block text-xs opacity-60">
               {story.characters[entry.line.from]} ·{" "}
