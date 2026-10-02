@@ -32,7 +32,6 @@ export function Logo({ dark }: { dark?: boolean }) {
 }
 
 const LINKS = [
-  { href: "/serie", label: "Serie" },
   { href: "/ueben", label: "Üben" },
   { href: "/#kategorien", label: "Kategorien" },
   { href: "/#quellen", label: "Quellen" },
@@ -55,9 +54,6 @@ export default function Header() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-1 md:ml-0">
-          <Link href="/serie" className="rounded-[14px] px-2.5 py-2.5 font-semibold text-white md:hidden">
-            Serie
-          </Link>
           <Link href="/ueben" className="rounded-[14px] px-2.5 py-2.5 font-semibold text-white md:hidden">
             Üben
           </Link>

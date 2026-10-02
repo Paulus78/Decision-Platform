@@ -2,6 +2,8 @@
 
 Stand: 2026-10-02 · Adresse: `/serie` · Status: Prototyp mit einer Staffel („Das Angebot", drei Folgen)
 
+**Ergebnis: von Paul verworfen (2026-10-02).** Die Serie verpackt denselben Inhalt nur anders; der Moment des Spielens selbst bleibt zu wenig spannend. Die Seite `/serie` existiert noch, ist aber nirgends mehr verlinkt.
+
 ## Warum
 
 Der Katalog aus sechs Filmen gibt keinen Grund wiederzukommen und fühlt sich wie eine Schulung an. Die Serie dreht das um: klein, regelmäßig, offen am Ende.
