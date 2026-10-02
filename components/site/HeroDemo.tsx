@@ -3,57 +3,182 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CallScene, type Mood } from "@/components/explainer/art";
-import { Brain } from "@/components/explainer/date-art";
+import { ParkingScene } from "@/components/explainer/auto-art";
+import { Brain, DateScene } from "@/components/explainer/date-art";
 
-// Der erste Bildschirm ist eine spielbare Entscheidung: die erste aus
-// „Das Angebot“ (Texte aus stories/gehaltsangebot.json), ohne Ton.
-// Ablauf: Frage → deine Antwort → ihre Reaktion → Kommentar vom Gehirn.
+// Der erste Bildschirm ist eine spielbare Entscheidung, ohne Ton.
+// Drei Situationen wechseln sich ab, bis jemand selbst klickt.
+// Ablauf: Frage → deine Antwort → Reaktion → Kommentar vom Gehirn.
 // Die Auflösung gibt es bewusst erst im Film.
+// Fragen, Antworten und Reaktionen stammen aus der ersten Entscheidung der jeweiligen Story-Datei.
 
 type Answer = {
   id: string;
   text: string;
   reply: string;
   you: Mood;
-  brandt: Mood;
+  other: Mood;
   brain: string;
 };
 
-const QUESTION = "Bevor ich das Angebot fertig mache: Was hatten Sie sich gehaltlich vorgestellt?";
+type Demo = {
+  slug: string;
+  tab: string;
+  who: string;
+  question: string;
+  // Ab welcher Höhe der Zeichnung der Ausschnitt beginnt (knapp über den Köpfen).
+  top: number;
+  answers: Answer[];
+};
 
-const ANSWERS: Answer[] = [
+const DEMOS: Demo[] = [
   {
-    id: "A",
-    text: "57.500 €.",
-    reply: "Oh. Okay. Das liegt über dem, was wir eingeplant hatten. Ich spreche mit dem Fachbereich.",
-    you: "happy",
-    brandt: "surprised",
-    brain: "Wir haben eine Zahl gesagt. Laut. Und wir leben noch.",
+    slug: "gehaltsangebot",
+    tab: "Gehalt",
+    who: "Frau Brandt, HR",
+    question: "Bevor ich das Angebot fertig mache: Was hatten Sie sich gehaltlich vorgestellt?",
+    top: 230,
+    answers: [
+      {
+        id: "A",
+        text: "57.500 €.",
+        reply: "Oh. Okay. Das liegt über dem, was wir eingeplant hatten. Ich spreche mit dem Fachbereich.",
+        you: "happy",
+        other: "surprised",
+        brain: "Wir haben eine Zahl gesagt. Laut. Und wir leben noch.",
+      },
+      {
+        id: "B",
+        text: "Zwischen 50.000 und 56.000 €.",
+        reply: "50.000, das nehme ich mal so mit.",
+        you: "worried",
+        other: "happy",
+        brain: "Sie hat nur „50.000“ gehört. Den Rest hätten wir uns sparen können.",
+      },
+      {
+        id: "C",
+        text: "Was zahlen Sie denn?",
+        reply: "Wir liegen bei 46.000 bis 50.000 €, je nach Erfahrung.",
+        you: "surprised",
+        other: "neutral",
+        brain: "Jetzt steht ihre Zahl im Raum. Nicht unsere.",
+      },
+    ],
   },
   {
-    id: "B",
-    text: "Zwischen 50.000 und 56.000 €.",
-    reply: "50.000, das nehme ich mal so mit.",
-    you: "worried",
-    brandt: "happy",
-    brain: "Sie hat nur „50.000“ gehört. Den Rest hätten wir uns sparen können.",
+    slug: "erstes-date",
+    tab: "Erstes Date",
+    who: "Lena",
+    question: "Ich bin Tierärztin. Heute hatte ich einen Papagei, der mich beleidigt hat.",
+    top: 240,
+    answers: [
+      {
+        id: "A",
+        text: "Krass. Also bei mir im Büro …",
+        reply: "Aha. Spannend.",
+        you: "worried",
+        other: "neutral",
+        brain: "Vier Minuten Excel. Sie zählt die Eiswürfel.",
+      },
+      {
+        id: "B",
+        text: "Was hat der Papagei gesagt?",
+        reply: "Er hat „Du schon wieder“ gesagt. Ich habe mich noch nie so ertappt gefühlt.",
+        you: "happy",
+        other: "happy",
+        brain: "Sie lacht. SIE LACHT. Weiter so!",
+      },
+      {
+        id: "C",
+        text: "Ganz schön kalt geworden, oder?",
+        reply: "Ja. Herbst halt.",
+        you: "worried",
+        other: "neutral",
+        brain: "Herbst halt. Wir sind erledigt.",
+      },
+    ],
   },
   {
-    id: "C",
-    text: "Was zahlen Sie denn?",
-    reply: "Wir liegen bei 46.000 bis 50.000 €, je nach Erfahrung.",
-    you: "surprised",
-    brandt: "neutral",
-    brain: "Jetzt steht ihre Zahl im Raum. Nicht unsere.",
+    slug: "autoverkauf",
+    tab: "Autoverkauf",
+    who: "Alex, der Käufer",
+    question: "Fährt sich gut. Aber die Reifen sind bald fällig. Ich gebe dir 5.800.",
+    top: 270,
+    answers: [
+      {
+        id: "A",
+        text: "Ich dachte eher an 6.500.",
+        reply: "Puh. Da liegen wir weit auseinander. Na gut: 6.200.",
+        you: "happy",
+        other: "worried",
+        brain: "Von 5.800 auf 6.200. Mit einem einzigen Satz.",
+      },
+      {
+        id: "B",
+        text: "Wie kommst du auf 5.800?",
+        reply: "Reifen, Ummelden, Versicherung. Das kostet alles. Sagen wir 6.000.",
+        you: "neutral",
+        other: "neutral",
+        brain: "Er hat sich gerade selbst hochgehandelt. Wir haben nur gefragt.",
+      },
+      {
+        id: "C",
+        text: "Die Inspektion ist frisch gemacht.",
+        reply: "Stimmt, das spart mir die Werkstatt. Dann 6.100.",
+        you: "happy",
+        other: "neutral",
+        brain: "Ein Argument, 300 Euro. Das merken wir uns.",
+      },
+    ],
   },
 ];
 
-// 0 Frage, 1 deine Antwort, 2 ihre Reaktion, 3 Gehirn und Knopf
+// Wie lange eine Situation stehen bleibt, bevor die nächste kommt.
+const ROTATE_SECONDS = 10;
+
+function Scene({ slug, you, other, talking }: { slug: string; you: Mood; other: Mood; talking: boolean }) {
+  if (slug === "erstes-date") {
+    return (
+      <DateScene
+        place="bar"
+        lena
+        youMood={you}
+        lenaMood={other}
+        lenaTalking={talking}
+        brain={false}
+        brainTalking={false}
+        bubble={null}
+        phoneBuzz={false}
+      />
+    );
+  }
+  if (slug === "autoverkauf") {
+    return (
+      <ParkingScene
+        youMood={you}
+        alexMood={other}
+        alexTalking={talking}
+        alex
+        car
+        bubble={null}
+        compare={false}
+      />
+    );
+  }
+  return <CallScene youMood={you} brandtMood={other} brandtTalking={talking} bubble={null} />;
+}
+
+// 0 Frage, 1 deine Antwort, 2 Reaktion, 3 Gehirn und Knopf
 type Step = 0 | 1 | 2 | 3;
 
 export default function HeroDemo() {
+  const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<Answer | null>(null);
   const [step, setStep] = useState<Step>(0);
+  // Sobald jemand selbst klickt, wechselt die Situation nicht mehr von allein.
+  const [touched, setTouched] = useState(false);
+
+  const demo = DEMOS[index];
 
   useEffect(() => {
     if (!picked) return;
@@ -67,6 +192,7 @@ export default function HeroDemo() {
 
   function pick(answer: Answer) {
     if (picked) return;
+    setTouched(true);
     setPicked(answer);
     setStep(1);
   }
@@ -76,31 +202,37 @@ export default function HeroDemo() {
     setStep(0);
   }
 
+  function show(next: number, byUser: boolean) {
+    if (byUser) setTouched(true);
+    setIndex(next);
+    reset();
+  }
+
   const reacted = picked && step >= 2;
   const mine = step === 1 && picked;
-  const bubble = mine ? picked.text : reacted ? picked.reply : QUESTION;
+  const bubble = mine ? picked.text : reacted ? picked.reply : demo.question;
 
   return (
-    <section className="bg-navy text-white">
+    <section className="hero bg-navy text-white">
       {/* Die Szene über die ganze Breite */}
       <div className="relative overflow-clip bg-creme">
         <svg
-          // Ausschnitt beginnt knapp über den Köpfen, damit sie auf breiten Bildschirmen nicht abgeschnitten werden.
-          viewBox="0 230 1600 670"
+          key={demo.slug}
+          viewBox={`0 ${demo.top} 1600 ${900 - demo.top}`}
           preserveAspectRatio="xMidYMin slice"
           className="block aspect-video w-full md:aspect-auto md:h-[46vh] md:max-h-[520px] md:min-h-[340px]"
           aria-hidden="true"
         >
-          <CallScene
-            youMood={reacted ? picked.you : "worried"}
-            brandtMood={reacted ? picked.brandt : "happy"}
-            brandtTalking={step === 2}
-            bubble={null}
+          <Scene
+            slug={demo.slug}
+            you={reacted ? picked.you : "worried"}
+            other={reacted ? picked.other : "happy"}
+            talking={step === 2}
           />
         </svg>
         <div className="absolute left-1/2 top-[9%] hidden w-[30%] min-w-[17rem] max-w-[26rem] -translate-x-1/2 md:block">
           <div
-            key={`${picked?.id}-${step === 1}-${reacted}`}
+            key={`${demo.slug}-${picked?.id}-${step === 1}-${reacted}`}
             className={`pop-in px-5 py-4 shadow-paper ${
               mine
                 ? "rounded-[20px] rounded-bl-[4px] bg-teal text-white"
@@ -108,17 +240,43 @@ export default function HeroDemo() {
             }`}
           >
             <p className={`text-sm font-bold ${mine ? "text-white/80" : "text-tealdark"}`}>
-              {mine ? "Du" : "Frau Brandt, HR"}
+              {mine ? "Du" : demo.who}
             </p>
             <p className="font-display text-xl font-bold leading-snug">„{bubble}“</p>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1120px] px-5 pb-14 pt-8">
+      <div className="mx-auto w-full max-w-[1120px] px-5 pb-14 pt-6">
+        {/* Umschalter zwischen den drei Situationen. Der Balken zeigt, wann die nächste kommt. */}
+        <div className="mb-6 flex flex-wrap items-center gap-2" role="group" aria-label="Situation wählen">
+          {DEMOS.map((item, i) => {
+            const on = i === index;
+            return (
+              <button
+                key={item.slug}
+                onClick={() => show(i, true)}
+                aria-pressed={on}
+                className={`press relative overflow-clip rounded-full px-4 py-1.5 text-sm font-bold ${
+                  on ? "bg-white/20 text-white" : "bg-white/[0.07] text-white/70 hover:bg-white/15 hover:text-white"
+                }`}
+              >
+                {item.tab}
+                {on && !touched && step === 0 && (
+                  <span
+                    onAnimationEnd={() => show((i + 1) % DEMOS.length, false)}
+                    className="hero-timer absolute inset-x-0 bottom-0 h-[3px] origin-left bg-sun"
+                    style={{ animationDuration: `${ROTATE_SECONDS}s` }}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Auf dem Handy steht die Sprechblase unter dem Bild */}
         <div className="mb-6 rounded-[20px] rounded-tl-[4px] bg-white px-5 py-4 text-navy md:hidden">
-          <p className="text-sm font-bold text-tealdark">{mine ? "Du" : "Frau Brandt, HR"}</p>
+          <p className="text-sm font-bold text-tealdark">{mine ? "Du" : demo.who}</p>
           <p className="font-display text-lg font-bold leading-snug">„{bubble}“</p>
         </div>
 
@@ -134,8 +292,8 @@ export default function HeroDemo() {
             <h1 className="mt-1 font-display text-[clamp(48px,8vw,96px)] font-extrabold leading-[0.95] tracking-tighter">
               Was sagst du?
             </h1>
-            <div className="mt-6 grid gap-3 md:grid-cols-3">
-              {ANSWERS.map((answer) => {
+            <div key={demo.slug} className="mt-6 grid gap-3 md:grid-cols-3">
+              {demo.answers.map((answer) => {
                 const chosen = picked?.id === answer.id;
                 return (
                   <button
@@ -184,7 +342,7 @@ export default function HeroDemo() {
             </div>
             <div className="pop-in mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 [animation-delay:0.3s]">
               <Link
-                href="/s/gehaltsangebot"
+                href={`/s/${demo.slug}`}
                 className="press rounded-[14px] bg-sun px-6 py-3.5 text-lg font-bold text-navy hover:bg-white"
               >
                 Ganze Situation spielen

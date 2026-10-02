@@ -1,13 +1,12 @@
 import Link from "next/link";
-import Thumb from "@/components/Thumb";
+import CategoryIcon from "@/components/site/CategoryIcon";
 import { CATEGORIES, SITUATIONS, inCategory, type CategoryId } from "@/stories";
 
 // Eine Kategorie als Farbstreifen über die ganze Breite: großer Name links,
-// rechts die Szenen ihrer Situationen. Ohne id: der Streifen „Alle“.
+// rechts ihr Bildzeichen. Ohne id: der Streifen „Alle“.
 export default function CategoryRow({ id }: { id?: CategoryId }) {
   const category = id ? CATEGORIES[id] : null;
   const list = id ? inCategory(id) : SITUATIONS;
-  const shown = id ? list.slice(0, 2) : [list[4], list[3], list[5]];
   const dark = category ? category.dark : true;
 
   return (
@@ -28,18 +27,10 @@ export default function CategoryRow({ id }: { id?: CategoryId }) {
             </span>
           </p>
         </div>
-        <div className="hidden shrink-0 items-center sm:flex">
-          {shown.map((situation, i) => (
-            <div
-              key={situation.slug}
-              className={`w-40 overflow-clip rounded-[14px] shadow-paper transition-transform duration-300 ease-out group-hover:rotate-0 lg:w-56 ${
-                i % 2 === 0 ? "-rotate-3" : "rotate-2"
-              } ${i > 0 ? "-ml-8 group-hover:-ml-3" : ""}`}
-            >
-              <Thumb slug={situation.slug} className="block aspect-video w-full" />
-            </div>
-          ))}
-        </div>
+        <CategoryIcon
+          id={id}
+          className="h-20 w-20 shrink-0 transition-transform duration-200 ease-out group-hover:-rotate-6 group-hover:scale-110 sm:h-32 sm:w-32"
+        />
       </div>
     </Link>
   );

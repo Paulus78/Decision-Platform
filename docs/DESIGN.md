@@ -58,7 +58,7 @@ Schrift auf Farbflächen ist Weiß oder Navy, je nach `dark` in `stories/index.t
 
 | Seite | Aufbau |
 | --- | --- |
-| `/` | Spielbare Szene → „Was willst du üben?" mit Jonas → je Kategorie ein Farbstreifen (Klick führt in die Kategorie) plus „Alle" → Quellen |
+| `/` | Spielbare Szene → „Was willst du üben?" mit Jonas → je Kategorie ein Farbstreifen mit Bildzeichen (Klick führt in die Kategorie) plus „Alle" → Quellen |
 | `/ueben` | Titel, Reiter (Alle und Kategorien), darunter jede Kategorie als ausgeklappte Farbfläche mit ihren Situationen |
 | `/ueben/<kategorie>` | dieselben Reiter, nur diese Farbfläche |
 | `/s/<slug>` | Film, Pfad, Titel, Kurztext, „Danach vielleicht" |
@@ -67,7 +67,8 @@ Eine Situation erscheint überall als `ScenePanel`: großes Szenenbild, darauf d
 
 ## 6. Bewegung
 
-- Ein inszenierter Moment: die Entscheidung im ersten Bildschirm (Antwort → Sprechblase → Reaktion → Auflösung).
+- Ein inszenierter Moment: die Entscheidung im ersten Bildschirm (Antwort → Sprechblase → Reaktion → Kommentar vom Gehirn). Die Auflösung gibt es erst im Film.
+- Im ersten Bildschirm wechseln drei Situationen alle 10 Sekunden (Gehalt, Erstes Date, Autoverkauf). Der Wechsel stoppt, sobald jemand klickt, und pausiert, solange die Maus darüber ist.
 - Sonst nur Antworten auf Handlungen: Sprechblase richtet sich beim Überfahren auf, Play-Knopf wächst, Kategorie-Name rückt ein Stück, Knöpfe geben nach, Vorschaubild wächst zur Bühne (`ViewTransition`).
 - Keine Einblendungen beim Scrollen, kein Anheben von Karten.
 - Dauern: 100–150 ms Rückmeldung, 200–300 ms Zustandswechsel, 400 ms Auftritt einer Sprechblase.
@@ -92,6 +93,8 @@ Alles mit Tastatur erreichbar, Fokus-Rahmen 3 px Orange. Klickflächen mindesten
 ## 10. Wo was liegt
 
 - Farben, Schatten, Schriften: `app/globals.css`. Kategorie-Farben: `stories/index.ts`.
+- Bildmarke: ein G auf orangem Feld (`Mark` in `components/site/Header.tsx`, dieselbe Form als `app/icon.svg`).
+- Bildzeichen der Kategorien: selbst gezeichnet in `components/site/CategoryIcon.tsx`.
 - Bausteine in `components/site/`: `HeroDemo`, `CategoryRow` (Streifen auf der Startseite), `CategoryBand` (ausgeklappte Kategorie), `ScenePanel`, `CategoryTabs`, `Browse`, `Header`, `Footer`.
 - Screenshots zum Prüfen: `msedge --headless --window-size=1280,800 --virtual-time-budget=12000 --screenshot=datei.png http://localhost:3100/`. Achtung: Szenen mit Einfahr-Animation (erster Bildschirm) erscheinen dabei manchmal leer; im echten Browser gegenprüfen.
 

@@ -2,15 +2,23 @@ import Link from "next/link";
 import { SITE } from "@/lib/site";
 import RandomButton from "./RandomButton";
 
-// Logo: eine Sprechblase mit Play-Dreieck.
+// Bildmarke: ein G auf orangem Feld. Dieselbe Form liegt als app/icon.svg im Browser-Tab.
+export function Mark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
+      <rect width="40" height="40" rx="11" fill="#f2a33a" />
+      <path d="M27.7 13.6 A10 10 0 1 0 30 20.4 H20.5" fill="none" stroke="#1e294b" strokeWidth="5.6" />
+    </svg>
+  );
+}
+
 export function Logo({ dark }: { dark?: boolean }) {
   return (
-    <Link href="/" className="flex items-center gap-2.5" aria-label={`${SITE.name}, Startseite`}>
-      <svg viewBox="0 0 40 40" className="h-9 w-9" aria-hidden="true">
-        <path d="M6 4h28a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H19l-9 8v-8H6a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z" fill="#f2a33a" />
-        <path d="M16 10.5v13l11-6.5z" fill="#1e294b" />
-      </svg>
-      <span className={`font-display text-[22px] font-extrabold tracking-tight ${dark ? "text-white" : "text-navy"}`}>
+    <Link href="/" className="flex items-center gap-3" aria-label={`${SITE.name}, Startseite`}>
+      <Mark className="h-9 w-9" />
+      <span
+        className={`font-display text-[23px] font-extrabold tracking-[-0.03em] ${dark ? "text-white" : "text-navy"}`}
+      >
         {SITE.name}
       </span>
     </Link>
