@@ -1,0 +1,35 @@
+{
+  "narrator": {
+    "id": "onwK4e9ZLuTAKqWW03F9",
+    "name": "Daniel",
+    "settings": {
+      "stability": 0.58,
+      "similarity_boost": 0.75,
+      "style": 0.12,
+      "speed": 1.05,
+      "use_speaker_boost": true
+    }
+  },
+  "alex": {
+    "id": "cjVigY5qzO86Huf0OWal",
+    "name": "Eric",
+    "settings": {
+      "stability": 0.52,
+      "similarity_boost": 0.75,
+      "style": 0.05,
+      "speed": 1.0,
+      "use_speaker_boost": true
+    }
+  },
+  "you": {
+    "id": "TX3LPaxmHKxFdv7VOQHJ",
+    "name": "Liam",
+    "settings": {
+      "stability": 0.4,
+      "similarity_boost": 0.75,
+      "style": 0.05,
+      "speed": 1.05,
+      "use_speaker_boost": true
+    }
+  }
+}

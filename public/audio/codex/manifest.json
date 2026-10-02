@@ -1,0 +1,643 @@
+{
+  "model": "eleven_multilingual_v2",
+  "attemptedCharacters": 2580,
+  "files": {
+    "intro": {
+      "hash": "91f330aeb9f358cfdcd41e8d5ccaf7dba34245abc54fdd3f3722fbf1018a7fa0",
+      "characters": 131,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 11.656,
+      "cues": [
+        {
+          "text": "Du verkaufst dein Auto.",
+          "end": 1.579
+        },
+        {
+          "text": "Seit drei Wochen steht es für 6.800 Euro online.",
+          "end": 5.956
+        },
+        {
+          "text": "Heute kommt Alex zur Probefahrt.",
+          "end": 8.545
+        },
+        {
+          "text": "Du hoffst auf 6.500 Euro.",
+          "end": 11.656
+        }
+      ]
+    },
+    "arrival": {
+      "hash": "76e58a1e327aa16df4d7a98223118d75c1eb30fb5f165ecf024c46a6867ecbaf",
+      "characters": 44,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 2.09,
+      "cues": [
+        {
+          "text": "Sieht gut aus.",
+          "end": 0.731
+        },
+        {
+          "text": "Können wir eine Runde fahren?",
+          "end": 2.09
+        }
+      ]
+    },
+    "drive": {
+      "hash": "1d276fe31df894d6487300f13c620c677ab4f2d73578f5e0d5318694105346c9",
+      "characters": 99,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 8.406,
+      "cues": [
+        {
+          "text": "Zehn Minuten später.",
+          "end": 1.44
+        },
+        {
+          "text": "Der Motor läuft rund.",
+          "end": 3.262
+        },
+        {
+          "text": "Alex hat nur einmal das Radio getestet.",
+          "end": 6.502
+        },
+        {
+          "text": "Dafür gründlich.",
+          "end": 8.406
+        }
+      ]
+    },
+    "offer": {
+      "hash": "b2936235bd7e58beffa5b1a61bc1c104862def2c38a33b9291b27fcda020dc48",
+      "characters": 74,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 5.387,
+      "cues": [
+        {
+          "text": "Fährt sich gut.",
+          "end": 0.824
+        },
+        {
+          "text": "Die Reifen sind aber bald fällig.",
+          "end": 2.589
+        },
+        {
+          "text": "Ich gebe dir 5.800 Euro.",
+          "end": 5.387
+        }
+      ]
+    },
+    "question": {
+      "hash": "2e0b3cec083c27cbf2df74e8c8c58d58263bb3397138269c288120ebcf24f979",
+      "characters": 13,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 1.207,
+      "cues": [
+        {
+          "text": "Was sagst du?",
+          "end": 1.207
+        }
+      ]
+    },
+    "a1": {
+      "hash": "b91b8f3e700ec8c0497f8aae83eabe614dc3a8b7648b99eda99d2a81b899e591",
+      "characters": 25,
+      "voice": "Liam",
+      "status": "complete",
+      "duration": 1.997,
+      "cues": [
+        {
+          "text": "Ich dachte eher an 6.500.",
+          "end": 1.997
+        }
+      ]
+    },
+    "b1": {
+      "hash": "673f31071b1cc2d5134f154f92713ee182fc3eb8f71e4b94047f027a04ca0618",
+      "characters": 24,
+      "voice": "Liam",
+      "status": "complete",
+      "duration": 2.043,
+      "cues": [
+        {
+          "text": "Wie kommst du auf 5.800?",
+          "end": 2.043
+        }
+      ]
+    },
+    "c1": {
+      "hash": "c819d5011dc039073af698bc4b547b353d71a8ac5ce083adfa5d334ba39a2208",
+      "characters": 49,
+      "voice": "Liam",
+      "status": "complete",
+      "duration": 2.601,
+      "cues": [
+        {
+          "text": "Die frische Inspektion rechtfertigt meinen Preis.",
+          "end": 2.601
+        }
+      ]
+    },
+    "ra1": {
+      "hash": "af990f5f22443acd9b0f683bb22c3941bb5fd41e32f2c6b32379d25471d06ca3",
+      "characters": 69,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 3.715,
+      "cues": [
+        {
+          "text": "Puh.",
+          "end": 0.43
+        },
+        {
+          "text": "Da liegen wir noch auseinander.",
+          "end": 1.927
+        },
+        {
+          "text": "Ein bisschen kann ich hochgehen.",
+          "end": 3.715
+        }
+      ]
+    },
+    "rb1": {
+      "hash": "e1bd0594f8dc652fa0c3a753b82129a6c1e4d987fae8577c6f57794956d7a7d6",
+      "characters": 93,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 5.387,
+      "cues": [
+        {
+          "text": "Reifen, Ummelden, Versicherung.",
+          "end": 2.101
+        },
+        {
+          "text": "Ich muss das alles noch bezahlen.",
+          "end": 3.785
+        },
+        {
+          "text": "Das Auto gefällt mir schon.",
+          "end": 5.387
+        }
+      ]
+    },
+    "rc1": {
+      "hash": "9478dde3fef68ed5cbe5693fc7fbd539bd8ad601ff279433a55289e6c6460a60",
+      "characters": 77,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 4.226,
+      "cues": [
+        {
+          "text": "Stimmt, die Rechnung ist dabei.",
+          "end": 1.567
+        },
+        {
+          "text": "Das spart mir erst mal einen Werkstattbesuch.",
+          "end": 4.226
+        }
+      ]
+    },
+    "compare": {
+      "hash": "6b79b6a95bba71d297d5471073616c5844087b159778075515c0c75658db3578",
+      "characters": 77,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 5.016,
+      "cues": [
+        {
+          "text": "Hier, ein ähnlicher Wagen für 6.200.",
+          "end": 2.682
+        },
+        {
+          "text": "Warum sollte ich für deinen mehr zahlen?",
+          "end": 5.016
+        }
+      ]
+    },
+    "detail": {
+      "hash": "949cd099ca5226ffb1366de9a505d98d8218a8a57d19316057a9b612b9041bcb",
+      "characters": 101,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 8.452,
+      "cues": [
+        {
+          "text": "Gleiches Baujahr.",
+          "end": 1.265
+        },
+        {
+          "text": "Aber der andere hat 40.000 Kilometer mehr.",
+          "end": 5.097
+        },
+        {
+          "text": "Deine Reifen bleiben trotzdem ein Thema.",
+          "end": 8.452
+        }
+      ]
+    },
+    "a2": {
+      "hash": "6cc4ec1d2589cb70d40bf8c6f68248585c48775e2cb9645d987c06d8944c0a0c",
+      "characters": 39,
+      "voice": "Liam",
+      "status": "complete",
+      "duration": 2.09,
+      "cues": [
+        {
+          "text": "Lass uns die Autos genauer vergleichen.",
+          "end": 2.09
+        }
+      ]
+    },
+    "b2": {
+      "hash": "eb6c726b85fd3d1c26d25c36e58fc3322741b823d21b8819bc8763c613edffd3",
+      "characters": 38,
+      "voice": "Liam",
+      "status": "complete",
+      "duration": 2.09,
+      "cues": [
+        {
+          "text": "Für die Reifen komme ich dir entgegen.",
+          "end": 2.09
+        }
+      ]
+    },
+    "c2": {
+      "hash": "a1619e53e614fb62d4ee3135bc9234d16696780c8a289369e11d41dea665ff46",
+      "characters": 38,
+      "voice": "Liam",
+      "status": "complete",
+      "duration": 2.276,
+      "cues": [
+        {
+          "text": "Mir ist ein schneller Verkauf wichtig.",
+          "end": 2.276
+        }
+      ]
+    },
+    "ra2": {
+      "hash": "11294965eb47ecd5e8fa825cc9bb59a5d2da069ab2685a983ea06fa613958148",
+      "characters": 73,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 3.947,
+      "cues": [
+        {
+          "text": "Okay, deiner hat weniger Kilometer.",
+          "end": 1.858
+        },
+        {
+          "text": "Dafür kann ich noch etwas drauflegen.",
+          "end": 3.947
+        }
+      ]
+    },
+    "rb2": {
+      "hash": "7fe506a052c60cf41b1cdea6ebf72d7ff264836c9c0f8d490cc24b74e660d883",
+      "characters": 75,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 3.669,
+      "cues": [
+        {
+          "text": "Gut.",
+          "end": 0.395
+        },
+        {
+          "text": "Wenn wir uns preislich treffen, kümmere ich mich selbst um die Reifen.",
+          "end": 3.669
+        }
+      ]
+    },
+    "rc2": {
+      "hash": "93854975565a6424963d10141ded6722404223b99ffffe55c2cdab838a2b214f",
+      "characters": 80,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 4.319,
+      "cues": [
+        {
+          "text": "Dann nehmen wir den einfachen Weg.",
+          "end": 1.683
+        },
+        {
+          "text": "Etwas günstiger, dafür hole ich ihn heute ab.",
+          "end": 4.319
+        }
+      ]
+    },
+    "finalOffer": {
+      "hash": "7aa9961d26ce560d79a2816a87280ebf96ba906777b0b68943fc188fa2213d95",
+      "characters": 52,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 2.786,
+      "cues": [
+        {
+          "text": "Das ist mein Angebot.",
+          "end": 1.126
+        },
+        {
+          "text": "Dafür nehme ich ihn heute mit.",
+          "end": 2.786
+        }
+      ]
+    },
+    "message": {
+      "hash": "48d1b5b16dfe5bf295b77f54f532f365a0faef834db9235ae3dbb44e2ea1970e",
+      "characters": 94,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 5.805,
+      "cues": [
+        {
+          "text": "Eine andere Interessentin schreibt: Vielleicht morgen.",
+          "end": 3.262
+        },
+        {
+          "text": "Vielleicht ist leider noch kein Termin.",
+          "end": 5.805
+        }
+      ]
+    },
+    "deadline": {
+      "hash": "6dd5312c1e4b9780da741997af49525dcd0e523889a9d9316c9e330976336843",
+      "characters": 58,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 2.879,
+      "cues": [
+        {
+          "text": "Ich muss gleich los, meine Tochter abholen.",
+          "end": 1.834
+        },
+        {
+          "text": "Was meinst du?",
+          "end": 2.879
+        }
+      ]
+    },
+    "a3": {
+      "hash": "bb9152f624669dfa6c82d5fa4e39672152d66320187f5259768a74fe207c5413",
+      "characters": 19,
+      "voice": "Liam",
+      "status": "complete",
+      "duration": 1.579,
+      "cues": [
+        {
+          "text": "Gut, machen wir es.",
+          "end": 1.579
+        }
+      ]
+    },
+    "b3": {
+      "hash": "68316f4c824017facc4f082e11c34e790972d00b3da1ba802276958ce5ea0c8e",
+      "characters": 34,
+      "voice": "Liam",
+      "status": "complete",
+      "duration": 2.508,
+      "cues": [
+        {
+          "text": "Für 6.400 kannst du ihn mitnehmen.",
+          "end": 2.508
+        }
+      ]
+    },
+    "c3": {
+      "hash": "00d3248d7237ec24927e60081602b3f30ad1df4f05eb4595624b87c5e71aff56",
+      "characters": 39,
+      "voice": "Liam",
+      "status": "complete",
+      "duration": 2.183,
+      "cues": [
+        {
+          "text": "Ich warte auf die andere Interessentin.",
+          "end": 2.183
+        }
+      ]
+    },
+    "sold": {
+      "hash": "630e36f13570668f1234846f16473c443f4cc3dc17dcad87809e6321a893071b",
+      "characters": 50,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 3.065,
+      "cues": [
+        {
+          "text": "Abgemacht.",
+          "end": 0.685
+        },
+        {
+          "text": "Lass uns den Kaufvertrag fertig machen.",
+          "end": 3.065
+        }
+      ]
+    },
+    "counterYes": {
+      "hash": "16bbb667510caeccb9bf1e2919835dbce9197f7fbc21c2ca8c85b6fd0b60d59b",
+      "characters": 71,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 4.365,
+      "cues": [
+        {
+          "text": "Das geht gerade noch.",
+          "end": 1.126
+        },
+        {
+          "text": "Aber die Reifen mache ich dann selbst.",
+          "end": 3.193
+        },
+        {
+          "text": "Abgemacht.",
+          "end": 4.365
+        }
+      ]
+    },
+    "counterNo": {
+      "hash": "28d9ca0c2d39c1020874988e5444c11a9c48943226bfb26a9c63cfcdc4eb93da",
+      "characters": 91,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 5.341,
+      "cues": [
+        {
+          "text": "Das ist mir zu viel.",
+          "end": 1.08
+        },
+        {
+          "text": "Danke für die Probefahrt.",
+          "end": 2.635
+        },
+        {
+          "text": "Falls du es dir anders überlegst, meld dich.",
+          "end": 5.341
+        }
+      ]
+    },
+    "wait": {
+      "hash": "3600fe2bb38da1e11496e73d1b9e30f9f131435d9e9b244aa886504db651a1c3",
+      "characters": 51,
+      "voice": "Eric",
+      "status": "complete",
+      "duration": 3.204,
+      "cues": [
+        {
+          "text": "Verstehe.",
+          "end": 0.65
+        },
+        {
+          "text": "Dann viel Erfolg.",
+          "end": 1.776
+        },
+        {
+          "text": "Ich schaue noch weiter.",
+          "end": 3.204
+        }
+      ]
+    },
+    "resultSold": {
+      "hash": "19af8a0113bf617e3b8a7cefc8ec111e417bee3e88fc4e326b53b8cabf04ba86",
+      "characters": 84,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 6.502,
+      "cues": [
+        {
+          "text": "Verkauft.",
+          "end": 0.755
+        },
+        {
+          "text": "Unter deinem Wunschpreis, aber erledigt.",
+          "end": 3.959
+        },
+        {
+          "text": "Ob mehr drin war, weißt du nicht.",
+          "end": 6.502
+        }
+      ]
+    },
+    "resultOpen": {
+      "hash": "31db9181177c4d72eb4bbe6e30e3581fb50cf6f7f094cc6394b113165db938e7",
+      "characters": 89,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 6.316,
+      "cues": [
+        {
+          "text": "Das Auto bleibt bei dir.",
+          "end": 1.509
+        },
+        {
+          "text": "Du kannst weiter suchen.",
+          "end": 3.158
+        },
+        {
+          "text": "Ob morgen jemand kommt, ist noch offen.",
+          "end": 6.316
+        }
+      ]
+    },
+    "reveal1": {
+      "hash": "c2213865842b91e41d3717da42c5574fb8a7c0537bfeaafbb6f5fcbe24be461c",
+      "characters": 154,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 11.842,
+      "cues": [
+        {
+          "text": "Die niedrige Zahl zieht den Blick nach unten.",
+          "end": 2.891
+        },
+        {
+          "text": "Studien zeigen: Erste Angebote können spätere Preise beeinflussen.",
+          "end": 8.162
+        },
+        {
+          "text": "Deine Anzeige war schon ein erster Anker.",
+          "end": 11.842
+        }
+      ]
+    },
+    "reveal2": {
+      "hash": "71f01be9993111e81f5fab676388eda7a191f55c3eb113575d67ff9b568bfdfb",
+      "characters": 153,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 10.82,
+      "cues": [
+        {
+          "text": "Vergleiche, die passen.",
+          "end": 1.567
+        },
+        {
+          "text": "Baujahr allein reicht nicht.",
+          "end": 3.727
+        },
+        {
+          "text": "Kilometer, Zustand und Service zählen mit.",
+          "end": 7.233
+        },
+        {
+          "text": "Das Harvard-Konzept empfiehlt solche sachlichen Maßstäbe.",
+          "end": 10.82
+        }
+      ]
+    },
+    "reveal3": {
+      "hash": "49b2b4d2ffb039c4fc17a3cc298f2362cdf83fe053c5c1ce29695d7ce198b30f",
+      "characters": 130,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 10.031,
+      "cues": [
+        {
+          "text": "Was ist deine echte Alternative?",
+          "end": 2.159
+        },
+        {
+          "text": "Eine unverbindliche Nachricht ist noch kein Käufer.",
+          "end": 6.211
+        },
+        {
+          "text": "Warten kann sich lohnen.",
+          "end": 8.359
+        },
+        {
+          "text": "Es kann auch dauern.",
+          "end": 10.031
+        }
+      ]
+    },
+    "exampleIntro": {
+      "hash": "22b7d6e50617de7bc4906b0388eab45c11db12cf2786dec61f6e800fb703524a",
+      "characters": 61,
+      "voice": "Daniel",
+      "status": "complete",
+      "duration": 4.505,
+      "cues": [
+        {
+          "text": "So hätte es auch laufen können.",
+          "end": 1.567
+        },
+        {
+          "text": "Ein Beispiel, keine Garantie.",
+          "end": 4.505
+        }
+      ]
+    }
+  },
+  "rejectedRequests": [
+    {
+      "id": "intro",
+      "hash": "7fd32fb136cca4c3aab1ba26ab36ee0c3224cb9b13cd11fb2db7b70d0f04543d",
+      "characters": 131,
+      "voice": "Rob",
+      "status": "rejected",
+      "httpStatus": 402
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "title": "Der Käufer ist schon da",
+  "listing": 6800,
+  "target": 6500,
+  "clips": {
+    "intro": {
+      "speaker": "narrator",
+      "scene": "listing",
+      "text": "Du verkaufst dein Auto. Seit drei Wochen steht es für 6.800 Euro online. Heute kommt Alex zur Probefahrt. Du hoffst auf 6.500 Euro.",
+      "seconds": 11
+    },
+    "arrival": {
+      "speaker": "alex",
+      "scene": "arrival",
+      "text": "Sieht gut aus. Können wir eine Runde fahren?",
+      "seconds": 4
+    },
+    "drive": {
+      "speaker": "narrator",
+      "scene": "drive",
+      "text": "Zehn Minuten später. Der Motor läuft rund. Alex hat nur einmal das Radio getestet. Dafür gründlich.",
+      "seconds": 8
+    },
+    "offer": {
+      "speaker": "alex",
+      "scene": "wide",
+      "text": "Fährt sich gut. Die Reifen sind aber bald fällig. Ich gebe dir 5.800 Euro.",
+      "seconds": 7
+    },
+    "question": {
+      "speaker": "narrator",
+      "scene": "wide",
+      "text": "Was sagst du?",
+      "seconds": 2
+    },
+    "a1": {
+      "speaker": "you",
+      "scene": "you",
+      "text": "Ich dachte eher an 6.500.",
+      "seconds": 3
+    },
+    "b1": {
+      "speaker": "you",
+      "scene": "you",
+      "text": "Wie kommst du auf 5.800?",
+      "seconds": 3
+    },
+    "c1": {
+      "speaker": "you",
+      "scene": "you",
+      "text": "Die frische Inspektion rechtfertigt meinen Preis.",
+      "seconds": 4
+    },
+    "ra1": {
+      "speaker": "alex",
+      "scene": "alex",
+      "text": "Puh. Da liegen wir noch auseinander. Ein bisschen kann ich hochgehen.",
+      "seconds": 6
+    },
+    "rb1": {
+      "speaker": "alex",
+      "scene": "tire",
+      "text": "Reifen, Ummelden, Versicherung. Ich muss das alles noch bezahlen. Das Auto gefällt mir schon.",
+      "seconds": 8
+    },
+    "rc1": {
+      "speaker": "alex",
+      "scene": "receipt",
+      "text": "Stimmt, die Rechnung ist dabei. Das spart mir erst mal einen Werkstattbesuch.",
+      "seconds": 7
+    },
+    "compare": {
+      "speaker": "alex",
+      "scene": "phone",
+      "text": "Hier, ein ähnlicher Wagen für 6.200. Warum sollte ich für deinen mehr zahlen?",
+      "seconds": 7
+    },
+    "detail": {
+      "speaker": "narrator",
+      "scene": "compare",
+      "text": "Gleiches Baujahr. Aber der andere hat 40.000 Kilometer mehr. Deine Reifen bleiben trotzdem ein Thema.",
+      "seconds": 8
+    },
+    "a2": {
+      "speaker": "you",
+      "scene": "compare",
+      "text": "Lass uns die Autos genauer vergleichen.",
+      "seconds": 4
+    },
+    "b2": {
+      "speaker": "you",
+      "scene": "tire",
+      "text": "Für die Reifen komme ich dir entgegen.",
+      "seconds": 4
+    },
+    "c2": {
+      "speaker": "you",
+      "scene": "you",
+      "text": "Mir ist ein schneller Verkauf wichtig.",
+      "seconds": 4
+    },
+    "ra2": {
+      "speaker": "alex",
+      "scene": "compare",
+      "text": "Okay, deiner hat weniger Kilometer. Dafür kann ich noch etwas drauflegen.",
+      "seconds": 6
+    },
+    "rb2": {
+      "speaker": "alex",
+      "scene": "wide",
+      "text": "Gut. Wenn wir uns preislich treffen, kümmere ich mich selbst um die Reifen.",
+      "seconds": 6
+    },
+    "rc2": {
+      "speaker": "alex",
+      "scene": "alex",
+      "text": "Dann nehmen wir den einfachen Weg. Etwas günstiger, dafür hole ich ihn heute ab.",
+      "seconds": 7
+    },
+    "finalOffer": {
+      "speaker": "alex",
+      "scene": "wide",
+      "text": "Das ist mein Angebot. Dafür nehme ich ihn heute mit.",
+      "seconds": 5
+    },
+    "message": {
+      "speaker": "narrator",
+      "scene": "message",
+      "text": "Eine andere Interessentin schreibt: Vielleicht morgen. Vielleicht ist leider noch kein Termin.",
+      "seconds": 7
+    },
+    "deadline": {
+      "speaker": "alex",
+      "scene": "watch",
+      "text": "Ich muss gleich los, meine Tochter abholen. Was meinst du?",
+      "seconds": 5
+    },
+    "a3": {
+      "speaker": "you",
+      "scene": "you",
+      "text": "Gut, machen wir es.",
+      "seconds": 3
+    },
+    "b3": {
+      "speaker": "you",
+      "scene": "you",
+      "text": "Für 6.400 kannst du ihn mitnehmen.",
+      "seconds": 4
+    },
+    "c3": {
+      "speaker": "you",
+      "scene": "you",
+      "text": "Ich warte auf die andere Interessentin.",
+      "seconds": 4
+    },
+    "sold": {
+      "speaker": "alex",
+      "scene": "handshake",
+      "text": "Abgemacht. Lass uns den Kaufvertrag fertig machen.",
+      "seconds": 5
+    },
+    "counterYes": {
+      "speaker": "alex",
+      "scene": "handshake",
+      "text": "Das geht gerade noch. Aber die Reifen mache ich dann selbst. Abgemacht.",
+      "seconds": 6
+    },
+    "counterNo": {
+      "speaker": "alex",
+      "scene": "leave",
+      "text": "Das ist mir zu viel. Danke für die Probefahrt. Falls du es dir anders überlegst, meld dich.",
+      "seconds": 7
+    },
+    "wait": {
+      "speaker": "alex",
+      "scene": "leave",
+      "text": "Verstehe. Dann viel Erfolg. Ich schaue noch weiter.",
+      "seconds": 5
+    },
+    "resultSold": {
+      "speaker": "narrator",
+      "scene": "handshake",
+      "text": "Verkauft. Unter deinem Wunschpreis, aber erledigt. Ob mehr drin war, weißt du nicht.",
+      "seconds": 7
+    },
+    "resultOpen": {
+      "speaker": "narrator",
+      "scene": "empty",
+      "text": "Das Auto bleibt bei dir. Du kannst weiter suchen. Ob morgen jemand kommt, ist noch offen.",
+      "seconds": 7
+    },
+    "reveal1": {
+      "speaker": "narrator",
+      "scene": "anchor",
+      "text": "Die niedrige Zahl zieht den Blick nach unten. Studien zeigen: Erste Angebote können spätere Preise beeinflussen. Deine Anzeige war schon ein erster Anker.",
+      "seconds": 13
+    },
+    "reveal2": {
+      "speaker": "narrator",
+      "scene": "compare",
+      "text": "Vergleiche, die passen. Baujahr allein reicht nicht. Kilometer, Zustand und Service zählen mit. Das Harvard-Konzept empfiehlt solche sachlichen Maßstäbe.",
+      "seconds": 13
+    },
+    "reveal3": {
+      "speaker": "narrator",
+      "scene": "message",
+      "text": "Was ist deine echte Alternative? Eine unverbindliche Nachricht ist noch kein Käufer. Warten kann sich lohnen. Es kann auch dauern.",
+      "seconds": 11
+    },
+    "exampleIntro": {
+      "speaker": "narrator",
+      "scene": "wide",
+      "text": "So hätte es auch laufen können. Ein Beispiel, keine Garantie.",
+      "seconds": 4
+    }
+  },
+  "intro": ["intro", "arrival", "drive", "offer", "question"],
+  "decisions": [
+    {
+      "title": "Das erste Angebot",
+      "options": [
+        {
+          "label": "Ich dachte eher an 6.500.",
+          "clips": ["a1", "ra1"],
+          "base": 6100,
+          "note": "Du hältst eine eigene Zahl im Gespräch."
+        },
+        {
+          "label": "Wie kommst du auf 5.800?",
+          "clips": ["b1", "rb1"],
+          "base": 6000,
+          "note": "Du erfährst, welche Kosten Alex beschäftigen."
+        },
+        {
+          "label": "Die frische Inspektion rechtfertigt meinen Preis.",
+          "clips": ["c1", "rc1"],
+          "base": 6200,
+          "note": "Du nennst einen konkreten Vorteil deines Autos."
+        }
+      ],
+      "rejoin": ["compare", "detail", "question"]
+    },
+    {
+      "title": "Der Vergleich",
+      "options": [
+        {
+          "label": "Lass uns die Autos genauer vergleichen.",
+          "clips": ["a2", "ra2"],
+          "delta": 200,
+          "note": "Weniger Kilometer sind hier ein sachlicher Preisgrund."
+        },
+        {
+          "label": "Für die Reifen komme ich dir entgegen.",
+          "clips": ["b2", "rb2"],
+          "delta": 0,
+          "note": "Du erkennst einen echten Nachteil an."
+        },
+        {
+          "label": "Mir ist ein schneller Verkauf wichtig.",
+          "clips": ["c2", "rc2"],
+          "delta": -100,
+          "note": "Du machst Tempo zu einem Teil des Deals."
+        }
+      ],
+      "rejoin": ["finalOffer", "message", "deadline", "question"]
+    },
+    {
+      "title": "Jetzt oder später?",
+      "options": [
+        {
+          "label": "Gut, machen wir es.",
+          "clips": ["a3"],
+          "note": "Du nimmst den sicheren Abschluss zum angebotenen Preis."
+        },
+        {
+          "label": "Für 6.400 kannst du ihn mitnehmen.",
+          "clips": ["b3"],
+          "note": "Dein Gegenangebot kann klappen – oder den Verkauf kosten."
+        },
+        {
+          "label": "Ich warte auf die andere Interessentin.",
+          "clips": ["c3"],
+          "note": "Du behältst die Chance auf mehr und das Risiko zu warten."
+        }
+      ],
+      "rejoin": []
+    }
+  ],
+  "sources": [
+    {
+      "type": "Studie",
+      "title": "Galinsky & Mussweiler (2001)",
+      "detail": "First offers as anchors, JPSP 81, 657–669. Experimente zeigen den Einfluss erster Angebote; Gegenfokus kann den Effekt abschwächen. Unsere Szene mit bereits veröffentlichter Anzeige ist eine Übertragung, kein experimentell belegtes Euro-Ergebnis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11642352/"
+    },
+    {
+      "type": "Buchwissen",
+      "title": "Fisher, Ury & Patton: Getting to Yes (2011)",
+      "detail": "Sachliche Kriterien und die beste tatsächliche Alternative zu einer Einigung. Praxisrahmen, keine Garantie. Öffentlich zugängliche Zusammenfassung des Harvard-Konzepts durch Harvard-Ombudsperson Melissa Brodrick.",
+      "url": "https://www.bumc.bu.edu/facdev-medicine/files/2014/09/Elements-of-Principled-Negotiations.pdf"
+    }
+  ]
+}
