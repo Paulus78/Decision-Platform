@@ -22,19 +22,11 @@ const SOURCES = [
 ].map(({ story, situation }) => ({ ...story.reveal[0], situation: getSituation(situation)! }));
 
 export default function Home() {
-  // Die Auflösung der Mini-Entscheidung kommt aus dem Rückblick der echten Story.
-  const principles = gehalt.reveal.slice(0, 2).map(({ title, text, strength, source }) => ({
-    title,
-    text,
-    strength,
-    source,
-  }));
-
   return (
     <>
       <Header />
       <main>
-        <HeroDemo principles={principles} />
+        <HeroDemo />
 
         {/* Kategorien: je ein Farbstreifen über die ganze Breite */}
         <section id="kategorien" className="scroll-mt-[72px]">
