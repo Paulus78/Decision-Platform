@@ -23,7 +23,8 @@ Vorbilder für den Ton: „Severance" (kalter, absurder Konzern), „Stromberg" 
 ### Die Regeln
 
 - **Hart und schwarz, aber nach oben.** Gelacht wird über Macht, Gier, Firmensprech und Selbstüberschätzung. Nie über Herkunft, Aussehen, Krankheit oder Schwächere.
-- **Tabu:** Witze über Suizid, sexuelle Übergriffe, echte Gewalt, Diskriminierung. Der Konzern darf grausam sein, das Spiel nicht.
+- **Tabu:** Witze über Suizid, echte Gewalt, Diskriminierung. Der Konzern darf grausam sein, das Spiel nicht.
+- **Anzügliche Situationen** (z. B. die Personalchefin, siehe Abschnitt 7) sind erlaubt, wenn drei Dinge gelten: Die Person mit der Macht ist die Lachnummer, nicht du. Nichts wird explizit. Und Mitmachen wird nie einfach belohnt, sondern hat Folgen.
 - **Ernst gespielt.** Niemand in der Firma findet irgendetwas lustig. Das ist der Witz.
 - **Running Gags** ziehen sich durch alle Kapitel.
 
@@ -128,25 +129,105 @@ Weil die Zeichnungen von Hand in Code entstehen, ist die Qualität meine größt
 
 ## 6. Die Figuren
 
-| Figur | Rolle | Aussehen und Grundform | Charakter | Typischer Satz | Stimme (Vorschlag) |
-|---|---|---|---|---|---|
-| **Du** | Spielfigur | Klein, rund, Kapuzenpulli zu groß, Ausweis am Schlüsselband, Rucksack. Wird mit jedem Stockwerk größer und schärfer geschnitten. | Ehrgeizig, unterschätzt, manchmal zu ehrlich | (spricht nur in Sprechblasen) | keine |
-| **Maximilian Kron, CEO** | Erzfeind | Sehr groß, schmal, spitzes Kinn, Rollkragen unter Sakko, Sonnenbrille drinnen, goldene Uhr, immer ein grüner Smoothie. Grundform: langes, spitzes Dreieck. | Hat die Firma von seinem Vater geerbt und hält sich für einen Visionär. Merkt sich keine Namen, schaut niemanden an, schnipst statt zu reden. | „Ich habe diese Firma mit meinen eigenen Händen geerbt." | arrogant, gedehnt, gelangweilt |
-| **Bernd Sauer** | Teamleiter in Kapitel 1 | Rundlich, Halbglatze, Kaffeefleck auf der Krawatte, Schweißflecken. Grundform: hängendes Rechteck. | Seit 22 Jahren Teamleiter, ausgebrannt, gibt jeden Druck nach unten weiter | „Wir sind hier nicht bei Wünsch-dir-was." | müde, genervt |
-| **Fynn Kessler** | Rivale | Perfekte Zähne, Weste, Haare mit Gel, filmt alles fürs Netz. Grundform: glattes Oval. | Schleimt nach oben, tritt nach unten, klaut Ideen und bedankt sich öffentlich dafür | „Ich bin so dankbar für diese Chance. Hashtag Demut." | zu freundlich |
-| **Renate Wolf** | Mentorin | 61, Strickjacke, Brille an Kette, strickt in jedem Meeting. Grundform: stabiles Quadrat. | Seit 1989 Vorstandssekretärin, weiß, wo alle Leichen liegen. Trocken, schwarzhumorig, auf deiner Seite, wenn du es verdienst. **Sie spricht den Lernsatz.** | „Kind. Fehler vom Chef sagt man unter vier Augen. Oder gar nicht. Oder in seiner Abschiedsrede." | ruhig, knapp |
-| **Chantal** | Personal („People & Culture") | Strahlendes Lächeln, Blazer in Pastell, Klemmbrett. | Zwanghaft positiv, verkündet Kündigungen mit Emojis | „Wir sind hier wie eine Familie!" | hoch, übermotiviert |
-| **Dein Gehirn** | Kommentator | Neu gezeichnet: neonpink, nervös zuckend, schwebt über dir | Panisch, sarkastisch, ehrlich | „Lauf. Nein, warte. Lauf trotzdem." | wie bisher (Liam) |
-| **Jonas** | Bester Freund, nur per Chat | Profilbild, Nachrichten auf dem Handy | Gibt schlechte Ratschläge mit voller Überzeugung | „Sag einfach, du hast ein Angebot von Google. Klappt immer." | nur Text |
-| **Der Hund** | Running Gag | Windhund mit Firmenausweis | Steigt schneller auf als du | (bellt) | Geräusch |
+### Hauptfiguren
+
+| # | Figur | Rolle | Aussehen und Grundform | Charakter | Typischer Satz | Kapitel |
+|---|---|---|---|---|---|---|
+| 1 | **Du** | Spielfigur | Klein, rund, Kapuzenpulli zu groß, Ausweis am Schlüsselband. Wird mit jedem Stockwerk größer und schärfer geschnitten. | Ehrgeizig, unterschätzt, manchmal zu ehrlich | (nur Sprechblasen) | alle |
+| 2 | **Maximilian Kron** | CEO, Erzfeind | Sehr groß, schmal, spitzes Kinn, Rollkragen, Sonnenbrille drinnen, goldene Uhr, grüner Smoothie. Grundform: spitzes Dreieck. | Hat die Firma geerbt, hält sich für einen Visionär, merkt sich keine Namen, schnipst statt zu reden | „Ich habe diese Firma mit meinen eigenen Händen geerbt." | alle |
+| 3 | **Bernd Sauer** | Teamleiter | Rundlich, Halbglatze, Kaffeefleck auf der Krawatte. Grundform: hängendes Rechteck. | Seit 22 Jahren Teamleiter, ausgebrannt, gibt jeden Druck nach unten weiter. Später überraschend auf deiner Seite. | „Wir sind hier nicht bei Wünsch-dir-was." | 1–3 |
+| 4 | **Fynn Kessler** | Rivale | Perfekte Zähne, Weste, Gel-Haare, Handy immer auf Aufnahme. Grundform: glattes Oval. | Schleimt nach oben, klaut Ideen, bedankt sich öffentlich dafür | „Ich bin so dankbar für diese Chance. Hashtag Demut." | 1–5 |
+| 5 | **Renate Wolf** | Mentorin | 61, Strickjacke, Brille an Kette, strickt in jedem Meeting. Grundform: Quadrat. | Seit 1989 Vorstandssekretärin, kennt alle Leichen im Keller, spricht den Lernsatz | „Kind. Fehler vom Chef sagt man unter vier Augen. Oder in seiner Abschiedsrede." | alle |
+| 6 | **Gisela Hartmann** | Personalchefin | Mitte 50, Löwenmähne, Leopardenschal, zu viel Parfüm, klimpernde Armreifen | Steht auf dich, zeigt es denkbar ungeschickt. Hat die Macht über alle Verträge und nutzt sie für ihr Liebesleben. | „Sie erinnern mich an meinen zweiten Mann. Bevor er gegangen ist." | 1–5 |
+| 7 | **Lea Brück** | Mit-Praktikantin, Freundin | Kurze Haare, Doc Martens, Thermoskanne | Klüger als alle, aber zu ehrlich für die Firma. Ab Kapitel 3 in deinem Team: Freundin oder Untergebene? | „Ich hab nachgerechnet. Wir verdienen weniger als der Hund." | 1–6 |
+| 8 | **Mo Schwarz** | IT-Admin | Kapuze, Energydrink, wohnt praktisch im Serverraum | Paranoid, sieht in den Protokollen alles, hilft nur, wer ihm Pizza bringt. Kann Mails verschwinden lassen. | „Ich lösche nichts. Ich verlege Dinge in die Vergangenheit." | 1–6 |
+| 9 | **Viktoria Lang** | Finanzvorständin | Strenger Dutt, schwarzer Hosenanzug, lächelt nie | Eiskalt, will selbst CEO werden. Mal Verbündete, mal Falle. | „Gefühle sind ein Kostenfaktor." | 4–6 |
+| 10 | **Hildegard Kron** | Aufsichtsratschefin, Krons Mutter | 82, Perlenkette, Gehstock mit Goldknauf | Die eigentliche Macht. Hält ihren Sohn für eine Enttäuschung. Entscheidet am Ende mit. | „Maximilian, setz dich. Nicht dahin. Auf den Boden." | 5–6 |
+
+### Feste Nebenfiguren
+
+| Figur | Rolle |
+|---|---|
+| **Dein Gehirn** | Kommentator, neonpink, panisch und sarkastisch |
+| **Jonas** | Bester Freund, nur per Chat, schlechte Ratschläge mit voller Überzeugung |
+| **Chantal** | „People & Culture", Giselas Assistentin, verkündet Kündigungen mit Emojis |
+
+### Randfiguren (für alle Kapitel)
+
+| Figur | Running Gag |
+|---|---|
+| **Dividende**, der Windhund des CEO | Hat einen Firmenausweis und steigt schneller auf als du |
+| **Günther**, Hausmeister | Repariert seit 2011 dieselbe Neonröhre. Weiß, welche Türen nicht abgeschlossen sind. |
+| **Elke**, Kantine | Das Gerüchte-Barometer: Wie groß deine Portion ist, verrät, was das Haus über dich denkt |
+| **Herr Pohl**, Betriebsrat | Immer im Urlaub. Taucht nur auf, wenn alles vorbei ist. |
+| **Tim und Tom**, Unternehmensberater | Zwillinge im gleichen Anzug, sagen „Synergien" und streichen dabei Stellen |
+| **Dirk**, Sicherheitsdienst | Lässt dich jeden Morgen nicht rein. Kennt dich trotzdem seit Monaten. |
+| **Sebastian**, Krons persönlicher Assistent | Trägt den Smoothie, den Hund und alle Schuld |
+| **Patrick**, dein verschwundener Vorgänger | Nur Spuren: Tasse, Zettel, eine Kündigung ohne Unterschrift. Taucht in Kapitel 5 auf. |
+| **Kai-Uwe**, Motivations-Coach | Hält zu jedem Anlass eine Rede über Löwen und Gazellen |
 
 Stimmen werden vor der Vertonung per Hörprobe ausgewählt, wie bei den alten Filmen.
 
 ---
 
-## 7. Kapitel 1 im Detail: „Ebene −1"
+## 7. Wendungen und verrückte Situationen
+
+Kein Kapitel läuft geradeaus. In jedem gibt es mindestens **eine Wendung, die alles umwirft**, und Ereignisse, die mal gegen dich, mal überraschend für dich laufen.
+
+### Die große Geschichte
+
+| Kapitel | Wendung |
+|---|---|
+| 1 | Nach der „Allen antworten"-Katastrophe lässt Mo die Mail verschwinden. Ab jetzt schuldest du der IT eine Pizza pro Woche. **(gut)** |
+| 2 | Fynn präsentiert deine Idee als seine. Die Idee floppt vor dem Vorstand, und Fynn bekommt die ganze Schuld. **(gut, aber du darfst nichts sagen)** |
+| 3 | **Das unmoralische Angebot** (siehe unten). Außerdem wird Lea deine Mitarbeiterin, und Tim und Tom wollen dein Team halbieren. |
+| 4 | Viktoria Lang bietet dir ein Bündnis gegen Kron an. Gleichzeitig wird Fynn plötzlich nett. Einer von beiden lügt. |
+| 5 | Du findest Patrick, deinen Vorgänger. Er hatte Krons Bilanztricks entdeckt und wurde „befördert": Leiter der Niederlassung Helgoland, allein. Renate verrät, dass sie seit 1989 Ordner über alles führt. |
+| 6 | Bei der Hauptversammlung stimmt Hildegard Kron gegen ihren eigenen Sohn, wenn du sie vorher gewonnen hast. Und am Ende kommt die Frage, ob du ein besserer CEO wirst oder nur ein neuer Kron. |
+
+### Das unmoralische Angebot (Kapitel 3)
+
+Gisela Hartmann flirtet seit Kapitel 1 denkbar ungeschickt: Komplimente über deine Krawatte, Kekse nur für dich, „zufällige" Treffen am Kopierer. In Kapitel 3 bittet sie dich in ihr Büro, Kerzen auf dem Schreibtisch.
+
+> „Die Teamleiter-Stelle. Sie wäre Ihre. Ich bräuchte nur eine Kleinigkeit: Ein Wochenende in meinem Ferienhaus auf Sylt. Nur wir zwei. Und die Möwen."
+
+| Antwort | Folge |
+|---|---|
+| **Klar Nein sagen** und das Gespräch danach schriftlich festhalten | Gisela ist beleidigt und macht dir das Leben schwer. Aber Renate hat ab jetzt einen Ordner mehr, und der wird in Kapitel 5 Gold wert. |
+| **Ausweichen** („Ich bin allergisch gegen Möwen") | Gisela hält das für ein Vielleicht. Das Problem kommt zurück, größer. |
+| **Zusagen** | Wendung: Auf Sylt wartet nicht Gisela allein, sondern ihr Ex-Mann. Sie wollte ihn eifersüchtig machen, du bist nur die Requisite. Die Beförderung gibt es nie, dafür ein Foto, mit dem sie dich erpressen kann. |
+
+Renates Satz danach: „Wer mit Beförderung lockt, will nicht dich, sondern Macht über dich. Schreib alles auf." Lernbezug: Machtmissbrauch am Arbeitsplatz erkennen und dokumentieren.
+
+### Weitere verrückte Situationen
+
+- **Teambuilding im Hochseilgarten:** Kron hängt fest. Du entscheidest, ob du ihn rettest, filmst oder den Betriebsrat rufst (der im Urlaub ist).
+- **Die Weihnachtsfeier:** Chantal hat ein Wichteln organisiert. Du hast Kron gezogen.
+- **Der Hund ist weg.** Kron macht dich verantwortlich. Dividende sitzt im Vorstandssessel.
+- **Kai-Uwe** lässt alle über glühende Kohlen laufen. Fynn läuft zweimal, für die Kamera.
+- **Der Stromausfall:** Zwei Stunden im Dunkeln mit Viktoria Lang im Aufzug. Sie erzählt dir zum ersten Mal etwas Persönliches.
+
+### Zufallsereignisse (in jedem Kapitel möglich)
+
+Zwischen den festen Szenen kann eins davon auftauchen. Dadurch spielt sich jede Runde etwas anders.
+
+| Ereignis | Wirkung |
+|---|---|
+| **Feueralarm** | Alle stehen auf dem Parkplatz, auch Kron. Zehn Minuten, um mit ihm zu reden. |
+| **Elke gibt dir eine doppelte Portion** | Im Haus wird gut über dich geredet. Verbündete steigen. |
+| **Krons LinkedIn-Post** über „Demut" | Du kannst ihn liken, kommentieren oder ignorieren. Alle drei haben Folgen. |
+| **Mo hat etwas gesehen** | Ein Geheimnis aus den Protokollen, wenn du ihm noch Pizza schuldest, nicht. |
+| **Dividende mag dich** | Der Hund folgt dir einen Tag lang. Kron bemerkt dich zum ersten Mal. |
+| **Herr Pohl ist zurück** | Für genau eine Szene. Danach wieder Urlaub. |
+| **Tim und Tom zählen Stellen** | Eine falsche Antwort, und deine steht auf der Liste. |
+
+---
+
+## 8. Kapitel 1 im Detail: „Ebene −1"
 
 **Ziel des Kapitels:** genug Ansehen, um aus dem Keller zu kommen. **Finale:** Sauer muss entscheiden, ob du bleibst.
+
+**Wendung des Kapitels:** Nach Szene 3 schickst du aus Versehen eine Lästermail über Kron an alle 4.000 Mitarbeitenden. Mo aus der IT lässt sie verschwinden, bevor Kron sie liest. Von da an hast du einen Verbündeten im Serverraum und eine Pizza-Schuld. Gisela schaut beim Kopierer zum ersten Mal „zufällig" vorbei.
 
 | Szene | Was passiert | Die drei Antworten (klug · naheliegend · verrückt) | Renates Satz am Ende (Lernanteil) |
 |---|---|---|---|
@@ -154,6 +235,7 @@ Stimmen werden vor der Vertonung per Hörprobe ausgewählt, wie bei den alten Fi
 | **2. Die Aufgabe** | Sauer: „Machen Sie das mit den Ordnern." Mehr sagt er nicht. Es gibt 4.000 Ordner. | Nachfragen, was genau und bis wann · einfach anfangen · alles in den Reißwolf („Ist doch digital, oder?") | „Wer nicht fragt, sortiert bis Weihnachten." (Erfahrungswissen) |
 | **3. Der Fehler** | In fünf Minuten präsentiert Sauer vor dem Vorstand. Auf Folie 3 ist ein Rechenfehler, der die Firma Millionen kosten würde. | Ihm leise sagen · im Meeting vor allen korrigieren · die Folie heimlich austauschen und gegen Kron lenken | „Fehler vom Chef sagt man unter vier Augen." (Erfahrungswissen, Bezug: Forschung zu „Voice" am Arbeitsplatz, vor dem Schreiben zu prüfen) |
 | **4. Fynn** | Der neue Trainee Fynn stellt sich vor und filmt dabei. Am nächsten Tag steht dein Ordner-System auf seinem Profil, mit dem Satz „Stolz auf mein Projekt". | Ihn direkt und ruhig ansprechen · nichts tun · öffentlich kommentieren: „Schön, dass dir meine Arbeit gefällt" | „Wer nie sagt, was er gemacht hat, wird für nichts davon erinnert." (Erfahrungswissen) |
+| **Zufall** | Eines der Zufallsereignisse aus Abschnitt 7, z. B. Feueralarm mit Kron auf dem Parkplatz | je nach Ereignis | |
 | **5. 19:58 Uhr** | Sauer will Folien „bis morgen, bunt". Du hast seit 6 Uhr nichts gegessen. Kron geht gerade mit seinem Hund in den Feierabend. | Klare Grenze mit Angebot („bis 21 Uhr") · ja sagen · den Hund als Assistenten eintragen | „Ein Nein mit Angebot ist besser als ein Ja mit Hass." (Erfahrungswissen) |
 | **Finale: Die Entscheidung** | Sauer und Chantal entscheiden, ob du bleibst. Chantal hat Emojis vorbereitet, für beide Fälle. | hängt von deinen Werten ab. Bei genug Ansehen: Aufzug nach Etage 3. Sonst: „Probezeit verlängert", eine Wiederholungsszene. | Kurze Übersicht der fünf Sätze, aufklappbar mit Quellen |
 
@@ -161,7 +243,7 @@ Die Sätze sind Entwürfe. Vor dem Vertonen wird jeder einzeln geprüft und geke
 
 ---
 
-## 8. Spielwerte
+## 9. Spielwerte
 
 | Wert | Bedeutung | Bei null |
 |---|---|---|
@@ -175,7 +257,7 @@ Die Sätze sind Entwürfe. Vor dem Vertonen wird jeder einzeln geprüft und geke
 
 ---
 
-## 9. Lernen (25 %)
+## 10. Lernen (25 %)
 
 - **Ein Satz pro Szene**, gesprochen von Renate, mit kleinem Schild: Studie, Fachbuch oder Erfahrungswissen.
 - **Kapitel-Ende:** die fünf Sätze als Übersicht, aufklappbar mit Quelle.
@@ -184,7 +266,7 @@ Die Sätze sind Entwürfe. Vor dem Vertonen wird jeder einzeln geprüft und geke
 
 ---
 
-## 10. Warum man wiederkommt
+## 11. Warum man wiederkommt
 
 - **Das nächste Stockwerk:** neue Räume, neues Outfit, neue Gegner.
 - **Die Geschichte:** Was ist mit dem Vorgänger passiert? Wann fliegt Fynn auf? Wie stürzt man Kron?
@@ -194,7 +276,7 @@ Die Sätze sind Entwürfe. Vor dem Vertonen wird jeder einzeln geprüft und geke
 
 ---
 
-## 11. Geld (später)
+## 12. Geld (später)
 
 Noch nicht im Prototyp. Mögliche Modelle:
 - Kapitel 1 und 2 kostenlos, der Rest als einmaliger Kauf.
@@ -205,7 +287,7 @@ Vorher zu klären: kommerzielle Rechte an den Stimmen, Impressum, Gewerbe, Zahlu
 
 ---
 
-## 12. Technik und Kosten
+## 13. Technik und Kosten
 
 - **Neues Projekt:** eigener Ordner, eigenes GitHub-Repository, Next.js wie bisher.
 - **Übernommen:** Stimmen-Skripte, `.env.local`, Abspieler-Prinzip, Wege-Test, Lektionen aus dem alten Stil-Leitfaden.
@@ -215,13 +297,13 @@ Vorher zu klären: kommerzielle Rechte an den Stimmen, Impressum, Gewerbe, Zahlu
 
 ---
 
-## 13. Fahrplan
+## 14. Fahrplan
 
 | Schritt | Was | Abnahme |
 |---|---|---|
 | 0 | Neues Projekt und Repository | Paul legt das Repository an |
 | 1 | **Stil-Entwürfe:** Szene 3 („Der Fehler") als Standbild in drei Varianten des Stils aus Abschnitt 5 | Paul wählt |
-| 2 | **Figuren-Blatt:** Du, Kron, Sauer, Renate, Fynn, Chantal, Gehirn, je mit Ausdrücken und zwei Gesten | Paul gibt frei |
+| 2 | **Figuren-Blatt:** die zehn Hauptfiguren, je mit Ausdrücken und zwei Gesten. Randfiguren folgen pro Kapitel. | Paul gibt frei |
 | 3 | **Eine Testszene** komplett mit Kamera, Stimmen, Geräuschen | Paul gibt frei: Fühlt sich das an wie gewollt? |
 | 4 | **Drehbuch Kapitel 1** ausformuliert | Paul gibt frei |
 | 5 | Kapitel 1 bauen | |
@@ -230,7 +312,7 @@ Vorher zu klären: kommerzielle Rechte an den Stimmen, Impressum, Gewerbe, Zahlu
 
 ---
 
-## 14. Offene Fragen
+## 15. Offene Fragen
 
 **Projekt**
 1. Wie soll der neue Ordner heißen? Legst du das GitHub-Repository an, oder darf ich es über deinen GitHub-Zugang erstellen?
@@ -244,20 +326,21 @@ Vorher zu klären: kommerzielle Rechte an den Stimmen, Impressum, Gewerbe, Zahlu
 7. Musik und Geräusche: aus freien Sammlungen mit passender Lizenz, selbst im Browser erzeugt, oder vorerst ohne Musik?
 
 **Figuren und Welt**
-8. Passen die Namen (Maximilian Kron, Bernd Sauer, Fynn Kessler, Renate Wolf, Chantal)?
+8. Passen die zehn Hauptfiguren und ihre Namen? Fehlt eine Rolle?
 9. Feste Spielfigur, oder Auswahl aus zwei bis drei Aussehen?
 10. Bleiben Gehirn und Jonas als Nebenfiguren?
 
 **Humor**
 11. Passt die Härte der Beispiele in Abschnitt 2, oder soll es noch böser oder etwas milder werden?
-12. Einverstanden mit den Tabus (kein Suizid, keine sexuellen Übergriffe, keine Diskriminierung)?
+12. Einverstanden mit den Regeln für anzügliche Situationen (Abschnitt 2) und mit der Auflösung des Angebots von Gisela (Abschnitt 7)?
+13. Wie viele Zufallsereignisse pro Kapitel: eins (Vorschlag) oder mehr?
 
 **Spiel**
-13. Drei Werte wie beschrieben, oder einfacher?
-14. Zeitdruck bei den Antworten: ja oder nein?
-15. Was soll passieren, wenn man ein Kapitel nicht schafft: Wiederholungsszene (Vorschlag) oder Kapitel neu?
+14. Drei Werte wie beschrieben, oder einfacher?
+15. Zeitdruck bei den Antworten: ja oder nein?
+16. Was soll passieren, wenn man ein Kapitel nicht schafft: Wiederholungsszene (Vorschlag) oder Kapitel neu?
 
 **Inhalt und Geld**
-16. Sollen die sechs alten Filme irgendwo weiterleben, oder bleiben sie im alten Projekt?
-17. Ab wann soll Geld eine Rolle spielen?
-18. Bezahlter Stimmen-Tarif, sobald es öffentlich wird?
+17. Sollen die sechs alten Filme irgendwo weiterleben, oder bleiben sie im alten Projekt?
+18. Ab wann soll Geld eine Rolle spielen?
+19. Bezahlter Stimmen-Tarif, sobald es öffentlich wird?
