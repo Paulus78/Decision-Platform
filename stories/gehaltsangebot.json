@@ -349,19 +349,19 @@
     {
       "title": "Die erste Zahl setzt den Rahmen.",
       "text": "Wer zuerst eine Zahl nennt, zieht die ganze Verhandlung in ihre Richtung. Wer fragt statt nennt, überlässt der anderen Seite den Anker.",
-      "strength": "Strong",
+      "strength": "Gut belegt · Studien",
       "source": "Galinsky & Mussweiler (2001), Journal of Personality and Social Psychology"
     },
     {
       "title": "Bei einer Spanne zählt das untere Ende.",
       "text": "„50 bis 56“ wird zu „50“. Stärker: eine Spanne über dem Ziel („55 bis 60“) oder eine konkrete Zahl wie 57.500.",
-      "strength": "Moderate",
+      "strength": "Belegt · Studien",
       "source": "Ames & Mason (2015), JPSP · Mason et al. (2013), JESP"
     },
     {
       "title": "Fragen statt Nein sagen.",
       "text": "„Wie kommen wir näher an meine Zahl?“ lässt die Gegenseite an deiner Lösung arbeiten, ohne dass du das Angebot ablehnst.",
-      "strength": "Expert Framework",
+      "strength": "Fachbuch",
       "source": "Chris Voss, Never Split the Difference"
     }
   ],

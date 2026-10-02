@@ -2,11 +2,13 @@
   "voices": {
     "narrator": {
       "name": "Puck",
-      "style": "Deutsch. Lockerer, sympathischer Erzähler eines unterhaltsamen Erklärvideos. Zügiges Tempo, leicht verschmitzt, nie belehrend."
+      "style": "Deutsch. Lockerer, sympathischer Erzähler eines unterhaltsamen Erklärvideos. Zügiges Tempo, leicht verschmitzt, nie belehrend.",
+      "elevenlabs": "JBFqnCBsd6RMkjVDRZzb"
     },
     "brandt": {
       "name": "Kore",
-      "style": "Deutsch. Freundliche, professionelle Personalerin am Telefon. Warm, aber geschäftlich."
+      "style": "Deutsch. Freundliche, professionelle Personalerin am Telefon. Warm, aber geschäftlich.",
+      "elevenlabs": "EXAVITQu4vr4xnSDxMaL"
     }
   },
   "lines": [

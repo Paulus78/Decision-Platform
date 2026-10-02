@@ -1,0 +1,52 @@
+{
+  "voices": {
+    "narrator": {
+      "name": "Puck",
+      "style": "Deutsch. Lockerer, sympathischer Erzähler eines unterhaltsamen Erklärvideos. Zügiges Tempo, leicht verschmitzt, nie belehrend.",
+      "elevenlabs": "JBFqnCBsd6RMkjVDRZzb"
+    },
+    "markus": {
+      "name": "Charon",
+      "style": "Deutsch. Freundlicher, etwas zu glatter Vermieter in Sprachnachrichten. Locker, beruhigend, leicht drängend.",
+      "elevenlabs": "IKne3meq5aSn9XLyUdCD"
+    }
+  },
+  "lines": [
+    { "id": "w1", "voice": "narrator", "text": "Das bist du. Seit zwei Monaten suchst du ein WG-Zimmer." },
+    { "id": "w2", "voice": "narrator", "text": "34 Bewerbungen. Null Zusagen. Und das Sofa von Jonas wird nicht bequemer.", "say": "Vierunddreißig Bewerbungen. Null Zusagen. Und das Sofa von Jonas wird nicht bequemer." },
+    { "id": "w3", "voice": "narrator", "text": "Dann, Dienstagabend: dieses Inserat." },
+    { "id": "w4", "voice": "narrator", "text": "18 Quadratmeter, Altbau, Balkon. 420 Euro warm. Du schreibst sofort.", "say": "Achtzehn Quadratmeter, Altbau, Balkon. Vierhundertzwanzig Euro warm. Du schreibst sofort." },
+    { "id": "m1", "voice": "markus", "text": "Hi! Das Zimmer ist noch frei. Ich bin Markus, der Vermieter." },
+    { "id": "m2", "voice": "markus", "text": "Kleiner Haken: Ich bin gerade beruflich in Dänemark. Besichtigen geht leider nicht. Den Schlüssel schicke ich dir per Post." },
+    { "id": "p1", "voice": "narrator", "text": "Ein Vermieter, der nicht da ist. Was schreibst du?" },
+    { "id": "d1A", "voice": "markus", "text": "Ganz einfach: Du überweist die Kaution, ich schicke den Schlüssel." },
+    { "id": "d1B", "voice": "markus", "text": "Leider nein, die Nachbarn kenne ich kaum. Aber ich schicke dir gern mehr Fotos!" },
+    { "id": "d1C", "voice": "markus", "text": "Verstehe ich. Dann muss ich das Zimmer aber jemand anderem geben." },
+    { "id": "n_s2", "voice": "narrator", "text": "Eine Stunde später. Markus hat Neuigkeiten." },
+    { "id": "m3", "voice": "markus", "text": "Update: Es gibt jetzt drei weitere Interessenten." },
+    { "id": "m4", "voice": "markus", "text": "Wer heute die Kaution schickt, bekommt das Zimmer. 1.260 € per PayPal an Freunde, dann sparen wir die Gebühren.", "say": "Wer heute die Kaution schickt, bekommt das Zimmer. Eintausendzweihundertsechzig Euro per PayPal an Freunde, dann sparen wir die Gebühren." },
+    { "id": "p2", "voice": "narrator", "text": "Drei Interessenten, eine Frist, ein seltsamer Zahlungsweg. Was schreibst du?" },
+    { "id": "d2A", "voice": "markus", "text": "Super, ist angekommen! Der Schlüssel geht morgen raus." },
+    { "id": "d2B", "voice": "markus", "text": "Das geht leider nicht, ich bin ja nicht vor Ort. Die anderen zahlen sofort." },
+    { "id": "d2C", "voice": "markus", "text": "Klar, kommt sofort. Unterschreiben kann ich aber erst, wenn die Kaution da ist." },
+    { "id": "n_s3", "voice": "narrator", "text": "Am Abend. Markus meldet sich wieder." },
+    { "id": "m5", "voice": "markus", "text": "Damit du siehst, dass alles seriös ist: Hier ist mein Ausweis." },
+    { "id": "m6", "voice": "markus", "text": "Für den Vertrag brauche ich noch ein Foto von deinem Ausweis. Vorder- und Rückseite." },
+    { "id": "p3", "voice": "narrator", "text": "Er zeigt seinen Ausweis und will deinen. Letzte Entscheidung." },
+    { "id": "d3A", "voice": "markus", "text": "Danke! Ich melde mich." },
+    { "id": "d3B", "voice": "narrator", "text": "Die Bildersuche zeigt: Dieselben Fotos stehen in einem Inserat aus Wien." },
+    { "id": "d3C", "voice": "markus", "text": "Schade. Dann eben nicht." },
+    { "id": "d3C2", "voice": "narrator", "text": "Kurz darauf ist das Profil gelöscht." },
+    { "id": "ep_paid", "voice": "narrator", "text": "Der Schlüssel kommt nie. Und Markus antwortet nicht mehr." },
+    { "id": "e_both", "voice": "narrator", "text": "Geld und Daten weg. 1.260 Euro sind fort – und jemand hat jetzt deinen Ausweis.", "say": "Geld und Daten weg. Eintausendzweihundertsechzig Euro sind fort – und jemand hat jetzt deinen Ausweis." },
+    { "id": "e_paid", "voice": "narrator", "text": "Geld weg. Du hast es noch gemerkt. Die 1.260 Euro sind trotzdem fort.", "say": "Geld weg. Du hast es noch gemerkt. Die eintausendzweihundertsechzig Euro sind trotzdem fort." },
+    { "id": "e_idsent", "voice": "narrator", "text": "Kein Geld verloren. Aber dein Ausweis ist jetzt in fremden Händen." },
+    { "id": "e_safe", "voice": "narrator", "text": "Heil rausgekommen. Kein Geld weg, keine Daten weg. Nur ein Traum weniger." },
+    { "id": "r0", "voice": "narrator", "text": "Was ist da gerade passiert? Drei Dinge." },
+    { "id": "r1", "voice": "narrator", "text": "Erstens: Kein Geld vor der Besichtigung. Ein Vermieter im Ausland, der den Schlüssel per Post schickt – das ist die bekannteste Masche." },
+    { "id": "r2", "voice": "narrator", "text": "Zweitens: Knappheit macht Druck. Drei andere Interessenten und eine Frist bis heute sollen dich zum schnellen Zahlen bringen." },
+    { "id": "r3", "voice": "narrator", "text": "Drittens: Ausweis zeigen, nicht verschicken. Mit einer Kopie können Betrüger in deinem Namen handeln." },
+    { "id": "s1", "voice": "narrator", "text": "So hätte es auch laufen können: Besichtigung verlangen, erst bei der Schlüsselübergabe zahlen – und prüfen statt glauben." },
+    { "id": "out", "voice": "narrator", "text": "Das war nur ein möglicher Verlauf. Die Warnzeichen aber sind echt. Probier es ruhig noch mal." }
+  ]
+}

@@ -1,10 +1,11 @@
 // Erzeugt die Sprecher-Audiodateien einmalig und legt sie in public/audio/.
 // Das Video spielt danach nur noch fertige Dateien ab.
 //
-// Aufruf: node scripts/tts.mjs                -> erzeugt nur fehlende Dateien
-//         node scripts/tts.mjs --force        -> erzeugt alle neu
-//         node scripts/tts.mjs --only n5,m2   -> nur diese Zeilen
-//         node scripts/tts.mjs --list         -> zeigt nur, was fehlt (kostet nichts)
+// Aufruf: node scripts/tts.mjs --story traumwohnung   -> erzeugt nur fehlende Dateien
+//         ... --force        -> erzeugt alle neu
+//         ... --only n5,m2   -> nur diese Zeilen
+//         ... --list         -> zeigt nur, was fehlt (kostet nichts)
+// Ohne --story ist die Situation "gehaltsangebot" gemeint.
 //
 // Anbieter: ElevenLabs, wenn ELEVENLABS_API_KEY in .env.local steht und die Stimme
 // in der voice.json eine "elevenlabs"-ID hat. Sonst Gemini TTS.
@@ -21,11 +22,14 @@ const env = Object.fromEntries(
 // Ausweichmodell: TTS_MODEL=gemini-3.8-flash-lite-tts
 const GEMINI_MODEL = process.env.TTS_MODEL ?? "gemini-3.8-flash-tts";
 const ELEVEN_MODEL = "eleven_multilingual_v2";
-const OUT = "public/audio";
-const VOICE_FILE = "stories/gehaltsangebot.voice.json";
-const MANIFEST = "stories/gehaltsangebot.audio.json";
-
 const args = process.argv.slice(2);
+const story = args.includes("--story") ? args[args.indexOf("--story") + 1] : "gehaltsangebot";
+// Die erste Situation liegt direkt in public/audio, jede weitere in einem Unterordner.
+const SUB = story === "gehaltsangebot" ? "" : `${story}/`;
+const OUT = `public/audio/${SUB}`.replace(/\/$/, "");
+const VOICE_FILE = `stories/${story}.voice.json`;
+const MANIFEST = `stories/${story}.audio.json`;
+
 const force = args.includes("--force");
 const listOnly = args.includes("--list");
 const only = args.includes("--only") ? args[args.indexOf("--only") + 1].split(",") : null;
@@ -83,13 +87,18 @@ function writeManifest() {
   const manifest = {};
   for (const line of lines) {
     const file = existing(line.id);
-    if (file) manifest[line.id] = file;
+    if (file) manifest[line.id] = SUB + file;
   }
   writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + "\n");
   return manifest;
 }
 
-const todo = lines.filter((l) => (only ? only.includes(l.id) : force || !existing(l.id)));
+// Mit ElevenLabs-Key gilt ein Satz erst als fertig, wenn es die mp3 gibt.
+const done = (l) =>
+  env.ELEVENLABS_API_KEY && voices[l.voice].elevenlabs
+    ? existsSync(`${OUT}/${l.id}.mp3`)
+    : Boolean(existing(l.id));
+const todo = lines.filter((l) => (only ? only.includes(l.id) : force || !done(l)));
 const chars = todo.reduce((sum, l) => sum + (l.say ?? l.text).length, 0);
 console.log(`${todo.length} Sätze zu erzeugen, ${chars} Zeichen.`);
 

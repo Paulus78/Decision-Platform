@@ -14,10 +14,10 @@ import {
   type State,
 } from "@/lib/engine";
 import type { Beat, Ending, Option, Story } from "@/lib/story";
-import audioManifest from "@/stories/gehaltsangebot.audio.json";
-import { CallScene, HomeScene, type Mood } from "./art";
-import { JonasFace, MailScene, RevealIcon, type Mail } from "./scenes2";
-import { pop, ring } from "./sfx";
+import audioManifest from "@/stories/traumwohnung.audio.json";
+import type { Mood } from "./art";
+import { JonasFace } from "./scenes2";
+import { pop } from "./sfx";
 import {
   Caption,
   Decision,
@@ -32,29 +32,32 @@ import {
   useDirector,
   type VoiceLine,
 } from "./ui";
+import {
+  ChatScene,
+  ListingScene,
+  SofaScene,
+  WohnungIcon,
+  type ChatMessage,
+} from "./wohnung-art";
 
-// Welche Sätze schon eine Audiodatei haben. Fehlt eine, bleibt der Untertitel
-// so lange stehen, wie man zum Lesen braucht.
+// Situation "Die Traumwohnung": ein Fake-Inserat und ein sehr netter Vermieter.
+
 const AUDIO = audioManifest as Record<string, string>;
 
 type DecisionBeat = Extract<Beat, { type: "decision" }>;
-type Speaker = "narrator" | "brandt";
-type View = "home" | "call" | "mail" | "result" | "reveal" | "strong";
+type Speaker = "narrator" | "markus";
+type View = "sofa" | "listing" | "chat" | "result" | "reveal" | "strong";
 
 type Cue = {
   view: View;
   night: boolean;
-  thought: "goal" | "bank" | null;
-  ringing: boolean;
-  youMood: Mood;
-  brandtMood: Mood;
+  mood: Mood;
+  stats: number;
   talking: Speaker | null;
   caption: { who: Speaker; text: string } | null;
-  bubble: string | null;
-  mail: Mail | null;
-  reply: string | null;
-  stamp: boolean;
-  jonas: { text: string; n: number } | null;
+  messages: ChatMessage[];
+  search: boolean;
+  friend: { text: string; n: number } | null;
   title: { title: string; time: string } | null;
   hud: State;
   revealStep: number;
@@ -62,39 +65,35 @@ type Cue = {
 };
 
 const START: Cue = {
-  view: "home",
+  view: "sofa",
   night: false,
-  thought: null,
-  ringing: false,
-  youMood: "neutral",
-  brandtMood: "happy",
+  mood: "neutral",
+  stats: 0,
   talking: null,
   caption: null,
-  bubble: null,
-  mail: null,
-  reply: null,
-  stamp: false,
-  jonas: null,
+  messages: [],
+  search: false,
+  friend: null,
   title: null,
   hud: initialState,
   revealStep: 0,
   ending: null,
 };
 
-const SPEAKER_LABEL: Record<Speaker, string> = {
-  narrator: "Erzähler",
-  brandt: "Frau Brandt",
-};
+const SPEAKER_LABEL: Record<Speaker, string> = { narrator: "Erzähler", markus: "Markus" };
 
 type Phase = "poster" | "playing" | "end";
 type Ask = { beat: DecisionBeat; number: number; state: State; resolve: (o: Option) => void };
 
-export default function Explainer({ story, voice }: { story: Story; voice: VoiceLine[] }) {
+function lost(state: State): string {
+  return `${euro(state.offer)} € verloren`;
+}
+
+export default function Wohnung({ story, voice }: { story: Story; voice: VoiceLine[] }) {
   const [phase, setPhase] = useState<Phase>("poster");
   const [cue, setCue] = useState<Cue>(START);
   const [ask, setAsk] = useState<Ask | null>(null);
   const [runKey, setRunKey] = useState(0);
-
   const { wait, playFile, begin, skipNow } = useDirector();
 
   const decisions = story.beats.filter((b): b is DecisionBeat => b.type === "decision");
@@ -125,123 +124,77 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
 
     // --- Intro ---
     await wait(1100);
-    await say("n1");
-    set({ thought: "goal", youMood: "happy" });
+    await say("w1");
+    set({ stats: 1, mood: "worried" });
     pop();
-    await say("n2a");
-    set({ thought: "bank", youMood: "worried" });
+    await wait(500);
+    set({ stats: 2 });
     pop();
-    await say("n2b");
+    await say("w2");
     if (!alive()) return;
-    set({ thought: null, ringing: true, youMood: "surprised", caption: null });
-    ring();
-    await wait(900);
-    await say("n3");
+    set({ view: "listing", caption: null, mood: "surprised" });
+    await say("w3");
+    set({ mood: "happy" });
+    await say("w4");
     if (!alive()) return;
-    set({ view: "call", ringing: false, youMood: "happy", caption: null });
-    await wait(900);
+    set({ view: "chat", caption: null, mood: "happy" });
+    await wait(1100);
 
     // --- Story aus der Story-Datei ---
     let state = initialState;
-    let hud = initialState;
     let index = 0;
     let firstScene = true;
-    let lastChannel = "call";
-    let night = false;
-    let mail: Mail | null = null;
-    let mailOpen = false;
-
-    function setHud(next: State) {
-      hud = next;
-      set({ hud });
-    }
+    let messages: ChatMessage[] = [];
 
     async function show(entries: LogEntry[], st: State) {
       for (const entry of entries) {
         if (!alive()) return;
         if (entry.kind === "table") {
-          setHud({ ...st, table: entry.table });
+          set({ hud: { ...st, table: entry.table } });
           continue;
         }
         if (entry.kind === "scene") {
-          // Die erste Szene (der Anruf) hat schon das Intro eingeleitet.
+          // Die erste Szene hat schon das Intro eingeleitet.
           if (firstScene) {
             firstScene = false;
             continue;
           }
-          set({ title: { title: entry.title, time: entry.time }, caption: null, jonas: null });
+          set({ title: { title: entry.title, time: entry.time }, caption: null, friend: null });
           if (entry.voice) await say(entry.voice);
           else await wait(1800);
-          night = Boolean(entry.night);
-          mail = null;
-          mailOpen = false;
-          lastChannel = "mail";
           set({
             title: null,
             caption: null,
-            view: "mail",
-            night,
-            mail: null,
-            reply: null,
-            stamp: false,
-            youMood: night ? "worried" : "neutral",
+            night: Boolean(entry.night),
+            mood: entry.night ? "worried" : "neutral",
           });
-          await wait(700);
+          await wait(600);
           continue;
         }
 
         const { line } = entry;
-        if (line.channel === "chat") {
-          mailOpen = false;
-          set({ caption: null, jonas: { text: line.text, n: ++n } });
-          pop();
-          await wait(3200);
-          set({ jonas: null });
-          continue;
-        }
-        if (line.from === "du") {
-          mailOpen = false;
-          pop();
-          if (lastChannel === "call") {
-            set({ caption: null, bubble: line.text, youMood: "neutral" });
-            await wait(2000);
-            set({ bubble: null });
-          } else {
-            set({ caption: null, reply: line.text });
-            await wait(2400);
-          }
-          continue;
-        }
-
-        // Frau Brandt
         const voiceId = line.voice?.replace(/\{(\w+)\}/g, (_, key) => st.choices[key] ?? "");
-        if (line.channel === "call") {
-          if (lastChannel !== "call") {
-            night = false;
-            set({
-              view: "call",
-              night,
-              caption: null,
-              reply: null,
-              youMood: "surprised",
-              brandtMood: "happy",
-            });
-            ring();
-            await wait(1300);
-          }
-          lastChannel = "call";
-          mailOpen = false;
-          await say(voiceId, line.text, "brandt");
-        } else {
-          lastChannel = "mail";
-          const open: Mail | null = mailOpen ? mail : null;
-          mail = open
-            ? { ...open, paragraphs: [...open.paragraphs, line.text] }
-            : { subject: line.subject ?? "Re: Ihr Angebot", paragraphs: [line.text] };
-          mailOpen = true;
-          set({ view: "mail", night, mail, reply: null, stamp: night });
+        if (line.from === "jonas") {
+          set({ caption: null, friend: { text: line.text, n: ++n } });
           pop();
-          await say(voiceId, line.text, "brandt");
+          await wait(3400);
+          set({ friend: null });
+        } else if (line.from === "erzaehler") {
+          if (line.visual === "search") {
+            set({ search: true, mood: "surprised" });
+            pop();
+          }
+          await say(voiceId, line.text, "narrator");
+        } else if (line.from === "du") {
+          messages = [...messages, { from: "du", text: line.text }];
+          set({ caption: null, messages, mood: "neutral" });
+          pop();
+          await wait(1900);
+        } else {
+          messages = [...messages, { from: "markus", text: line.text, visual: line.visual }];
+          set({ messages });
+          pop();
+          await say(voiceId, line.text, "markus");
         }
       }
     }
@@ -257,7 +210,7 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
       if (!beat || beat.type !== "decision") break;
 
       if (beat.prompt) {
-        set({ youMood: "worried" });
+        set({ mood: "worried" });
         await say(beat.prompt);
         if (!alive()) return;
       }
@@ -270,38 +223,35 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
 
       const chosen = choose(state, beat, option);
       state = chosen.state;
-      // Erst die eigene Antwort, dann die Reaktion, dann springt die Zahl.
       await show(chosen.entries.slice(0, 1), state);
-      setHud({ ...hud, table: state.table });
-      if (beat.id === "d1") set({ brandtMood: option.id === "A" ? "surprised" : "happy" });
+      // Das Geld ist in dem Moment weg, in dem du überweist.
+      set({ hud: state, mood: state.offer > current.offer ? "happy" : "neutral" });
       await show(chosen.entries.slice(1), state);
       if (!alive()) return;
-      setHud(state);
       await wait(900);
       index++;
     }
 
     // --- Ergebnis, Erklärung, starker Verlauf ---
     const ending = pickEnding(story, state);
-    setHud(state);
     set({
       view: "result",
       night: false,
       caption: null,
-      mail: null,
-      reply: null,
-      bubble: null,
+      search: false,
+      hud: state,
       ending,
-      youMood: ending.id === "schnell" ? "neutral" : "happy",
+      stats: 0,
+      mood: ending.id === "safe" ? "happy" : "worried",
     });
     await wait(900);
     await say(`e_${ending.id}`);
-    set({ jonas: { text: fill(ending.jonas, state), n: ++n } });
+    set({ friend: { text: fill(ending.jonas, state), n: ++n } });
     pop();
-    await wait(3600);
+    await wait(3800);
     if (!alive()) return;
 
-    set({ jonas: null, caption: null, view: "reveal", revealStep: 0 });
+    set({ friend: null, caption: null, view: "reveal", revealStep: 0 });
     await say("r0");
     for (let step = 1; step <= story.reveal.length; step++) {
       set({ revealStep: step });
@@ -318,37 +268,26 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
     if (alive()) setPhase("end");
   }
 
-  const inScene = cue.view === "home" || cue.view === "call" || cue.view === "mail";
-  const showChip =
-    phase === "playing" && inScene && !cue.title && cue.hud.table !== initialState.table;
+  const showChip = phase === "playing" && cue.view === "chat" && !cue.title;
+  const extra = cue.hud.flags.includes("idsent") ? " + Ausweis" : "";
 
   return (
     <Stage onSkip={() => !ask && skipNow()}>
       <svg viewBox="0 0 1600 900" className="absolute inset-0 h-full w-full">
-        {cue.view === "home" && (
-          <HomeScene key={runKey} mood={cue.youMood} thought={cue.thought} ringing={cue.ringing} />
-        )}
-        {cue.view === "call" && (
-          <CallScene
-            youMood={cue.youMood}
-            brandtMood={cue.brandtMood}
-            brandtTalking={cue.talking === "brandt"}
-            bubble={cue.bubble}
-          />
-        )}
-        {cue.view === "mail" && (
-          <MailScene
-            key={cue.night ? "night" : "day"}
+        {cue.view === "sofa" && <SofaScene key={runKey} mood={cue.mood} stats={cue.stats} />}
+        {cue.view === "listing" && <ListingScene mood={cue.mood} />}
+        {cue.view === "chat" && (
+          <ChatScene
             night={cue.night}
-            mail={cue.mail}
-            reply={cue.reply}
-            stamp={cue.stamp}
-            mood={cue.youMood}
+            mood={cue.mood}
+            messages={cue.messages}
+            markusTalking={cue.talking === "markus"}
+            search={cue.search}
           />
         )}
         {cue.view === "result" && (
           <g transform="translate(-340 0)">
-            <HomeScene mood={cue.youMood} thought={null} ringing={false} />
+            <SofaScene mood={cue.mood} stats={0} />
           </g>
         )}
       </svg>
@@ -361,31 +300,32 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
           story={story}
           step={cue.revealStep}
           icons={story.reveal.map((card, i) => (
-            <RevealIcon key={card.title} kind={i} />
+            <WohnungIcon key={card.title} kind={i} />
           ))}
         />
       )}
       {cue.view === "strong" && (
         <StrongPanel
           story={story}
-          strongValue={`${euro(story.strongRun.result)} €`}
-          yourValue={`${euro(cue.hud.offer)} €`}
+          strongValue="0 € verloren"
+          yourValue={lost(cue.hud) + extra}
         />
       )}
 
       {showChip && (
         <HudChip
-          key={fill(cue.hud.table, cue.hud)}
-          label="Zahl auf dem Tisch"
+          key={cue.hud.offer}
+          label="An Markus überwiesen"
           text={fill(cue.hud.table, cue.hud)}
+          danger={cue.hud.offer > 0}
         />
       )}
 
-      {cue.jonas && phase === "playing" && (
+      {cue.friend && phase === "playing" && (
         <FriendPopup
-          key={cue.jonas.n}
+          key={cue.friend.n}
           name={story.characters.jonas}
-          text={cue.jonas.text}
+          text={cue.friend.text}
           face={<JonasFace />}
         />
       )}
@@ -396,7 +336,7 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
         <Caption
           label={SPEAKER_LABEL[cue.caption.who]}
           text={cue.caption.text}
-          accent={cue.caption.who === "brandt" ? "#f2a33a" : "#7fd6c8"}
+          accent={cue.caption.who === "markus" ? "#f2a33a" : "#7fd6c8"}
         />
       )}
 
@@ -405,7 +345,7 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
           key={ask.beat.id}
           number={ask.number}
           total={decisions.length}
-          question="Was sagst du?"
+          question="Was schreibst du?"
           options={ask.beat.options}
           state={ask.state}
           onPick={ask.resolve}
@@ -414,16 +354,16 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
 
       {phase === "poster" && (
         <Poster
-          kicker="Work · 3 Entscheidungen"
+          kicker="Alltag · 3 Entscheidungen"
           title={story.title}
-          subtitle="Sie wollen dich. Jetzt geht es ums Geld."
+          subtitle="420 € warm, mit Balkon. Wo ist der Haken?"
           onStart={play}
         />
       )}
 
       {phase === "end" && (
         <EndCard
-          kicker={`Dein Ergebnis: ${euro(cue.hud.offer)} €`}
+          kicker={`Dein Ergebnis: ${lost(cue.hud)}${extra}`}
           disclaimer={story.disclaimer}
           onReplay={play}
         />
@@ -434,49 +374,35 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
 
 function ResultCard({ story, ending, state }: { story: Story; ending: Ending; state: State }) {
   const ref = useRef<HTMLDivElement>(null);
-  const number = useRef<HTMLSpanElement>(null);
-  useGSAP(
-    () => {
-      gsap.from(ref.current, { x: "120%", duration: 0.6, ease: "back.out(1.2)" });
-      const counter = { value: state.offer - 9000 };
-      gsap.to(counter, {
-        value: state.offer,
-        duration: 1.5,
-        delay: 0.4,
-        ease: "power2.out",
-        onUpdate: () => {
-          if (number.current) {
-            number.current.textContent = euro(Math.round(counter.value / 100) * 100);
-          }
-        },
-      });
-    },
-    { scope: ref },
-  );
+  useGSAP(() => {
+    gsap.from(ref.current, { x: "120%", duration: 0.6, ease: "back.out(1.2)" });
+  });
   const extras = state.flags.map((flag) => story.flagLabels[flag]).filter(Boolean);
+  const safe = state.offer === 0 && extras.length === 0;
   return (
     <div className="pointer-events-none absolute inset-y-0 right-[3cqw] flex w-[46cqw] items-center">
       <div ref={ref} className="w-full rounded-[2.4cqw] bg-white p-[3cqw] shadow-2xl">
         <p className="inline-block rounded-full bg-[#2b3a67]/10 px-[1.4cqw] py-[0.4cqw] text-[1.2cqw] font-bold uppercase tracking-[0.2em] text-[#2b3a67]/70">
           Ein möglicher Verlauf
         </p>
-        <h2 className="mt-[1cqw] text-[4.6cqw] font-black leading-none text-[#1e294b]">
+        <h2 className="mt-[1cqw] text-[4.4cqw] font-black leading-none text-[#1e294b]">
           {ending.title}
         </h2>
         <p className="mt-[1.6cqw] text-[1.2cqw] font-bold uppercase tracking-[0.25em] text-[#2b3a67]/60">
-          Dein Ergebnis
+          Verloren
         </p>
-        <p className="text-[7cqw] font-black leading-none text-[#2f9e8f]">
-          <span ref={number}>{euro(state.offer)}</span> €
+        <p
+          className="text-[7cqw] font-black leading-none"
+          style={{ color: safe ? "#2f9e8f" : "#ef6f5e" }}
+        >
+          {euro(state.offer)} €
         </p>
         {extras.map((extra) => (
           <p key={extra} className="mt-[0.6cqw] text-[1.8cqw] font-bold text-[#ef6f5e]">
             + {extra}
           </p>
         ))}
-        <p className="mt-[0.8cqw] text-[1.6cqw] text-[#2b3a67]/60">
-          Dein Ziel war: {euro(story.goal)} €
-        </p>
+        <p className="mt-[0.8cqw] text-[1.6cqw] text-[#2b3a67]/70">{ending.text}</p>
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ export const C = {
   mouth: "#5b2333",
 };
 
-function Face({
+export function Face({
   mood,
   talking,
   glasses,

@@ -12,6 +12,8 @@ export type Line = Condition & {
   subject?: string;
   // Sprecher-Datei zu dieser Zeile. {d1} wird durch die Wahl bei Entscheidung d1 ersetzt.
   voice?: string;
+  // Zusatzbild zu dieser Zeile, z. B. "id" (Ausweisfoto) oder "search" (Bildersuche).
+  visual?: string;
 };
 
 // set/add verändern das aktuelle Angebot, flag merkt sich etwas (z. B. "accepted").

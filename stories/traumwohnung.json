@@ -1,0 +1,219 @@
+{
+  "id": "traumwohnung",
+  "title": "Die Traumwohnung",
+  "category": "alltag",
+  "tags": ["scarcity", "vorkasse-betrug"],
+  "goal": 0,
+  "characters": {
+    "du": "Du",
+    "markus": "Markus",
+    "jonas": "Jonas",
+    "erzaehler": "Erzähler"
+  },
+  "intro": [
+    "Seit zwei Monaten suchst du ein WG-Zimmer. 34 Bewerbungen, null Zusagen.",
+    "Dann dieses Inserat: 18 m², Altbau, Balkon. 420 € warm.",
+    "Du schreibst sofort. Der Vermieter antwortet nach zwei Minuten."
+  ],
+  "beats": [
+    { "type": "scene", "title": "Die Antwort", "time": "Dienstag, 21:14 Uhr" },
+    {
+      "type": "lines",
+      "table": "{offer} €",
+      "lines": [
+        { "from": "markus", "channel": "chat", "text": "Hi! Das Zimmer ist noch frei. Ich bin Markus, der Vermieter.", "voice": "m1" },
+        { "from": "markus", "channel": "chat", "text": "Kleiner Haken: Ich bin gerade beruflich in Dänemark. Besichtigen geht leider nicht. Den Schlüssel schicke ich dir per Post.", "voice": "m2" }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d1",
+      "channel": "chat",
+      "prompt": "p1",
+      "options": [
+        {
+          "id": "A",
+          "text": "Klingt gut, wie läuft das?",
+          "replies": [
+            { "from": "markus", "channel": "chat", "text": "Ganz einfach: Du überweist die Kaution, ich schicke den Schlüssel.", "voice": "d1A" }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Kann mir jemand anderes die Wohnung zeigen?",
+          "replies": [
+            { "from": "markus", "channel": "chat", "text": "Leider nein, die Nachbarn kenne ich kaum. Aber ich schicke dir gern mehr Fotos!", "voice": "d1B" }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Ohne Besichtigung mache ich nichts.",
+          "replies": [
+            { "from": "markus", "channel": "chat", "text": "Verstehe ich. Dann muss ich das Zimmer aber jemand anderem geben.", "voice": "d1C" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "jonas", "channel": "chat", "text": "420 warm?? Mit Balkon?? Nimm, bevor ich es nehme." }
+      ]
+    },
+    { "type": "scene", "title": "Der Druck", "time": "Eine Stunde später", "voice": "n_s2" },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "markus", "channel": "chat", "text": "Update: Es gibt jetzt drei weitere Interessenten.", "voice": "m3" },
+        { "from": "markus", "channel": "chat", "text": "Wer heute die Kaution schickt, bekommt das Zimmer. 1.260 € per PayPal an Freunde, dann sparen wir die Gebühren.", "voice": "m4" }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d2",
+      "channel": "chat",
+      "prompt": "p2",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ich überweise jetzt.",
+          "effects": [{ "set": 1260 }, { "flag": "paid" }],
+          "replies": [
+            { "from": "markus", "channel": "chat", "text": "Super, ist angekommen! Der Schlüssel geht morgen raus.", "voice": "d2A" }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Ich zahle bei der Schlüsselübergabe.",
+          "replies": [
+            { "from": "markus", "channel": "chat", "text": "Das geht leider nicht, ich bin ja nicht vor Ort. Die anderen zahlen sofort.", "voice": "d2B" }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Schick mir erst den Mietvertrag.",
+          "replies": [
+            { "from": "markus", "channel": "chat", "text": "Klar, kommt sofort. Unterschreiben kann ich aber erst, wenn die Kaution da ist.", "voice": "d2C" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "jonas", "channel": "chat", "text": "Stark!! Einweihungsparty wann?", "ifFlag": "paid" },
+        { "from": "jonas", "channel": "chat", "text": "Du diskutierst mit einem Vermieter? In DIESER Stadt??", "unlessFlag": "paid" }
+      ]
+    },
+    { "type": "scene", "title": "Der Ausweis", "time": "Am Abend", "voice": "n_s3", "night": true },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "markus", "channel": "chat", "text": "Damit du siehst, dass alles seriös ist: Hier ist mein Ausweis.", "voice": "m5", "visual": "id" },
+        { "from": "markus", "channel": "chat", "text": "Für den Vertrag brauche ich noch ein Foto von deinem Ausweis. Vorder- und Rückseite.", "voice": "m6" }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d3",
+      "channel": "chat",
+      "prompt": "p3",
+      "options": [
+        {
+          "id": "A",
+          "text": "Hier ist mein Ausweis.",
+          "effects": [{ "flag": "both", "ifFlag": "paid" }, { "flag": "idsent" }],
+          "replies": [
+            { "from": "markus", "channel": "chat", "text": "Danke! Ich melde mich.", "voice": "d3A" }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Ich prüfe erst die Fotos und die Adresse.",
+          "effects": [{ "flag": "checked" }],
+          "replies": [
+            { "from": "erzaehler", "channel": "chat", "text": "Die Bildersuche zeigt: Dieselben Fotos stehen in einem Inserat aus Wien.", "voice": "d3B", "visual": "search" }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Ich breche ab und melde das Inserat.",
+          "effects": [{ "flag": "reported" }],
+          "replies": [
+            { "from": "markus", "channel": "chat", "text": "Schade. Dann eben nicht.", "voice": "d3C" },
+            { "from": "erzaehler", "channel": "chat", "text": "Kurz darauf ist das Profil gelöscht.", "voice": "d3C2" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "erzaehler", "channel": "chat", "text": "Der Schlüssel kommt nie. Und Markus antwortet nicht mehr.", "voice": "ep_paid", "ifFlag": "paid" }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "both",
+      "title": "Geld und Daten weg",
+      "text": "1.260 € sind fort. Und jemand hat jetzt deinen Ausweis.",
+      "jonas": "Bro. Der Typ hat jetzt dein Geld UND dein Gesicht.",
+      "when": [{ "minOffer": 0, "flag": "both" }]
+    },
+    {
+      "id": "paid",
+      "title": "Geld weg",
+      "text": "Du hast es noch gemerkt. Die 1.260 € sind trotzdem fort.",
+      "jonas": "1.260 €?! Dafür hättest du drei Monate bei mir wohnen können.",
+      "when": [{ "minOffer": 0, "flag": "paid" }]
+    },
+    {
+      "id": "idsent",
+      "title": "Daten weg",
+      "text": "Kein Geld verloren. Aber dein Ausweis ist jetzt in fremden Händen.",
+      "jonas": "Wenigstens kein Geld weg. Aber sag lieber der Polizei Bescheid.",
+      "when": [{ "minOffer": 0, "flag": "idsent" }]
+    },
+    {
+      "id": "safe",
+      "title": "Heil rausgekommen",
+      "text": "Kein Geld weg, keine Daten weg. Nur ein Traum weniger.",
+      "jonas": "Okay, Respekt. Mein Sofa bleibt dein Sofa.",
+      "when": [{ "minOffer": 0 }]
+    }
+  ],
+  "flagLabels": {
+    "idsent": "Ausweis in fremden Händen"
+  },
+  "reveal": [
+    {
+      "title": "Kein Geld vor der Besichtigung.",
+      "text": "Vermieter im Ausland, Schlüssel per Post, Kaution vorab: Das ist die bekannteste Masche bei Fake-Inseraten.",
+      "strength": "Offizielle Warnung",
+      "source": "Polizei Hamburg · Verbraucherzentrale"
+    },
+    {
+      "title": "Knappheit macht Druck.",
+      "text": "„Drei andere Interessenten“ und „nur heute“ sollen dich zum schnellen Zahlen bringen.",
+      "strength": "Fachbuch",
+      "source": "Robert Cialdini, Influence"
+    },
+    {
+      "title": "Ausweis zeigen, nicht verschicken.",
+      "text": "Mit einer Ausweiskopie können Betrüger in deinem Namen handeln.",
+      "strength": "Offizielle Warnung",
+      "source": "Verbraucherzentrale"
+    }
+  ],
+  "strongRun": {
+    "title": "So hätte es auch laufen können",
+    "result": 0,
+    "steps": [
+      { "text": "Kann mir jemand anderes die Wohnung zeigen?", "label": "Besichtigung verlangt" },
+      { "text": "Ich zahle bei der Schlüsselübergabe.", "label": "Kein Geld vorab" },
+      { "text": "Ich prüfe erst die Fotos und die Adresse.", "label": "Geprüft statt geglaubt" }
+    ]
+  },
+  "disclaimer": "Ein möglicher Verlauf. Die Geschichte ist erfunden – die Warnzeichen sind echt."
+}

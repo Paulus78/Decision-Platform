@@ -228,3 +228,14 @@ Das gezeichnete Erklärvideo läuft jetzt komplett durch: Intro → Anruf → En
 - Stand Stimmen: 10 von 37 Sätzen vertont (Gemini). Die restlichen 27 (ca. 1.900 Zeichen) fehlen noch.
 - `scripts/tts.mjs` kann ElevenLabs (wenn `ELEVENLABS_API_KEY` in `.env.local` steht und die Stimme in der voice.json eine `elevenlabs`-ID hat), sonst Gemini. Der ElevenLabs-Weg ist noch ungetestet.
 - Frau Brandts Mails nennen bei Nachbesserungen jetzt den Aufschlag („Wir legen 1.500 € drauf") statt der Endsumme. So braucht es weniger Sprach-Varianten.
+
+---
+
+## 7. Zweite Situation und Stimmen (2026-10-02)
+
+- Neue Situation **„Die Traumwohnung"** (WG-Zimmer-Betrug), eigene Doku: `docs/situation-02-traumwohnung.md`.
+- Startseite `/` ist jetzt eine Auswahl. Die Situationen liegen unter `/gehalt` und `/wohnung`.
+- Gemeinsame Bausteine (Abspiel-Steuerung, Untertitel, Entscheidung, Erklär-Karten, Vergleich) liegen in `components/explainer/ui.tsx`. Jede Situation hat ihren eigenen Ablauf (`Explainer.tsx` = Gehalt, `Wohnung.tsx`) und ihre eigenen Zeichnungen.
+- Stimmen: komplett **ElevenLabs** (kostenloser Tarif, Modell `eleven_multilingual_v2`). Erzähler = George, Frau Brandt = Sarah, Markus = Charlie. Beide Situationen sind vollständig vertont (37 + 36 Sätze, zusammen ca. 5.200 Zeichen, dazu ca. 650 Zeichen für Hörproben).
+- Aufruf: `node scripts/tts.mjs --story traumwohnung` (ohne `--story` ist `gehaltsangebot` gemeint). Das Skript erzeugt nur fehlende Dateien.
+- Der kostenlose ElevenLabs-Tarif verlangt einen Hinweis: Auf der Schlusskarte steht „Stimmen: ElevenLabs". Kommerzielle Nutzung ist damit nicht erlaubt.
