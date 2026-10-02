@@ -135,7 +135,7 @@ const DEMOS: Demo[] = [
 ];
 
 // Wie lange eine Situation stehen bleibt, bevor die nächste kommt.
-const ROTATE_SECONDS = 10;
+const ROTATE_SECONDS = 15;
 
 function Scene({ slug, you, other, talking }: { slug: string; you: Mood; other: Mood; talking: boolean }) {
   if (slug === "jahresgespraech") {
