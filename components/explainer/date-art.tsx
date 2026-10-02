@@ -168,8 +168,8 @@ function StreetBackground() {
       <rect x="640" y="250" width="320" height="520" rx="14" fill="#2a2548" />
       <rect x="676" y="300" width="248" height="230" rx="10" fill="#f2c14e" opacity="0.8" />
       <path d="M600 250 L1000 250 L960 190 L640 190 Z" fill={C.coral} />
-      <rect x="1010" y="40" width="200" height="76" rx="16" fill="#2a2548" stroke={C.coral} strokeWidth="6" />
-      <text x="1110" y="96" textAnchor="middle" fontSize="54" fontWeight="900" fill={C.coral} letterSpacing="6">
+      <rect x="700" y="96" width="200" height="76" rx="16" fill="#2a2548" stroke={C.coral} strokeWidth="6" />
+      <text x="800" y="152" textAnchor="middle" fontSize="54" fontWeight="900" fill={C.coral} letterSpacing="6">
         BAR
       </text>
       <rect y="770" width="1600" height="130" fill="#2c2a45" />

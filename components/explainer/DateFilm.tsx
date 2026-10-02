@@ -360,12 +360,12 @@ export default function DateFilm({ story, voice }: { story: Story; voice: VoiceL
 // Anzeige oben: Wie unangenehm ist es gerade?
 function AwkwardMeter({ value }: { value: number }) {
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-[1.6cqw] flex justify-center">
-      <div className="rounded-[1.4cqw] bg-white px-[2cqw] py-[0.9cqw] text-center shadow-xl">
+    <div className="pointer-events-none absolute right-[1.6cqw] top-[1.6cqw]">
+      <div className="rounded-[1.4cqw] bg-white px-[1.6cqw] py-[0.8cqw] text-center shadow-xl">
         <p className="text-[1cqw] font-bold uppercase tracking-[0.25em] text-[#2b3a67]/60">
           Awkward-Meter
         </p>
-        <div className="relative mt-[0.7cqw] h-[1.3cqw] w-[24cqw] rounded-full bg-gradient-to-r from-[#2f9e8f] via-[#f2c14e] to-[#ef6f5e]">
+        <div className="relative mt-[0.7cqw] h-[1.3cqw] w-[17cqw] rounded-full bg-gradient-to-r from-[#2f9e8f] via-[#f2c14e] to-[#ef6f5e]">
           <div
             className="absolute top-[-0.5cqw] h-[2.3cqw] w-[0.9cqw] -translate-x-1/2 rounded-full border-[0.25cqw] border-white bg-[#1e294b] shadow transition-[left] duration-700"
             style={{ left: `${Math.min(97, Math.max(3, value))}%` }}
