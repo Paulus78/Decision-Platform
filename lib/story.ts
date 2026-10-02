@@ -58,6 +58,8 @@ export type Story = {
   category: string;
   tags: string[];
   goal: number;
+  // Startwert der Zahl, die die Situation mitzählt (Standard: 0).
+  start?: number;
   characters: Record<string, string>;
   intro: string[];
   beats: Beat[];

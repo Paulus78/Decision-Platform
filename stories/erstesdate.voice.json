@@ -1,0 +1,63 @@
+{
+  "voices": {
+    "narrator": {
+      "name": "Puck",
+      "style": "Deutsch. Lockerer, sympathischer Erzähler eines unterhaltsamen Erklärvideos. Zügiges Tempo, leicht verschmitzt, nie belehrend.",
+      "elevenlabs": "JBFqnCBsd6RMkjVDRZzb"
+    },
+    "lena": {
+      "name": "Leda",
+      "style": "Deutsch. Junge Frau beim ersten Date. Herzlich, entspannt, mit trockenem Humor.",
+      "elevenlabs": "pFZP5JQG7iQjIQuC4Bku"
+    },
+    "gehirn": {
+      "name": "Fenrir",
+      "style": "Deutsch. Panische, gehetzte innere Stimme. Schnell, halb geflüstert, komisch übertrieben.",
+      "elevenlabs": "TX3LPaxmHKxFdv7VOQHJ"
+    }
+  },
+  "lines": [
+    { "id": "i1", "voice": "narrator", "text": "Das bist du. Drei Wochen habt ihr geschrieben. Heute: das erste Date." },
+    { "id": "i2", "voice": "narrator", "text": "Du bist zehn Minuten zu früh. Die Getränkekarte kennst du inzwischen auswendig." },
+    { "id": "g1", "voice": "gehirn", "text": "Ganz ruhig. Wir haben das geübt. Hände wohin? HÄNDE WOHIN?", "say": "Ganz ruhig. Wir haben das geübt. Hände wohin? Hände wohin?!" },
+    { "id": "i3", "voice": "narrator", "text": "Und dann kommt Lena." },
+    { "id": "l1", "voice": "lena", "text": "Hey! Sorry, die Bahn. Schön, dass es endlich klappt." },
+    { "id": "l2", "voice": "lena", "text": "Ich komme direkt von der Arbeit. Ich bin Tierärztin. Heute hatte ich einen Papagei, der mich beleidigt hat." },
+    { "id": "g2", "voice": "gehirn", "text": "Stille. Seit vier Sekunden. Sag was. NICHT das mit dem Wetter!", "say": "Stille. Seit vier Sekunden. Sag was. Nicht das mit dem Wetter!" },
+    { "id": "p1", "voice": "narrator", "text": "Die erste Pause. Was sagst du?" },
+    { "id": "d1A", "voice": "lena", "text": "Aha. Spannend." },
+    { "id": "d1Ag", "voice": "gehirn", "text": "Vier Minuten Excel. Sie zählt die Eiswürfel." },
+    { "id": "d1B", "voice": "lena", "text": "Er hat „Du schon wieder“ gesagt. Ich habe mich noch nie so ertappt gefühlt.", "say": "Er hat: Du schon wieder, gesagt. Ich habe mich noch nie so ertappt gefühlt." },
+    { "id": "d1Bg", "voice": "gehirn", "text": "Sie lacht. SIE LACHT. Weiter so!", "say": "Sie lacht. Sie lacht! Weiter so!" },
+    { "id": "d1C", "voice": "lena", "text": "Ja. Herbst halt." },
+    { "id": "d1Cg", "voice": "gehirn", "text": "Herbst halt. Wir sind erledigt." },
+    { "id": "n_s2", "voice": "narrator", "text": "Zwanzig Minuten später. Es läuft. Bis dein Handy auf dem Tisch vibriert. Dreimal." },
+    { "id": "g3", "voice": "gehirn", "text": "Das ist Jonas. Natürlich ist das Jonas." },
+    { "id": "p2", "voice": "narrator", "text": "Lena hat es gesehen. Was sagst du?" },
+    { "id": "d2A", "voice": "lena", "text": "Kein Problem." },
+    { "id": "d2Ag", "voice": "gehirn", "text": "Sie guckt zur Tür. Zur TÜR.", "say": "Sie guckt zur Tür. Zur Tür!" },
+    { "id": "d2B", "voice": "lena", "text": "Oh. Danke." },
+    { "id": "d2Bg", "voice": "gehirn", "text": "Souverän. Wer bist du, und wo warst du bisher?" },
+    { "id": "d2C", "voice": "lena", "text": "Sag ihm: cooler." },
+    { "id": "d2Cg", "voice": "gehirn", "text": "Riskant. Aber sie grinst." },
+    { "id": "n_s3", "voice": "narrator", "text": "Zwei Stunden später. Ihr steht vor der Tür." },
+    { "id": "l3", "voice": "lena", "text": "Also dann. Ich muss da lang." },
+    { "id": "g4", "voice": "gehirn", "text": "Jetzt. Der Moment. Sag etwas Kluges. Oder überhaupt etwas." },
+    { "id": "p3", "voice": "narrator", "text": "Der Abschied. Was sagst du?" },
+    { "id": "d3A", "voice": "lena", "text": "Okay. Mach das." },
+    { "id": "d3Ag", "voice": "gehirn", "text": "„Ich meld mich.“ Der Satz, nach dem sich nie jemand meldet.", "say": "Ich meld mich. Der Satz, nach dem sich nie jemand meldet." },
+    { "id": "d3B", "voice": "lena", "text": "Schön, dass du das sagst." },
+    { "id": "d3Bg", "voice": "gehirn", "text": "Du hast es gesagt. Laut. Mit Worten." },
+    { "id": "d3C", "voice": "lena", "text": "Du auch!" },
+    { "id": "d3Cg", "voice": "gehirn", "text": "Eine Umarmung. Und kein Plan. Klassiker." },
+    { "id": "e_zweites", "voice": "narrator", "text": "Zweites Date. Am nächsten Morgen schreibt Lena: Samstag?" },
+    { "id": "e_mal", "voice": "narrator", "text": "Mal sehen. Es war nett. Wer zuerst schreibt, ist noch offen." },
+    { "id": "e_anekdote", "voice": "narrator", "text": "Die Anekdote. Lena erzählt ihren Freundinnen von dem Abend. Sie lachen viel." },
+    { "id": "r0", "voice": "narrator", "text": "Was ist da gerade passiert? Drei Dinge." },
+    { "id": "r1", "voice": "narrator", "text": "Erstens: Nachfragen macht sympathisch. In Speed-Dating-Daten bekam häufiger ein zweites Date, wer mehr nachfragte." },
+    { "id": "r2", "voice": "narrator", "text": "Zweitens: Handy weg. Ob es auf dem Tisch schon stört, ist umstritten. Wegstecken heißt aber klar: Du bist gerade wichtiger." },
+    { "id": "r3", "voice": "narrator", "text": "Drittens: Du kommst besser an, als du denkst. Das unterschätzen fast alle. Also sag ruhig, was du willst." },
+    { "id": "s1", "voice": "narrator", "text": "So hätte es auch laufen können: nachfragen, Handy weg – und am Ende sagen, was du willst." },
+    { "id": "out", "voice": "narrator", "text": "Das war nur ein möglicher Verlauf. Beim Dating gibt es kein Richtig oder Falsch. Probier es ruhig noch mal." }
+  ]
+}

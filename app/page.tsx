@@ -15,6 +15,13 @@ const SITUATIONS = [
     hook: "420 € warm, mit Balkon. Der Vermieter ist leider gerade in Dänemark.",
     color: "#ef6f5e",
   },
+  {
+    href: "/date",
+    category: "Dating",
+    title: "Das erste Date",
+    hook: "Drei Wochen geschrieben. Jetzt sitzt ihr euch gegenüber, und dein Gehirn dreht durch.",
+    color: "#8b6fc0",
+  },
 ];
 
 export default function Home() {
@@ -26,7 +33,7 @@ export default function Home() {
         </p>
         <h1 className="mt-2 text-5xl font-black">Was würdest du tun?</h1>
       </div>
-      <div className="flex w-full max-w-4xl flex-col gap-6 md:flex-row">
+      <div className="flex w-full max-w-6xl flex-col gap-6 md:flex-row">
         {SITUATIONS.map((s) => (
           <Link
             key={s.href}

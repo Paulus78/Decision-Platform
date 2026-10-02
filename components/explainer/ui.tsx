@@ -255,10 +255,13 @@ export function FriendPopup({
   name,
   text,
   face,
+  position = "left-[2cqw] top-[11cqw]",
 }: {
   name: string;
   text: string;
   face: React.ReactNode;
+  // Wo die Nachricht im Bild sitzt (Tailwind-Klassen).
+  position?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   useGSAP(() => {
@@ -267,7 +270,7 @@ export function FriendPopup({
   return (
     <div
       ref={ref}
-      className="pointer-events-none absolute left-[2cqw] top-[11cqw] flex max-w-[34cqw] items-center gap-[1.2cqw] rounded-[2cqw] bg-white p-[1.2cqw] shadow-2xl"
+      className={`pointer-events-none absolute ${position} flex max-w-[34cqw] items-center gap-[1.2cqw] rounded-[2cqw] bg-white p-[1.2cqw] shadow-2xl`}
     >
       <div className="h-[5.4cqw] w-[5.4cqw] shrink-0">{face}</div>
       <div>
