@@ -1,0 +1,204 @@
+{
+  "id": "gehaltsangebot",
+  "title": "Das Angebot",
+  "category": "work",
+  "tags": ["anchoring"],
+  "goal": 55000,
+  "characters": {
+    "du": "Du",
+    "brandt": "Frau Brandt",
+    "jonas": "Jonas"
+  },
+  "intro": [
+    "Du bist 24. Studium fertig. Drittes Gespräch bei Novara: lief gut.",
+    "Dein Ziel: 55.000 €. Deine Miete: 780 €. Dein Kontostand: lieber nicht.",
+    "Donnerstag, 16:42 Uhr. Dein Handy klingelt."
+  ],
+  "beats": [
+    { "type": "scene", "title": "Der Anruf", "time": "Donnerstag, 16:42 Uhr" },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "brandt", "channel": "call", "text": "Hallo, Brandt von Novara. Gute Nachrichten: Wir würden Sie gern im Team haben." },
+        { "from": "brandt", "channel": "call", "text": "Bevor ich das Angebot fertig mache: Was hatten Sie sich gehaltlich vorgestellt?" }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d1",
+      "channel": "call",
+      "options": [
+        {
+          "id": "A",
+          "text": "57.500 €.",
+          "effects": [{ "set": 51000 }],
+          "table": "57.500 € · deine Zahl",
+          "replies": [
+            { "from": "brandt", "channel": "call", "text": "… Okay. Das liegt über dem, was wir eingeplant hatten. Ich spreche mit dem Fachbereich." }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Zwischen 50.000 und 56.000 €.",
+          "effects": [{ "set": 49000 }],
+          "table": "50.000 € · sie hört nur das untere Ende",
+          "replies": [
+            { "from": "brandt", "channel": "call", "text": "50.000, das nehme ich mal so mit." }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Was zahlen Sie denn?",
+          "effects": [{ "set": 48000 }],
+          "table": "46.000–50.000 € · ihre Zahl",
+          "replies": [
+            { "from": "brandt", "channel": "call", "text": "Wir liegen bei 46.000 bis 50.000 €, je nach Erfahrung." }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "jonas", "channel": "chat", "text": "Und??? Haben sie angerufen" }
+      ]
+    },
+    { "type": "scene", "title": "Die Mail", "time": "20 Minuten später" },
+    {
+      "type": "lines",
+      "table": "{offer} € · ihr Angebot",
+      "lines": [
+        { "from": "brandt", "channel": "mail", "text": "Betreff: Ihr Angebot – Novara GmbH. Wir freuen uns, Ihnen ein Jahresgehalt von {offer} € anbieten zu können. Unser Budget für die Stelle ist damit leider ausgeschöpft." },
+        { "from": "jonas", "channel": "chat", "text": "{offer}?? Bro. Ich krieg 41. NIMM." }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d2",
+      "channel": "mail",
+      "options": [
+        {
+          "id": "A",
+          "text": "Okay, passt.",
+          "effects": [{ "flag": "accepted" }],
+          "replies": [
+            { "from": "brandt", "channel": "mail", "text": "Wunderbar, dann mache ich den Vertrag fertig." }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Wie kommen wir näher an meine Zahl?",
+          "effects": [{ "add": 1500 }],
+          "replies": [
+            { "from": "brandt", "channel": "mail", "text": "Verstehe ich. Ich frage noch mal beim Fachbereich nach." },
+            { "from": "brandt", "channel": "mail", "text": "Rückmeldung vom Fachbereich: Wir können auf {offer} € gehen." }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Okay, aber mit Gehaltserhöhung nach 6 Monaten.",
+          "effects": [{ "flag": "review" }],
+          "replies": [
+            { "from": "brandt", "channel": "mail", "text": "Ein Gehaltsgespräch nach 6 Monaten kann ich zusagen." }
+          ]
+        }
+      ]
+    },
+    { "type": "scene", "title": "Der Druck", "time": "Am Abend" },
+    {
+      "type": "lines",
+      "lines": [
+        { "from": "brandt", "channel": "mail", "text": "Kurzes Update: Wir bräuchten Ihre Antwort bis morgen 12 Uhr. Wir sind parallel noch mit einer zweiten Kandidatin im Gespräch." },
+        { "from": "jonas", "channel": "chat", "text": "Die haben ne ZWEITE?? Sag zu bevor die dich ersetzen" }
+      ]
+    },
+    {
+      "type": "decision",
+      "id": "d3",
+      "channel": "mail",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ich sage zu.",
+          "replies": [
+            { "from": "brandt", "channel": "mail", "text": "Schön! Der Vertrag kommt morgen." }
+          ]
+        },
+        {
+          "id": "B",
+          "text": "Ich melde mich morgen früh.",
+          "effects": [{ "add": 500, "unlessFlag": "accepted" }],
+          "replies": [
+            { "from": "brandt", "channel": "call", "text": "Guten Morgen! Ich wollte nicht bis 12 warten: Wir legen noch etwas drauf, {offer} €. Sind Sie dabei?", "unlessFlag": "accepted" },
+            { "from": "brandt", "channel": "mail", "text": "Guten Morgen! Der Vertrag liegt bereit.", "ifFlag": "accepted" }
+          ]
+        },
+        {
+          "id": "C",
+          "text": "Bei {offer+1000} € sage ich sofort zu.",
+          "effects": [{ "add": 1000, "unlessFlag": "accepted" }],
+          "replies": [
+            { "from": "brandt", "channel": "mail", "text": "{offer} €. Das kriege ich durch. Willkommen im Team!", "unlessFlag": "accepted" },
+            { "from": "brandt", "channel": "mail", "text": "Ich dachte, wir wären uns einig? Es bleibt bei {offer} €.", "ifFlag": "accepted" }
+          ]
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "stark",
+      "title": "Stark verhandelt",
+      "text": "Du hast den Rahmen gesetzt, nicht sie.",
+      "jonas": "{offer}?! Ich kündige und bewerb mich da.",
+      "when": [{ "minOffer": 52000 }, { "minOffer": 51000, "flag": "review" }]
+    },
+    {
+      "id": "solide",
+      "title": "Solide",
+      "text": "Guter Einstieg. Du hast nicht alles liegen lassen.",
+      "jonas": "{offer}. Okay. Du zahlst heute.",
+      "when": [{ "minOffer": 49500 }]
+    },
+    {
+      "id": "schnell",
+      "title": "Der Schnellabschluss",
+      "text": "Du hast den Job. Und das Gefühl, dass da mehr drin war.",
+      "jonas": "Siehste. Easy. Hab ich doch gesagt.",
+      "when": [{ "minOffer": 0 }]
+    }
+  ],
+  "flagLabels": {
+    "review": "Gehaltsgespräch nach 6 Monaten"
+  },
+  "reveal": [
+    {
+      "title": "Die erste Zahl setzt den Rahmen.",
+      "text": "Wer zuerst eine Zahl nennt, zieht die ganze Verhandlung in ihre Richtung. Wer fragt statt nennt, überlässt der anderen Seite den Anker.",
+      "strength": "Strong",
+      "source": "Galinsky & Mussweiler (2001), Journal of Personality and Social Psychology"
+    },
+    {
+      "title": "Bei einer Spanne zählt das untere Ende.",
+      "text": "„50 bis 56“ wird zu „50“. Stärker: eine Spanne über dem Ziel („55 bis 60“) oder eine konkrete Zahl wie 57.500.",
+      "strength": "Moderate",
+      "source": "Ames & Mason (2015), JPSP · Mason et al. (2013), JESP"
+    },
+    {
+      "title": "Fragen statt Nein sagen.",
+      "text": "„Wie kommen wir näher an meine Zahl?“ lässt die Gegenseite an deiner Lösung arbeiten, ohne dass du das Angebot ablehnst.",
+      "strength": "Expert Framework",
+      "source": "Chris Voss, Never Split the Difference"
+    }
+  ],
+  "strongRun": {
+    "title": "So hätte es auch laufen können",
+    "result": 53500,
+    "steps": [
+      { "text": "57.500 €.", "label": "Anker gesetzt" },
+      { "text": "Wie kommen wir näher an meine Zahl?", "label": "Frage statt Nein" },
+      { "text": "Bei 53.500 € sage ich sofort zu.", "label": "Klare Zahl, klare Zusage" }
+    ]
+  },
+  "disclaimer": "Ein möglicher Verlauf. Alle Beträge und Reaktionen sind erfunden – belegt ist nur das Prinzip dahinter."
+}
