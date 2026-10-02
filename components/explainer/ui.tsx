@@ -246,11 +246,14 @@ export function Poster({
   kicker,
   title,
   subtitle,
+  note = "Drei Entscheidungen, etwa 3 Minuten. Am besten mit Ton.",
   onStart,
 }: {
   kicker: string;
   title: string;
   subtitle: string;
+  // Kleine Zeile unter „Abspielen“.
+  note?: string;
   onStart: () => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -297,9 +300,7 @@ export function Poster({
           </span>
           <span>
             <span className="block font-display text-[2.4cqw] font-extrabold leading-tight">Abspielen</span>
-            <span className="block text-[1.35cqw] opacity-75">
-              Drei Entscheidungen, etwa 3 Minuten. Am besten mit Ton.
-            </span>
+            <span className="block text-[1.35cqw] opacity-75">{note}</span>
           </span>
         </button>
       </div>
@@ -475,6 +476,7 @@ export function Decision({
   question,
   options,
   state,
+  seconds,
   onPick,
 }: {
   number: number;
@@ -482,10 +484,30 @@ export function Decision({
   question: string;
   options: Option[];
   state: State;
+  // Zeitdruck: Nach so vielen Sekunden entscheidet „dein Gehirn“ zufällig. Ohne Angabe: keine Uhr.
+  seconds?: number;
   onPick: (option: Option) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [picked, setPicked] = useState<string | null>(null);
+  const [late, setLate] = useState(false);
+  const done = useRef(false);
+
+  useEffect(() => {
+    if (!seconds) return;
+    const timer = setTimeout(() => {
+      if (done.current) return;
+      done.current = true;
+      const option = options[Math.floor(Math.random() * options.length)];
+      setLate(true);
+      setPicked(option.id);
+      pop();
+      setTimeout(() => onPick(option), 1600);
+    }, seconds * 1000);
+    return () => clearTimeout(timer);
+    // Die Uhr startet einmal, wenn die Entscheidung erscheint.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useGSAP(
     () => {
       gsap.from(ref.current, { opacity: 0, duration: 0.3 });
@@ -502,7 +524,8 @@ export function Decision({
   );
 
   function pick(option: Option) {
-    if (picked) return;
+    if (picked || done.current) return;
+    done.current = true;
     setPicked(option.id);
     pop();
     setTimeout(() => onPick(option), 500);
@@ -522,7 +545,14 @@ export function Decision({
           </span>
           Pause · Entscheidung {number} von {total}
         </p>
-        <p className="text-[4.4cqw] font-black text-white">{question}</p>
+        <p className="text-[4.4cqw] font-black text-white">
+          {late ? "Zu langsam. Dein Gehirn hat entschieden." : question}
+        </p>
+        {seconds && !picked && (
+          <div className="mx-auto mt-[0.8cqw] h-[0.7cqw] w-[36cqw] overflow-hidden rounded-full bg-white/25">
+            <div className="drain h-full origin-left bg-[#f2a33a]" style={{ animationDuration: `${seconds}s` }} />
+          </div>
+        )}
       </div>
       <div className="flex w-full items-stretch justify-center gap-[1.6cqw] px-[4cqw]">
         {options.map((option) => (

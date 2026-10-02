@@ -86,10 +86,34 @@ const SPEAKER_LABEL: Record<Speaker, string> = {
   brandt: "Frau Brandt",
 };
 
-type Phase = "poster" | "playing" | "end";
+type Phase = "poster" | "playing" | "end" | "done";
+
+// Serie: Der Film wird in Folgen gespielt. Jede Folge enthält genau eine Entscheidung.
+export type Episode = {
+  number: number;
+  total: number;
+  title: string;
+  teaser: string;
+  // Stand nach der vorigen Folge (null in Folge 1) und ein Satz „Was bisher geschah“.
+  start: State | null;
+  recap: string;
+  // Cliffhanger am Ende der Folge: Sprecher-ID aus der voice.json.
+  cliff?: string;
+  // Sekunden Bedenkzeit pro Entscheidung.
+  seconds?: number;
+  onDone: (state: State, ending: Ending | null) => void;
+};
 type Ask = { beat: DecisionBeat; number: number; state: State; resolve: (o: Option) => void };
 
-export default function Explainer({ story, voice }: { story: Story; voice: VoiceLine[] }) {
+export default function Explainer({
+  story,
+  voice,
+  episode,
+}: {
+  story: Story;
+  voice: VoiceLine[];
+  episode?: Episode;
+}) {
   const [phase, setPhase] = useState<Phase>("poster");
   const [cue, setCue] = useState<Cue>(START);
   const [ask, setAsk] = useState<Ask | null>(null);
@@ -123,29 +147,40 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
     setRunKey(id);
     setPhase("playing");
 
-    // --- Intro ---
-    await wait(1100);
-    await say("n1");
-    set({ thought: "goal", youMood: "happy" });
-    pop();
-    await say("n2a");
-    set({ thought: "bank", youMood: "worried" });
-    pop();
-    await say("n2b");
-    if (!alive()) return;
-    set({ thought: null, ringing: true, youMood: "surprised", caption: null });
-    ring();
-    await wait(900);
-    await say("n3");
-    if (!alive()) return;
-    set({ view: "call", ringing: false, youMood: "happy", caption: null });
-    await wait(900);
+    // Serie: Folge 2 und 3 steigen nach der letzten gespielten Entscheidung ein.
+    const resume = episode && episode.number > 1 ? episode.start : null;
+
+    if (resume && episode) {
+      set({ hud: resume, title: { title: `Folge ${episode.number}`, time: episode.recap } });
+      await wait(3200);
+      set({ title: null });
+      await wait(400);
+    } else {
+      // --- Intro ---
+      await wait(1100);
+      await say("n1");
+      set({ thought: "goal", youMood: "happy" });
+      pop();
+      await say("n2a");
+      set({ thought: "bank", youMood: "worried" });
+      pop();
+      await say("n2b");
+      if (!alive()) return;
+      set({ thought: null, ringing: true, youMood: "surprised", caption: null });
+      ring();
+      await wait(900);
+      await say("n3");
+      if (!alive()) return;
+      set({ view: "call", ringing: false, youMood: "happy", caption: null });
+      await wait(900);
+    }
 
     // --- Story aus der Story-Datei ---
-    let state = initialState;
-    let hud = initialState;
-    let index = 0;
-    let firstScene = true;
+    let state = resume ?? initialState;
+    let hud = state;
+    // Einstieg: der Beat direkt nach der Entscheidung der vorigen Folge.
+    let index = resume && episode ? story.beats.indexOf(decisions[episode.number - 2]) + 1 : 0;
+    let firstScene = !resume;
     let lastChannel = "call";
     let night = false;
     let mail: Mail | null = null;
@@ -280,6 +315,20 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
       setHud(state);
       await wait(900);
       index++;
+
+      // Serie: Nach der Entscheidung endet die Folge mit einem Cliffhanger.
+      if (episode && episode.number < episode.total) {
+        set({ jonas: null, bubble: null });
+        if (episode.cliff) await say(episode.cliff);
+        if (!alive()) return;
+        set({ caption: null, title: { title: "Fortsetzung folgt", time: `Ende von Folge ${episode.number}` } });
+        await wait(2200);
+        if (!alive()) return;
+        mark(1);
+        setPhase("done");
+        episode.onDone(state, null);
+        return;
+      }
     }
 
     // --- Ergebnis, Erklärung, starker Verlauf ---
@@ -302,6 +351,14 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
     pop();
     await wait(3600);
     if (!alive()) return;
+
+    // Serie: Rückblick und Vergleich zeigt die Serien-Seite selbst.
+    if (episode) {
+      mark(1);
+      setPhase("done");
+      episode.onDone(state, ending);
+      return;
+    }
 
     set({ jonas: null, caption: null, view: "reveal", revealStep: 0 });
     await say("r0");
@@ -411,6 +468,7 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
           question="Was sagst du?"
           options={ask.beat.options}
           state={ask.state}
+          seconds={episode?.seconds}
           onPick={ask.resolve}
         />
       )}
@@ -418,8 +476,13 @@ export default function Explainer({ story, voice }: { story: Story; voice: Voice
       {phase === "poster" && (
         <Poster
           kicker="Work · 3 Entscheidungen"
-          title={story.title}
-          subtitle="Sie wollen dich. Jetzt geht es ums Geld."
+          title={episode ? `Folge ${episode.number}: ${episode.title}` : story.title}
+          subtitle={episode ? episode.teaser : "Sie wollen dich. Jetzt geht es ums Geld."}
+          note={
+            episode
+              ? `Folge ${episode.number} von ${episode.total}. Eine Entscheidung, etwa eine Minute. Mit Ton.`
+              : undefined
+          }
           onStart={play}
         />
       )}
