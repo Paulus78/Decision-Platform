@@ -7,7 +7,7 @@
   --color-accent: #d7ff3f;
   --color-paper: #f4f1ea;
 
-  --color-page: #f4f6f9;
+  --color-page: #fbf3e4;
   --color-navy: #1e294b;
   --color-mute: #55607f;
   --color-teal: #2f9e8f;
@@ -20,18 +20,19 @@
   --font-display: var(--font-display);
   --font-mono: ui-monospace, monospace;
 
-  --shadow-card: 0 8px 24px rgb(30 41 75 / 0.08);
-  --shadow-lift: 0 14px 32px rgb(30 41 75 / 0.14);
+  /* Flacher, versetzter Schatten wie ausgeschnittenes Papier */
+  --shadow-paper: 8px 8px 0 rgb(0 0 0 / 0.22);
+  --shadow-paper-lg: 14px 14px 0 rgb(0 0 0 / 0.22);
 }
 
 body {
-  background: #f4f6f9;
+  background: #fbf3e4;
   color: #1e294b;
   font-family: var(--font-text), Arial, Helvetica, sans-serif;
 }
 
 :focus-visible {
-  outline: 2px solid #2f9e8f;
+  outline: 3px solid #f2a33a;
   outline-offset: 2px;
 }
 
@@ -45,25 +46,9 @@ body {
 }
 .pop-in { animation: pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
 
-/* Abschnitte, die beim Scrollen einmal nacheinander erscheinen */
-.reveal > * {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
-}
-.reveal.in > * { opacity: 1; transform: none; }
-.reveal.in > *:nth-child(2) { transition-delay: 0.18s; }
-.reveal.in > *:nth-child(3) { transition-delay: 0.36s; }
-
 /* Knöpfe und Reiter geben beim Drücken kurz nach */
 .press { transition-property: color, background-color, transform; transition-duration: 150ms; }
 .press:active { transform: scale(0.96); }
-
-/* Stapel in den Kategorie-Kacheln: fächert sich beim Überfahren auf */
-.pile { transform: translate(var(--x), calc(var(--x) * -0.5)) rotate(var(--r)); }
-.group:hover .pile {
-  transform: translate(calc(var(--x) * 2.2), calc(var(--x) * -0.9)) rotate(calc(var(--r) * 2.2)) scale(1.04);
-}
 
 /* Übergang: Vorschaubild wächst zur Film-Bühne */
 ::view-transition-group(.morph) { animation-duration: 400ms; }
@@ -73,7 +58,6 @@ body {
     animation: none !important;
     transition: none !important;
   }
-  .reveal > * { opacity: 1; transform: none; }
 }
 
 /* Tonspur-Balken im Anruf */

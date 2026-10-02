@@ -6,13 +6,20 @@
 export type CategoryId = "job" | "geld" | "alltag" | "dating" | "freunde";
 export type SkillId = "verhandeln" | "ansprechen" | "betrug" | "kennenlernen";
 
-export const CATEGORIES: Record<CategoryId, { label: string; color: string; intro: string }> = {
-  job: { label: "Job", color: "#2f9e8f", intro: "Gehalt, Chef, Bewerbung." },
-  geld: { label: "Geld", color: "#2b3a67", intro: "Kaufen, verkaufen, handeln." },
-  alltag: { label: "Alltag", color: "#ef6f5e", intro: "Wohnung, Verträge, Betrugsmaschen." },
-  dating: { label: "Dating", color: "#8b6fc0", intro: "Kennenlernen ohne Drehbuch." },
-  freunde: { label: "Freunde", color: "#f2a33a", intro: "Wenn es unter Freunden unangenehm wird." },
+// color: Markierung in den Filmen. band: Farbfläche der Kategorie auf der Seite.
+// dark: true = helle Schrift auf der Fläche, false = dunkle Schrift.
+export const CATEGORIES: Record<
+  CategoryId,
+  { label: string; color: string; band: string; dark: boolean; intro: string }
+> = {
+  job: { label: "Job", color: "#2f9e8f", band: "#237a6e", dark: true, intro: "Gehalt, Chef, Bewerbung." },
+  geld: { label: "Geld", color: "#2b3a67", band: "#2b3a67", dark: true, intro: "Kaufen, verkaufen, handeln." },
+  alltag: { label: "Alltag", color: "#ef6f5e", band: "#ef6f5e", dark: false, intro: "Wohnung, Verträge, Betrugsmaschen." },
+  dating: { label: "Dating", color: "#8b6fc0", band: "#6f52a8", dark: true, intro: "Kennenlernen ohne Drehbuch." },
+  freunde: { label: "Freunde", color: "#f2a33a", band: "#f2a33a", dark: false, intro: "Wenn es unter Freunden unangenehm wird." },
 };
+
+export const CATEGORY_IDS = Object.keys(CATEGORIES) as CategoryId[];
 
 export const SKILLS: Record<SkillId, string> = {
   verhandeln: "Verhandeln",

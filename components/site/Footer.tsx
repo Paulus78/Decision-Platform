@@ -5,7 +5,7 @@ import { Logo } from "./Header";
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-navy text-white">
+    <footer className="mt-auto bg-[#151d38] text-white">
       <div className="mx-auto flex w-full max-w-[1120px] flex-col gap-8 px-5 py-12 md:flex-row md:justify-between">
         <div className="max-w-sm">
           <Logo dark />

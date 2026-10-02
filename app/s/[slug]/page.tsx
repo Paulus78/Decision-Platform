@@ -5,7 +5,7 @@ import { ViewTransition } from "react";
 import Film, { hasFilm } from "@/components/Film";
 import Footer from "@/components/site/Footer";
 import Header from "@/components/site/Header";
-import SituationCard from "@/components/site/SituationCard";
+import ScenePanel from "@/components/site/ScenePanel";
 import { SITE } from "@/lib/site";
 import { CATEGORIES, SITUATIONS, SKILLS, getSituation } from "@/stories";
 
@@ -32,11 +32,11 @@ export default async function SituationPage({ params }: Props) {
   const more = [
     ...SITUATIONS.filter((s) => s.slug !== slug && s.category === situation.category),
     ...SITUATIONS.filter((s) => s.slug !== slug && s.category !== situation.category),
-  ].slice(0, 3);
+  ].slice(0, 2);
 
   return (
     <>
-      <Header dark />
+      <Header />
       <main>
         {/* Die Bühne füllt den Bildschirm unter der Kopfzeile, lässt aber den Titel anschneiden. */}
         <ViewTransition name={`film-${slug}`} share="morph" default="none">
@@ -52,41 +52,40 @@ export default async function SituationPage({ params }: Props) {
           Tipp: Dreh dein Handy quer, dann ist der Film größer.
         </p>
 
-        <section className="mx-auto w-full max-w-[1120px] px-5 py-12">
-          <nav aria-label="Pfad" className="flex flex-wrap items-center gap-2 text-sm font-semibold text-mute">
+        <section className="mx-auto w-full max-w-[1120px] px-5 pb-16 pt-10">
+          <nav aria-label="Pfad" className="flex flex-wrap items-center gap-2 font-semibold text-navy/70">
             <Link href="/ueben" className="hover:text-navy">
               Üben
             </Link>
             <span aria-hidden="true">›</span>
-            <Link href={`/ueben/${situation.category}`} className="flex items-center gap-2 hover:text-navy">
-              <span className="h-2.5 w-2.5 rounded-full" style={{ background: category.color }} />
+            <Link
+              href={`/ueben/${situation.category}`}
+              className={`rounded-full px-3 py-0.5 font-bold ${category.dark ? "text-white" : "text-navy"}`}
+              style={{ background: category.band }}
+            >
               {category.label}
             </Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-navy">{situation.title}</span>
           </nav>
-          <h1 className="mt-4 font-display text-[39px] font-extrabold leading-tight tracking-tight text-navy sm:text-[49px]">
+          <h1 className="mt-4 font-display text-[clamp(48px,8vw,96px)] font-extrabold leading-[0.95] tracking-tighter text-navy">
             {situation.title}
           </h1>
-          <p className="mt-3 max-w-[40rem] text-xl leading-relaxed text-mute">{situation.hook}</p>
-          <ul className="mt-6 flex flex-wrap gap-2 font-semibold text-navy">
-            {situation.skills.map((id) => (
-              <li key={id} className="rounded-[14px] bg-white px-4 py-2 shadow-card">
-                Du übst: {SKILLS[id]}
-              </li>
-            ))}
-            <li className="rounded-[14px] bg-white px-4 py-2 shadow-card">3 Entscheidungen</li>
-            <li className="rounded-[14px] bg-white px-4 py-2 shadow-card">ca. {situation.minutes} Minuten</li>
-            <li className="rounded-[14px] bg-white px-4 py-2 shadow-card">Mit Ton am besten</li>
-          </ul>
+          <p className="mt-5 max-w-[42rem] text-xl leading-relaxed text-navy/80">{situation.hook}</p>
+          <p className="mt-3 max-w-[42rem] text-lg font-semibold text-navy">
+            Du übst: {situation.skills.map((id) => SKILLS[id]).join(" und ")}. Drei Entscheidungen, etwa{" "}
+            {situation.minutes} Minuten, am besten mit Ton.
+          </p>
         </section>
 
-        <section className="mx-auto w-full max-w-[1120px] px-5 pb-24">
-          <h2 className="font-display text-[31px] font-extrabold text-navy">Danach vielleicht</h2>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {more.map((other) => (
-              <SituationCard key={other.slug} situation={other} />
-            ))}
+        <section className="bg-navy text-white">
+          <div className="mx-auto w-full max-w-[1120px] px-5 pb-24 pt-14">
+            <h2 className="font-display text-[clamp(39px,5.4vw,61px)] font-extrabold leading-none tracking-tighter">
+              Danach vielleicht
+            </h2>
+            <div className="mt-12 grid gap-x-12 gap-y-16 md:grid-cols-2">
+              {more.map((other) => (
+                <ScenePanel key={other.slug} situation={other} dark />
+              ))}
+            </div>
           </div>
         </section>
       </main>

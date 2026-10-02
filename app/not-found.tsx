@@ -13,12 +13,12 @@ export default function NotFound() {
           <span className="h-14 w-14 shrink-0">
             <JonasFace />
           </span>
-          <div className="rounded-[20px] rounded-bl-[4px] bg-white px-5 py-4 shadow-card">
+          <div className="rounded-[20px] rounded-bl-[4px] bg-white px-5 py-4 shadow-paper">
             <p className="text-sm font-bold text-tealdark">Jonas</p>
             <p className="text-lg font-semibold text-navy">Bro. Die Seite gibt es nicht. Hast du dich vertippt?</p>
           </div>
         </div>
-        <h1 className="mt-10 font-display text-[39px] font-extrabold leading-tight tracking-tight text-navy sm:text-[49px]">
+        <h1 className="mt-10 font-display text-[clamp(48px,8vw,96px)] font-extrabold leading-[0.95] tracking-tighter text-navy">
           Hier ist nichts.
         </h1>
         <p className="mt-3 max-w-[34rem] text-lg text-mute">
@@ -26,7 +26,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/ueben"
-          className="press mt-8 rounded-[14px] bg-teal px-6 py-3.5 text-lg font-bold text-white hover:bg-tealdark"
+          className="press mt-8 rounded-[14px] bg-navy px-6 py-3.5 text-lg font-bold text-white hover:bg-[#2b3a67]"
         >
           Zur Übersicht
         </Link>

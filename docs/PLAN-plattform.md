@@ -117,7 +117,9 @@ Alles kostenlos: Next.js, Tailwind, GSAP (vorhanden), Google Fonts, Vercel für 
 
 ## Stand 2026-10-02
 
-Erledigt: Schritte 1, 2, 4 und 5 (Startseite, `/ueben`, `/ueben/<kategorie>`, `/s/<slug>`, Fehlerseite) sowie die Animationen Mini-Entscheidung, Karten-Sprechblase, Stapel-Fächer, Ablauf beim Scrollen, Knopfdruck, Übergang Karte zu Bühne. Schritt 3 (drei Entwürfe) wurde auf Pauls Wunsch übersprungen: eine Richtung direkt gebaut. Name: Generalprobe.
+Gebaut: Startseite, `/ueben`, `/ueben/<kategorie>`, `/s/<slug>`, Fehlerseite. Name: Generalprobe.
+
+Das erste Design (weiße Karten auf heller Fläche) fand Paul zu langweilig. Es wurde nach `docs/DESIGN.md` V2 umgebaut: Die Startseite beginnt mit einer spielbaren Entscheidung über die ganze Breite, jede Kategorie ist eine eigene Farbfläche. Die Abschnitte 3 bis 5 dieses Plans sind damit überholt; es gilt `docs/DESIGN.md`.
 
 Offen: Wissen- und Über-Seite, „schon gespielt"-Haken, Filter nach Fähigkeit, Rechtliches, Veröffentlichung, Gegenlesen durch Codex.
 

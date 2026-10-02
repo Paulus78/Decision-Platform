@@ -5,8 +5,11 @@ import Link from "next/link";
 import { CallScene, type Mood } from "@/components/explainer/art";
 import { Brain } from "@/components/explainer/date-art";
 
-// Spielbare Mini-Entscheidung im ersten Bildschirm: die erste Entscheidung
-// aus „Das Angebot“ (Texte aus stories/gehaltsangebot.json), ohne Ton.
+// Der erste Bildschirm ist eine spielbare Entscheidung: die erste aus
+// „Das Angebot“ (Texte aus stories/gehaltsangebot.json), ohne Ton.
+// Ablauf: Frage → deine Antwort → ihre Reaktion → was dahintersteckt.
+
+export type Principle = { title: string; text: string; strength: string; source: string };
 
 type Answer = {
   id: string;
@@ -16,6 +19,9 @@ type Answer = {
   you: Mood;
   brandt: Mood;
   brain: string;
+  // Welche Rückblick-Karte der Story dazu passt, und wie sie eingeleitet wird.
+  principle: number;
+  lead: string;
 };
 
 const QUESTION = "Bevor ich das Angebot fertig mache: Was hatten Sie sich gehaltlich vorgestellt?";
@@ -29,6 +35,8 @@ const ANSWERS: Answer[] = [
     you: "happy",
     brandt: "surprised",
     brain: "Wir haben eine Zahl gesagt. Laut. Und wir leben noch.",
+    principle: 0,
+    lead: "Du hast zuerst eine Zahl genannt. Genau darum geht es hier.",
   },
   {
     id: "B",
@@ -38,6 +46,8 @@ const ANSWERS: Answer[] = [
     you: "worried",
     brandt: "happy",
     brain: "Sie hat nur „50.000“ gehört. Den Rest hätten wir uns sparen können.",
+    principle: 1,
+    lead: "Du hast eine Spanne genannt. Hängen bleibt davon nur ein Teil.",
   },
   {
     id: "C",
@@ -47,110 +57,187 @@ const ANSWERS: Answer[] = [
     you: "surprised",
     brandt: "neutral",
     brain: "Jetzt steht ihre Zahl im Raum. Nicht unsere.",
+    principle: 0,
+    lead: "Du hast gefragt statt genannt. Jetzt gilt ihre Zahl.",
   },
 ];
 
-function BrainIcon() {
-  return (
-    <svg viewBox="30 130 240 240" className="h-full w-full" aria-hidden="true">
-      <Brain talking={false} />
-    </svg>
-  );
-}
+// 0 Frage, 1 deine Antwort, 2 ihre Reaktion, 3 Auflösung
+type Step = 0 | 1 | 2 | 3;
 
-export default function HeroDemo() {
+export default function HeroDemo({ principles }: { principles: Principle[] }) {
   const [picked, setPicked] = useState<Answer | null>(null);
-  const [talking, setTalking] = useState(false);
+  const [step, setStep] = useState<Step>(0);
 
-  // Frau Brandt bewegt kurz den Mund, wenn sie antwortet.
   useEffect(() => {
     if (!picked) return;
-    const start = setTimeout(() => setTalking(true), 500);
-    const stop = setTimeout(() => setTalking(false), 2600);
+    const reply = setTimeout(() => setStep(2), 1500);
+    const verdict = setTimeout(() => setStep(3), 4200);
     return () => {
-      clearTimeout(start);
-      clearTimeout(stop);
+      clearTimeout(reply);
+      clearTimeout(verdict);
     };
   }, [picked]);
 
+  function pick(answer: Answer) {
+    if (picked) return;
+    setPicked(answer);
+    setStep(1);
+  }
+
+  function reset() {
+    setPicked(null);
+    setStep(0);
+  }
+
+  const reacted = picked && step >= 2;
+  const mine = step === 1 && picked;
+  const bubble = mine ? picked.text : reacted ? picked.reply : QUESTION;
+  const principle = picked ? principles[picked.principle] : null;
+
   return (
-    <div className="w-full">
-      <div className="relative overflow-clip rounded-[20px] bg-creme shadow-lift">
-        <svg viewBox="0 0 1600 900" className="block aspect-video w-full" aria-hidden="true">
+    <section className="bg-navy text-white">
+      {/* Die Szene über die ganze Breite */}
+      <div className="relative overflow-clip bg-creme">
+        <svg
+          viewBox="0 0 1600 900"
+          preserveAspectRatio="xMidYMid slice"
+          className="block aspect-video w-full md:aspect-auto md:h-[46vh] md:max-h-[520px] md:min-h-[340px]"
+          aria-hidden="true"
+        >
           <CallScene
-            youMood={picked ? picked.you : "worried"}
-            brandtMood={picked ? picked.brandt : "happy"}
-            brandtTalking={talking}
-            bubble={picked ? picked.text : null}
+            youMood={reacted ? picked.you : "worried"}
+            brandtMood={reacted ? picked.brandt : "happy"}
+            brandtTalking={step === 2}
+            bubble={null}
           />
         </svg>
-        {picked && (
-          <p
-            key={picked.id}
-            className="pop-in absolute left-1/2 top-3 -translate-x-1/2 whitespace-nowrap rounded-full bg-navy px-4 py-1.5 text-sm font-bold text-white [animation-delay:0.9s]"
+        <div className="absolute left-1/2 top-[9%] hidden w-[30%] min-w-[17rem] max-w-[26rem] -translate-x-1/2 md:block">
+          <div
+            key={`${picked?.id}-${step === 1}-${reacted}`}
+            className={`pop-in px-5 py-4 shadow-paper ${
+              mine
+                ? "rounded-[20px] rounded-bl-[4px] bg-teal text-white"
+                : "rounded-[20px] rounded-br-[4px] bg-white text-navy"
+            }`}
           >
+            <p className={`text-sm font-bold ${mine ? "text-white/80" : "text-tealdark"}`}>
+              {mine ? "Du" : "Frau Brandt, HR"}
+            </p>
+            <p className="font-display text-xl font-bold leading-snug">„{bubble}“</p>
+          </div>
+        </div>
+        {reacted && (
+          <p className="pop-in absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-navy px-4 py-1.5 text-sm font-bold text-white [animation-delay:0.5s]">
             {picked.table}
           </p>
         )}
       </div>
 
-      <div className="mt-4 rounded-[20px] bg-white p-5 shadow-card">
-        <p className="text-sm font-bold text-tealdark">Frau Brandt, HR</p>
-        <p key={picked?.id ?? "q"} className="pop-in mt-1 text-lg font-semibold leading-snug text-navy">
-          „{picked ? picked.reply : QUESTION}“
-        </p>
+      <div className="mx-auto w-full max-w-[1120px] px-5 pb-14 pt-8">
+        {/* Auf dem Handy steht die Sprechblase unter dem Bild */}
+        <div className="mb-6 rounded-[20px] rounded-tl-[4px] bg-white px-5 py-4 text-navy md:hidden">
+          <p className="text-sm font-bold text-tealdark">{mine ? "Du" : "Frau Brandt, HR"}</p>
+          <p className="font-display text-lg font-bold leading-snug">„{bubble}“</p>
+        </div>
 
-        {!picked && (
+        {step < 3 && (
           <>
-            <p className="mt-4 font-display text-xl font-extrabold text-navy">Was sagst du?</p>
-            <div className="mt-3 grid gap-2.5 sm:grid-cols-3">
-              {ANSWERS.map((answer) => (
-                <button
-                  key={answer.id}
-                  onClick={() => setPicked(answer)}
-                  className="press flex items-start gap-3 rounded-[14px] bg-page p-3.5 text-left hover:bg-sun sm:flex-col sm:gap-2"
-                >
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-navy text-sm font-black text-white">
-                    {answer.id}
-                  </span>
-                  <span className="font-bold leading-snug text-navy">„{answer.text}“</span>
-                </button>
-              ))}
-            </div>
-          </>
-        )}
-
-        {picked && (
-          <>
-            <div key={picked.id} className="pop-in mt-4 flex items-center gap-3 [animation-delay:1.4s]">
-              <span className="h-14 w-14 shrink-0">
-                <BrainIcon />
+            <p className="flex items-center gap-2.5 font-bold text-sun">
+              <span className="flex gap-1" aria-hidden="true">
+                <span className="h-4 w-1.5 rounded-sm bg-sun" />
+                <span className="h-4 w-1.5 rounded-sm bg-sun" />
               </span>
-              <p className="rounded-[14px] rounded-bl-[4px] bg-[#fde6ec] px-4 py-2.5 font-semibold leading-snug text-navy">
-                <span className="block text-xs font-bold text-[#b8506c]">Dein Gehirn</span>
-                {picked.brain}
-              </p>
+              Der Film hält an. Du bist dran.
+            </p>
+            <h1 className="mt-1 font-display text-[clamp(48px,8vw,96px)] font-extrabold leading-[0.95] tracking-tighter">
+              Was sagst du?
+            </h1>
+            <div className="mt-6 grid gap-3 md:grid-cols-3">
+              {ANSWERS.map((answer) => {
+                const chosen = picked?.id === answer.id;
+                return (
+                  <button
+                    key={answer.id}
+                    onClick={() => pick(answer)}
+                    disabled={!!picked}
+                    className={`press flex items-center gap-4 rounded-[18px] p-4 text-left md:flex-col md:items-start md:p-5 ${
+                      chosen
+                        ? "bg-sun text-navy"
+                        : picked
+                          ? "bg-white/30 text-navy"
+                          : "bg-white text-navy hover:bg-sun"
+                    }`}
+                  >
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy font-display text-lg font-extrabold text-white">
+                      {answer.id}
+                    </span>
+                    <span className="font-display text-xl font-bold leading-tight md:text-2xl">
+                      „{answer.text}“
+                    </span>
+                  </button>
+                );
+              })}
             </div>
-            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <Link
-                href="/s/gehaltsangebot"
-                className="press rounded-[14px] bg-teal px-5 py-3 font-bold text-white hover:bg-tealdark"
-              >
-                Ganze Situation spielen
-              </Link>
-              <button
-                onClick={() => setPicked(null)}
-                className="font-bold text-tealdark underline decoration-2 underline-offset-4 hover:text-navy"
-              >
-                Andere Antwort probieren
-              </button>
-            </div>
-            <p className="mt-3 text-sm text-mute">
-              Ob das klug war, zeigt der Rückblick am Ende der Situation, mit Quellen.
+            <p className="mt-6 max-w-[44rem] text-lg text-white/75">
+              Das ist Generalprobe: kurze gezeichnete Situationen, die dreimal anhalten und auf deine Antwort
+              warten. Üb den schwierigen Moment, bevor er echt ist.
             </p>
           </>
         )}
+
+        {step === 3 && picked && principle && (
+          <div className="grid gap-10 lg:grid-cols-[5fr_6fr]">
+            <div className="pop-in">
+              <p className="font-bold text-sun">Du hast gesagt</p>
+              <p className="mt-1 font-display text-[clamp(31px,4.4vw,49px)] font-extrabold leading-[1.02] tracking-tight">
+                „{picked.text}“
+              </p>
+              <div className="mt-6 flex items-center gap-3">
+                <span className="h-16 w-16 shrink-0">
+                  <svg viewBox="30 130 240 240" className="h-full w-full" aria-hidden="true">
+                    <Brain talking={false} />
+                  </svg>
+                </span>
+                <p className="rounded-[18px] rounded-bl-[4px] bg-[#fde6ec] px-4 py-3 font-semibold leading-snug text-navy">
+                  <span className="block text-sm font-bold text-[#a8405c]">Dein Gehirn</span>
+                  {picked.brain}
+                </p>
+              </div>
+            </div>
+            <div className="pop-in [animation-delay:0.25s]">
+              <p className="font-bold text-sun">{picked.lead}</p>
+              <h2 className="mt-1 font-display text-[clamp(31px,4.4vw,49px)] font-extrabold leading-[1.02] tracking-tight">
+                {principle.title}
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-white/85">{principle.text}</p>
+              <p className="mt-3 text-white/70">
+                <span className="mr-2 rounded-full bg-sun px-3 py-0.5 text-sm font-bold text-navy">
+                  {principle.strength}
+                </span>
+                {principle.source}
+              </p>
+              <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <Link
+                  href="/s/gehaltsangebot"
+                  className="press rounded-[14px] bg-sun px-6 py-3.5 text-lg font-bold text-navy hover:bg-white"
+                >
+                  Ganze Situation spielen
+                </Link>
+                <button
+                  onClick={reset}
+                  className="font-bold text-white underline decoration-2 underline-offset-4 hover:text-sun"
+                >
+                  Andere Antwort probieren
+                </button>
+              </div>
+              <p className="mt-5 text-white/60">
+                So läuft jede Situation: schauen, dreimal entscheiden, danach der Rückblick mit Quellen.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </section>
   );
 }
