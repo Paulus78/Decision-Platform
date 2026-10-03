@@ -318,6 +318,7 @@ Vorher zu klären: kommerzielle Rechte an den Stimmen, Impressum, Gewerbe, Zahlu
 - **Figuren:** Die zehn Hauptfiguren reichen für den Start mit Kapitel 1. Ob es mehr braucht, wird danach entschieden.
 - **Anzügliche Situationen:** Regeln und Auflösung von Giselas Angebot passen. Ähnliche Situationen brauchen Abwechslung.
 - **Zufallsereignisse:** ein bis zwei pro Kapitel.
+- **Humor:** Härte wie in den Beispielen passt.
 
 ## 16. Offene Fragen
 
@@ -333,18 +334,15 @@ Vorher zu klären: kommerzielle Rechte an den Stimmen, Impressum, Gewerbe, Zahlu
 7. Musik und Geräusche: aus freien Sammlungen mit passender Lizenz, selbst im Browser erzeugt, oder vorerst ohne Musik?
 
 **Figuren und Welt**
-9. Feste Spielfigur, oder Auswahl aus zwei bis drei Aussehen?
-10. Bleiben Gehirn und Jonas als Nebenfiguren?
-
-**Humor**
-11. Passt die Härte der Beispiele in Abschnitt 2, oder soll es noch böser oder etwas milder werden?
+8. Feste Spielfigur, oder Auswahl aus zwei bis drei Aussehen?
+9. Bleiben Gehirn und Jonas als Nebenfiguren?
 
 **Spiel**
-14. Drei Werte wie beschrieben, oder einfacher?
-15. Zeitdruck bei den Antworten: ja oder nein?
-16. Was soll passieren, wenn man ein Kapitel nicht schafft: Wiederholungsszene (Vorschlag) oder Kapitel neu?
+10. Drei Werte wie beschrieben, oder einfacher?
+11. Zeitdruck bei den Antworten: ja oder nein?
+12. Was soll passieren, wenn man ein Kapitel nicht schafft: Wiederholungsszene (Vorschlag) oder Kapitel neu?
 
 **Inhalt und Geld**
-17. Sollen die sechs alten Filme irgendwo weiterleben, oder bleiben sie im alten Projekt?
-18. Ab wann soll Geld eine Rolle spielen?
-19. Bezahlter Stimmen-Tarif, sobald es öffentlich wird?
+13. Sollen die sechs alten Filme irgendwo weiterleben, oder bleiben sie im alten Projekt?
+14. Ab wann soll Geld eine Rolle spielen?
+15. Bezahlter Stimmen-Tarif, sobald es öffentlich wird?
