@@ -25,6 +25,7 @@ Vorbilder für den Ton: „Severance" (kalter, absurder Konzern), „Stromberg" 
 - **Hart und schwarz, aber nach oben.** Gelacht wird über Macht, Gier, Firmensprech und Selbstüberschätzung. Nie über Herkunft, Aussehen, Krankheit oder Schwächere.
 - **Tabu:** Witze über Suizid, echte Gewalt, Diskriminierung. Der Konzern darf grausam sein, das Spiel nicht.
 - **Anzügliche Situationen** (z. B. die Personalchefin, siehe Abschnitt 7) sind erlaubt, wenn drei Dinge gelten: Die Person mit der Macht ist die Lachnummer, nicht du. Nichts wird explizit. Und Mitmachen wird nie einfach belohnt, sondern hat Folgen.
+- **Abwechslung:** Giselas Angebot bleibt die einzige Situation dieser Art in Kapitel 1 bis 3. Spätere schräge Situationen müssen anders funktionieren (Erpressung, Bestechung, Intrige, Peinlichkeit), nicht als Wiederholung derselben Masche.
 - **Ernst gespielt.** Niemand in der Firma findet irgendetwas lustig. Das ist der Witz.
 - **Running Gags** ziehen sich durch alle Kapitel.
 
@@ -209,7 +210,7 @@ Renates Satz danach: „Wer mit Beförderung lockt, will nicht dich, sondern Mac
 
 ### Zufallsereignisse (in jedem Kapitel möglich)
 
-Zwischen den festen Szenen kann eins davon auftauchen. Dadurch spielt sich jede Runde etwas anders.
+Pro Kapitel tauchen **ein bis zwei** davon zwischen den festen Szenen auf, zufällig ausgewählt. Dadurch spielt sich jede Runde etwas anders.
 
 | Ereignis | Wirkung |
 |---|---|
@@ -312,7 +313,13 @@ Vorher zu klären: kommerzielle Rechte an den Stimmen, Impressum, Gewerbe, Zahlu
 
 ---
 
-## 15. Offene Fragen
+## 15. Entschieden (2026-10-03)
+
+- **Figuren:** Die zehn Hauptfiguren reichen für den Start mit Kapitel 1. Ob es mehr braucht, wird danach entschieden.
+- **Anzügliche Situationen:** Regeln und Auflösung von Giselas Angebot passen. Ähnliche Situationen brauchen Abwechslung.
+- **Zufallsereignisse:** ein bis zwei pro Kapitel.
+
+## 16. Offene Fragen
 
 **Projekt**
 1. Wie soll der neue Ordner heißen? Legst du das GitHub-Repository an, oder darf ich es über deinen GitHub-Zugang erstellen?
@@ -326,14 +333,11 @@ Vorher zu klären: kommerzielle Rechte an den Stimmen, Impressum, Gewerbe, Zahlu
 7. Musik und Geräusche: aus freien Sammlungen mit passender Lizenz, selbst im Browser erzeugt, oder vorerst ohne Musik?
 
 **Figuren und Welt**
-8. Passen die zehn Hauptfiguren und ihre Namen? Fehlt eine Rolle?
 9. Feste Spielfigur, oder Auswahl aus zwei bis drei Aussehen?
 10. Bleiben Gehirn und Jonas als Nebenfiguren?
 
 **Humor**
 11. Passt die Härte der Beispiele in Abschnitt 2, oder soll es noch böser oder etwas milder werden?
-12. Einverstanden mit den Regeln für anzügliche Situationen (Abschnitt 2) und mit der Auflösung des Angebots von Gisela (Abschnitt 7)?
-13. Wie viele Zufallsereignisse pro Kapitel: eins (Vorschlag) oder mehr?
 
 **Spiel**
 14. Drei Werte wie beschrieben, oder einfacher?
