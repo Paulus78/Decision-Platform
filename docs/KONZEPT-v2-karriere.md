@@ -1,5 +1,7 @@
 # Konzept V2: KRONWERK – vom Praktikanten zum CEO
 
+> **Umgezogen:** Dieses Konzept wird ab 2026-10-03 im neuen Projekt weitergeführt: `Desktop\KRONWERK\docs\KONZEPT.md`, https://github.com/Paulus78/Kronwerk. Diese Datei hier wird nicht mehr aktualisiert.
+
 Stand: 2026-10-03 · Status: Konzept, noch nichts gebaut · Arbeitstitel des Spiels: „KRONWERK" (unter der Marke Generalprobe)
 
 Dieses Konzept ersetzt den Katalog aus sechs Einzelfilmen und zieht in das neue Projekt um, sobald es angelegt ist.
